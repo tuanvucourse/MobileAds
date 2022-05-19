@@ -31,6 +31,7 @@ class UnifiedNativeAdView: GADNativeAdView, NativeViewProtocol {
         actionButton.backgroundColor = AdMobManager.shared.backgroundButtonAdsNative
         actionButton.setTitle(nativeAd.callToAction, for: .normal)
         actionButton.isHidden = nativeAd.callToAction == nil
+        actionButton.layer.cornerRadius = AdMobManager.shared.nativeButtonCornerRadius
         
         thumbImageView.image = nativeAd.icon?.image
         thumbImageView.isHidden = nativeAd.icon == nil

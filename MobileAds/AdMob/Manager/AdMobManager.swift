@@ -23,7 +23,7 @@ public struct SampleAdUnitID {
     public static let adFormatNativeAdvancedVideo  = "ca-app-pub-3940256099942544/1044960115"
 }
 
-open class AdMobManager: NSObject {
+ open class AdMobManager: NSObject {
     
     //    MARK: - Property
     public static let shared = AdMobManager()
@@ -32,7 +32,10 @@ open class AdMobManager: NSObject {
     public var showAdRewardCount = 0
     public var listAd: NSMutableDictionary = NSMutableDictionary()
     public var listLoader: NSMutableDictionary = NSMutableDictionary()
+    
+    //    MARK: - UI NAtive
     public var backgroundButtonAdsNative: UIColor = UIColor(hex: 0x007AFF)
+    public var nativeButtonCornerRadius: CGFloat = 8
     
     //    MARK: - Block Ads
     public var blockLoadFullScreenAdSuccess: StringBlockAds?

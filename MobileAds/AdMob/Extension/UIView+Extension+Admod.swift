@@ -14,13 +14,13 @@ extension UIView {
                 return nil
             }
             if rating >= 5 {
-                return UIImage(named: "stars_5")
+                return UIImage(named: "stars_5", in: Bundle(for: type(of: self)), compatibleWith: nil)
             } else if rating >= 4.5 {
-                return UIImage(named: "stars_4_5")
+                return UIImage(named: "stars_4_5", in: Bundle(for: type(of: self)), compatibleWith: nil)
             } else if rating >= 4 {
-                return UIImage(named: "stars_4")
+                return UIImage(named: "stars_4", in: Bundle(for: type(of: self)), compatibleWith: nil)
             } else if rating >= 3.5 {
-                return UIImage(named: "stars_3_5")
+                return UIImage(named: "stars_3_5", in: Bundle(for: type(of: self)), compatibleWith: nil)
             } else {
                 return nil
             }
