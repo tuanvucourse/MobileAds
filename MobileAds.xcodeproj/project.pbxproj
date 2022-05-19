@@ -140,6 +140,7 @@
 		042F527F27D8E09E008D5330 /* MobileAds */ = {
 			isa = PBXGroup;
 			children = (
+				7667C7882836001700D47F77 /* Assets */,
 				762F5519281A709E0000FB10 /* AdMob */,
 				7695570227E1A2A80028127E /* Extension */,
 				769556FD27E19E980028127E /* Test */,
@@ -186,7 +187,6 @@
 		762F5519281A709E0000FB10 /* AdMob */ = {
 			isa = PBXGroup;
 			children = (
-				7667C7882836001700D47F77 /* Photo */,
 				764A7CAA281B7AB5008EF803 /* Enum */,
 				762F5551281A75780000FB10 /* Manager */,
 				762F551E281A709E0000FB10 /* Extension */,
@@ -301,7 +301,7 @@
 			path = Enum;
 			sourceTree = "<group>";
 		};
-		7667C7882836001700D47F77 /* Photo */ = {
+		7667C7882836001700D47F77 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
 				76A495A428365022008685CF /* stars_3_5.png */,
@@ -309,7 +309,7 @@
 				76A495A628365022008685CF /* stars_4.png */,
 				76A495A528365022008685CF /* stars_5.png */,
 			);
-			path = Photo;
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		769556FD27E19E980028127E /* Test */ = {
