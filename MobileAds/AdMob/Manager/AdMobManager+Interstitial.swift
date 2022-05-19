@@ -64,8 +64,8 @@ extension AdMobManager: GADFullScreenContentDelegate {
         }
     }
     
-    public func showIntertitial(unitId: String) {
-        if AdMobManager.shared.getAdInterstitial(unitId: unitId) != nil {
+    public func showIntertitial(unitId: String, isSplash: Bool = false) {
+        if AdMobManager.shared.getAdInterstitial(unitId: unitId) != nil || isSplash {
             guard let rootVC = UIApplication.getTopViewController() else {
                 return
             }
