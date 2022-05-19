@@ -39,7 +39,6 @@
 		7695570027E19EAE0028127E /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769556FE27E19EAE0028127E /* TestViewController.swift */; };
 		7695570627E1A6010028127E /* BundleAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7695570527E1A6010028127E /* BundleAds.swift */; };
 		7695570927E1BDA80028127E /* TestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7695570827E1BDA80028127E /* TestManager.swift */; };
-		76A93FD62822225900ABD075 /* AdsMedia.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 762FF57727E07F2700FA8684 /* AdsMedia.xcassets */; };
 		9518C34C82D27DEB7F343B3D /* Pods_MobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA7FFED897F79E7EE95595D /* Pods_MobileAds.framework */; };
 /* End PBXBuildFile section */
 
@@ -76,7 +75,6 @@
 		762F5539281A709E0000FB10 /* ConstraintsAds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintsAds.swift; sourceTree = "<group>"; };
 		762F5552281A81D50000FB10 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		762F5555281A82B10000FB10 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
-		762FF57727E07F2700FA8684 /* AdsMedia.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AdsMedia.xcassets; sourceTree = "<group>"; };
 		769556FE27E19EAE0028127E /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		769556FF27E19EAE0028127E /* TestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestViewController.xib; sourceTree = "<group>"; };
 		7695570527E1A6010028127E /* BundleAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleAds.swift; sourceTree = "<group>"; };
@@ -141,7 +139,6 @@
 				769556FD27E19E980028127E /* Test */,
 				042F528027D8E09E008D5330 /* MobileAds.h */,
 				042F528127D8E09E008D5330 /* MobileAds.docc */,
-				762FF57727E07F2700FA8684 /* AdsMedia.xcassets */,
 			);
 			path = MobileAds;
 			sourceTree = "<group>";
@@ -444,7 +441,6 @@
 				762F5541281A709E0000FB10 /* MediumNativeAdView.xib in Resources */,
 				762F5544281A709E0000FB10 /* SmallNativeAdView.xib in Resources */,
 				762F554A281A709E0000FB10 /* AdFullScreenLoadingVC.xib in Resources */,
-				76A93FD62822225900ABD075 /* AdsMedia.xcassets in Resources */,
 				762F554F281A709E0000FB10 /* AdBannerBottomVC.xib in Resources */,
 				762F5540281A709E0000FB10 /* UnifiedNativeAdView.xib in Resources */,
 			);

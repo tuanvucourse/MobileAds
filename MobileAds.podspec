@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "MobileAds"
-  spec.version      = "1.0.0"
+  spec.version      = "1.0.1"
   spec.summary      = "A small framework extending from Google-Mobile-Ads-SDK"
 
   # This description is used to generate tags and improve search results.
@@ -28,7 +28,7 @@ Pod::Spec.new do |spec|
   MobileAds is a Swift framework that supports the base display ad types from google making it convenient to configure
                    DESC
 
-  spec.homepage     = "https://github.com/anhvu1993"
+  spec.homepage     = "https://github.com/AperoVN"
   # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -53,7 +53,7 @@ Pod::Spec.new do |spec|
   #  profile URL.
   #
 
-  spec.author             = { "vunk" => "mr.kent002@gmail.com" }
+  spec.author             = { "vunk" => "vunk@apero.vn" }
   # Or just: spec.author    = "vunk"
   # spec.authors            = { "vunk" => "vunk@apero.vn" }
   # spec.social_media_url   = "https://twitter.com/vunk"
@@ -80,7 +80,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "https://github.com/anhvu1993/MobileAds.git", :tag => "#{spec.version}" }
+  spec.source       = { :git => "https://github.com/AperoVN/MobileAds.git", :tag => "#{spec.version}" }
   spec.frameworks   = "Foundation", "UIKit", "Photos", "AVFoundation"
   spec.swift_version = '4.2'
 # spec.source       = { :git => "https://github.com/AperoVN-iOS/MobileAds.git", :tag => "#{spec.version}" }
@@ -105,7 +105,7 @@ Pod::Spec.new do |spec|
     # }
   # end
 
-  spec.resources     = "MobileAds/**/*.{png,jpeg,jpg,storyboard,xib,xcassets}"
+  spec.resources     = "MobileAds/**/*.{xcassets,png,jpeg,jpg,storyboard,xib,}"
 # spec.resources     = "MobileAds/**/*.{png,jpeg,jpg,storyboard,xib,xcassets,plist}"
   # spec.public_header_files = "Classes/**/*.h"
 
