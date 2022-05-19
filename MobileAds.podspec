@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "MobileAds"
-  spec.version      = "1.0.2"
+  spec.version      = "1.0.3"
   spec.summary      = "A small framework extending from Google-Mobile-Ads-SDK"
 
   # This description is used to generate tags and improve search results.
@@ -105,7 +105,7 @@ Pod::Spec.new do |spec|
     # }
   # end
 
-  spec.resources     = "MobileAds/**/*.{xcassets,png,jpeg,jpg,storyboard,xib,}"
+  spec.resources     = "MobileAds/**/*.{xcassets,pdf,png,jpeg,jpg,storyboard,xib,}"
 # spec.resources     = "MobileAds/**/*.{png,jpeg,jpg,storyboard,xib,xcassets,plist}"
   # spec.public_header_files = "Classes/**/*.h"
 
