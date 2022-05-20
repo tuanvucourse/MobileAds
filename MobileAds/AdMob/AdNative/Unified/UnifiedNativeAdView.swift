@@ -1,59 +1,75 @@
 //
 //  Unifiedself.swift
-//  MobileAds
+//  EasyVPN
 //
-//  Created by macbook on 30/08/2021.
+//  Created by ANH VU on 03/12/2021.
 //
+
 
 import UIKit
 import GoogleMobileAds
+import SkeletonView
 
-class UnifiedNativeAdView: GADNativeAdView, NativeViewProtocol {
+class UnifiedNativeAdView: GADNativeAdView {
 
-    @IBOutlet weak var ratingView: UIStackView!
-    @IBOutlet weak var numberRatingLabel: UILabel!
-    @IBOutlet weak var adMediaView: GADMediaView!
-    @IBOutlet weak var thumbImageView: UIImageView!
-    @IBOutlet weak var headlineLabel: UILabel!
-    @IBOutlet weak var bodyLabel: UILabel!
+    @IBOutlet weak var bannerImageView: UIImageView!
+    @IBOutlet weak var lblRateCount: UILabel!
     @IBOutlet weak var advertiserLabel: UILabel!
-    @IBOutlet weak var starRatingImageView: UIImageView!
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var actionButton: UIButton!
-    
+    @IBOutlet weak var viewLinePrice: UIView!
+
     func bindingData(nativeAd: GADNativeAd) {
         self.hideSkeleton()
-        headlineLabel.text = nativeAd.headline
-        adMediaView.mediaContent = nativeAd.mediaContent
+        (self.headlineView as? UILabel)?.text = nativeAd.headline
+        self.mediaView?.mediaContent = nativeAd.mediaContent
 
-        bodyLabel.text = nativeAd.body
-        bodyLabel.isHidden = nativeAd.body == nil
-        actionButton.backgroundColor = AdMobManager.shared.backgroundButtonAdsNative
-        actionButton.setTitle(nativeAd.callToAction, for: .normal)
-        actionButton.isHidden = nativeAd.callToAction == nil
-        actionButton.layer.cornerRadius = AdMobManager.shared.nativeButtonCornerRadius
-        
-        thumbImageView.image = nativeAd.icon?.image
-        thumbImageView.isHidden = nativeAd.icon == nil
-        
-        if let star = nativeAd.starRating, let image = imageOfStars(from: star) {
-            starRatingImageView.image = image
-            numberRatingLabel.text = "\(star)"
+        let mediaContent = nativeAd.mediaContent
+        if mediaContent.hasVideoContent {
+            //videoStatusLabel.text = "Ad contains a video asset."
         } else {
-            ratingView.isHidden = true
+            //videoStatusLabel.text = "Ad does not contain a video."
         }
 
-        priceLabel.text = nativeAd.price
-        priceLabel.isHidden = nativeAd.price == nil
+        // ratio of the media it displays.
+        //      if let mediaView = self.mediaView, nativeAd.mediaContent.aspectRatio > 0 {
+        //        heightConstraint = NSLayoutConstraint(
+        //          item: mediaView,
+        //          attribute: .height,
+        //          relatedBy: .equal,
+        //          toItem: mediaView,
+        //          attribute: .width,
+        //          multiplier: CGFloat(1 / nativeAd.mediaContent.aspectRatio),
+        //          constant: 0)
+        //        heightConstraint?.isActive = true
+        //      }
 
-        advertiserLabel.text = nativeAd.advertiser
-        advertiserLabel.isHidden = nativeAd.advertiser == nil
+        (self.bodyView as? UILabel)?.text = nativeAd.body
+        self.bodyView?.isHidden = nativeAd.body == nil
+//        bannerImageView.image = nativeAd.images?.first?.image
+        (self.callToActionView as? UIButton)?.setTitle(nativeAd.callToAction, for: .normal)
+        self.callToActionView?.isHidden = nativeAd.callToAction == nil
 
-        actionButton.isUserInteractionEnabled = false
+        (self.iconView as? UIImageView)?.image = nativeAd.icon?.image
+        self.iconView?.isHidden = nativeAd.icon == nil
+
+        (self.starRatingView as? UIImageView)?.image = self.imageOfStars(from: nativeAd.starRating)
+        self.starRatingView?.isHidden = nativeAd.starRating == nil || nativeAd.starRating == 0
+        self.lblRateCount.isHidden = nativeAd.starRating == nil || nativeAd.starRating == 0
+        self.lblRateCount.text = "\(nativeAd.starRating ?? 0)"
+        (self.storeView as? UILabel)?.text = nativeAd.store
+        self.storeView?.isHidden = nativeAd.store == nil
+
+        (self.priceView as? UILabel)?.text = nativeAd.price
+        self.priceView?.isHidden = nativeAd.price == nil
+
+        (self.advertiserView as? UILabel)?.text = nativeAd.advertiser
+        self.advertiserView?.isHidden = nativeAd.advertiser == nil
+
+        self.callToActionView?.isUserInteractionEnabled = false
 
         self.nativeAd = nativeAd
-        self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor(hex: 0xE9E9E9).cgColor
+        
+        advertiserLabel.text = nativeAd.advertiser
+        advertiserLabel.isHidden = nativeAd.advertiser == nil
     }
 
 }
