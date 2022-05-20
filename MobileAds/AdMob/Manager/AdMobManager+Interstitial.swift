@@ -95,7 +95,7 @@ extension AdMobManager: GADFullScreenContentDelegate {
     }
     
     /// Tells the delegate that the ad presented full screen content.
-    private func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+    public func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         print("Ad did present full screen content.")
         blockCompletionHandeler?(true)
     }

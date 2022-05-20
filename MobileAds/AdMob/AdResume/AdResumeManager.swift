@@ -89,9 +89,6 @@ class AdResumeManager: NSObject {
 }
 
 extension AdResumeManager: GADFullScreenContentDelegate {
-    func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("App open ad is presented.")
-    }
     
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         appOpenAd = nil
