@@ -26,26 +26,15 @@ class UnifiedNativeAdView: GADNativeAdView {
         } else {
             //videoStatusLabel.text = "Ad does not contain a video."
         }
-
-        // ratio of the media it displays.
-        //      if let mediaView = self.mediaView, nativeAd.mediaContent.aspectRatio > 0 {
-        //        heightConstraint = NSLayoutConstraint(
-        //          item: mediaView,
-        //          attribute: .height,
-        //          relatedBy: .equal,
-        //          toItem: mediaView,
-        //          attribute: .width,
-        //          multiplier: CGFloat(1 / nativeAd.mediaContent.aspectRatio),
-        //          constant: 0)
-        //        heightConstraint?.isActive = true
-        //      }
-
+        
         (self.bodyView as? UILabel)?.text = nativeAd.body
         self.bodyView?.isHidden = nativeAd.body == nil
 //        bannerImageView.image = nativeAd.images?.first?.image
         (self.callToActionView as? UIButton)?.setTitle(nativeAd.callToAction, for: .normal)
         self.callToActionView?.isHidden = nativeAd.callToAction == nil
-
+        self.callToActionView?.layer.cornerRadius = AdMobManager.shared.nativeButtonCornerRadius
+        self.callToActionView?.layer.backgroundColor = AdMobManager.shared.backgroundButtonAdsNative.cgColor
+        
         (self.iconView as? UIImageView)?.image = nativeAd.icon?.image
         self.iconView?.isHidden = nativeAd.icon == nil
 
