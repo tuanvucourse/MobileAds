@@ -14,9 +14,7 @@ class UnifiedNativeAdView: GADNativeAdView {
 
     @IBOutlet weak var bannerImageView: UIImageView!
     @IBOutlet weak var lblRateCount: UILabel!
-    @IBOutlet weak var advertiserLabel: UILabel!
-    @IBOutlet weak var viewLinePrice: UIView!
-
+    
     func bindingData(nativeAd: GADNativeAd) {
         self.hideSkeleton()
         (self.headlineView as? UILabel)?.text = nativeAd.headline
@@ -67,9 +65,6 @@ class UnifiedNativeAdView: GADNativeAdView {
         self.callToActionView?.isUserInteractionEnabled = false
 
         self.nativeAd = nativeAd
-        
-        advertiserLabel.text = nativeAd.advertiser
-        advertiserLabel.isHidden = nativeAd.advertiser == nil
     }
 
 }
