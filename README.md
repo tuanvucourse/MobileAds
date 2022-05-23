@@ -66,9 +66,9 @@ AdMobManager.shared.addAdNative(unitId: SampleAdUnitID.adFormatNativeAdvanced, r
 Ads Rewarded:
 
 ```swift
-Create id ads:
+// Create id ads:
 AdMobManager.shared.createAdRewardedIfNeed(unitId: SampleAdUnitID.adFormatRewarded)
-and
+// and
 AdMobManager.shared.showRewarded(unitId: SampleAdUnitID.adFormatRewarded, completion: nil)
 ```
 
