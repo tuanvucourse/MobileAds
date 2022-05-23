@@ -50,6 +50,28 @@ public struct SampleAdUnitID {
 }
 ```
 
+Ads banner:
+
+```swift
+AdMobManager.shared.addAdBanner(unitId: SampleAdUnitID.adFormatBanner, rootVC: self, view: viewAdsBanner)
+```
+
+Ads NAtive:
+
+```swift
+// type: medium - small - unified
+AdMobManager.shared.addAdNative(unitId: SampleAdUnitID.adFormatNativeAdvanced, rootVC: self, view: viewAdsNative, type: .small)
+```
+
+Ads Rewarded:
+
+```swift
+create id ads:
+AdMobManager.shared.createAdRewardedIfNeed(unitId: SampleAdUnitID.adFormatRewarded)
+and
+AdMobManager.shared.showRewarded(unitId: SampleAdUnitID.adFormatRewarded, completion: nil)
+```
+
 ```swift
 import MobileAds
 
