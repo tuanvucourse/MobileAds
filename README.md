@@ -72,6 +72,15 @@ AdMobManager.shared.createAdRewardedIfNeed(unitId: SampleAdUnitID.adFormatReward
 AdMobManager.shared.showRewarded(unitId: SampleAdUnitID.adFormatRewarded, completion: nil)
 ```
 
+Ads Interstitial:
+
+```swift
+// Create id ads:
+AdMobManager.shared.createAdInterstitialIfNeed(unitId: SampleAdUnitID.adFormatInterstitial)
+// and
+AdMobManager.shared.showIntertitial(unitId: SampleAdUnitID.adFormatInterstitial, isSplash: false)
+```
+
 ```swift
 import MobileAds
 
