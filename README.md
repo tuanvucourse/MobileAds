@@ -37,8 +37,6 @@ $ pod install
 
 Id ads Test:
 
-```
-
 ```swift
 public struct SampleAdUnitID {
     public static let adFormatAppOpen              = "ca-app-pub-3940256099942544/3419835294"
