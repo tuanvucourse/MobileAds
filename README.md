@@ -19,7 +19,7 @@ To integrate MobileAds into your Xcode project using CocoaPods, specify it in yo
 ```
 pod 'MobileAds', :git => "git@github.com:AperoVN/MobileAds.git", :tag => '1.0.19'
 ```
-Get new version
+New version:
 
 ```
 pod 'MobileAds', :git => "git@github.com:AperoVN/MobileAds.git"
