@@ -35,6 +35,21 @@ $ pod install
 
 ### Quick Start
 
+Id ads Test:
+
+```
+public struct SampleAdUnitID {
+    public static let adFormatAppOpen              = "ca-app-pub-3940256099942544/3419835294"
+    public static let adFormatBanner               = "ca-app-pub-3940256099942544/6300978111"
+    public static let adFormatInterstitial         = "ca-app-pub-3940256099942544/1033173712"
+    public static let adFormatInterstitialVideo    = "ca-app-pub-3940256099942544/8691691433"
+    public static let adFormatRewarded             = "ca-app-pub-3940256099942544/5224354917"
+    public static let adFormatRewardedInterstitial = "ca-app-pub-3940256099942544/5354046379"
+    public static let adFormatNativeAdvanced       = "ca-app-pub-3940256099942544/2247696110"
+    public static let adFormatNativeAdvancedVideo  = "ca-app-pub-3940256099942544/1044960115"
+}
+```
+
 ```swift
 import MobileAds
 
