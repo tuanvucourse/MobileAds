@@ -67,7 +67,6 @@ extension AdMobManager: GADFullScreenContentDelegate {
     }
     
     public func showIntertitial(unitId: String, isSplash: Bool = false, blockWillDismiss: VoidBlockAds? = nil) {
-        
         if isSplash {
             createAdInterstitialIfNeed(unitId: unitId) { [weak self] result in
                 if result {
@@ -79,10 +78,16 @@ extension AdMobManager: GADFullScreenContentDelegate {
            return
         }
         
-        if AdMobManager.shared.getAdInterstitial(unitId: unitId) != nil {
-            guard let rootVC = UIApplication.getTopViewController() else {
-                return
+        if AdMobManager.shared.getAdInterstitial(unitId: unitId) != nil || isSplash {
+            var rootVC = UIApplication.getTopViewController()
+            if rootVC?.navigationController != nil {
+                rootVC = rootVC?.navigationController
+                if rootVC?.tabBarController != nil {
+                    rootVC = rootVC?.tabBarController
+                }
             }
+            guard let rootVC = rootVC else { return }
+
             let loadingVC = AdFullScreenLoadingVC.createViewController(unitId: unitId, adType: .interstitial(id: unitId))
             rootVC.addChild(loadingVC)
             rootVC.view.addSubview(loadingVC.view)

@@ -152,4 +152,5 @@ Pod::Spec.new do |spec|
   spec.dependency "SnapKit", '~> 5.6.0'
   spec.dependency "Adjust", '~> 4.29.2'
   spec.dependency "SkeletonView", '~> 1.29.2'
+  spec.dependency 'Toast-Swift', '~> 5.0.1'
 end
