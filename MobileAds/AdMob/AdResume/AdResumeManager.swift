@@ -20,15 +20,15 @@ protocol AdResumeManagerDelegate: AnyObject {
     func appOpenAdManagerAdDidComplete(_ appOpenAdManager: AdResumeManager)
     
 }
-
-class AdResumeManager: NSObject {
-    static let shared = AdResumeManager()
+ 
+open class AdResumeManager: NSObject {
+    public static let shared = AdResumeManager()
     
-    let timeoutInterval: TimeInterval = 4 * 3600
+    public let timeoutInterval: TimeInterval = 4 * 3600
+    public var isLoadingAd = false
+    public var isShowingAd = false
     var appOpenAd: GADAppOpenAd?
     weak var appOpenAdManagerDelegate: AdResumeManagerDelegate?
-    var isLoadingAd = false
-    var isShowingAd = false
     var loadTime: Date?
     
     private func wasLoadTimeLessThanNHoursAgo(timeoutInterval: TimeInterval) -> Bool {
@@ -48,7 +48,7 @@ class AdResumeManager: NSObject {
         appOpenAdManagerDelegate?.appOpenAdManagerAdDidComplete(self)
     }
     
-    func loadAd() {
+    public func loadAd() {
         if isLoadingAd || isAdAvailable() {
             return
         }
@@ -69,7 +69,7 @@ class AdResumeManager: NSObject {
         }
     }
     
-    func showAdIfAvailable(viewController: UIViewController) {
+    public func showAdIfAvailable(viewController: UIViewController) {
         if isShowingAd {
             print("App open ad is already showing.")
             return
@@ -90,7 +90,7 @@ class AdResumeManager: NSObject {
 
 extension AdResumeManager: GADFullScreenContentDelegate {
     
-    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+    public func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         appOpenAd = nil
         isShowingAd = false
         print("App open ad was dismissed.")
@@ -98,7 +98,7 @@ extension AdResumeManager: GADFullScreenContentDelegate {
         loadAd()
     }
     
-    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+    public func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
         appOpenAd = nil
         isShowingAd = false
         print("App open ad failed to present with error: \(error.localizedDescription).")

@@ -10,16 +10,9 @@ import GoogleMobileAds
 
 // MARK: - GADInterstitial
 extension AdMobManager: GADFullScreenContentDelegate {
-    
-   func getAdInterstitial(unitId: String) -> GADInterstitialAd? {
-        if let interstitial = listAd.object(forKey: unitId) as? GADInterstitialAd {
-            return interstitial
-        }
-        return nil
-    }
-    
+
     /// khởi tạo id ads trước khi show
-    public func createAdInterstitialIfNeed(unitId: String) {
+    public func createAdInterstitialIfNeed(unitId: String, completion: BoolBlockAds? = nil) {
         if self.getAdInterstitial(unitId: unitId) != nil {
             return
         }
@@ -35,6 +28,7 @@ extension AdMobManager: GADFullScreenContentDelegate {
                 self.removeAd(unitId: unitId)
                 self.blockFullScreenAdFaild?(unitId)
                 self.blockCompletionHandeler?(false)
+                completion?(false)
                 return
             }
             
@@ -42,6 +36,7 @@ extension AdMobManager: GADFullScreenContentDelegate {
                 self.removeAd(unitId: unitId)
                 self.blockFullScreenAdFaild?(unitId)
                 self.blockCompletionHandeler?(false)
+                completion?(false)
                 return
             }
             ad.fullScreenContentDelegate = self
@@ -50,12 +45,19 @@ extension AdMobManager: GADFullScreenContentDelegate {
             }
             self.listAd.setObject(ad, forKey: unitId as NSCopying)
             self.blockLoadFullScreenAdSuccess?(unitId)
-        }
-        )
+            completion?(true)
+        })
     }
     
+    func getAdInterstitial(unitId: String) -> GADInterstitialAd? {
+         if let interstitial = listAd.object(forKey: unitId) as? GADInterstitialAd {
+             return interstitial
+         }
+         return nil
+     }
+    
     /// show ads Interstitial
-    public func presentAdInterstitial(unitId: String) {
+    func presentAdInterstitial(unitId: String) {
         self.createAdInterstitialIfNeed(unitId: unitId)
         let interstitial = self.getAdInterstitial(unitId: unitId)
         if let topVC =  UIApplication.getTopViewController() {
@@ -64,8 +66,20 @@ extension AdMobManager: GADFullScreenContentDelegate {
         }
     }
     
-    public func showIntertitial(unitId: String, isSplash: Bool = false) {
-        if AdMobManager.shared.getAdInterstitial(unitId: unitId) != nil || isSplash {
+    public func showIntertitial(unitId: String, isSplash: Bool = false, blockWillDismiss: VoidBlockAds? = nil) {
+        
+        if isSplash {
+            createAdInterstitialIfNeed(unitId: unitId) { [weak self] result in
+                if result {
+                    self?.showIntertitial(unitId: unitId, blockWillDismiss: blockWillDismiss)
+                } else {
+                    blockWillDismiss?()
+                }
+            }
+           return
+        }
+        
+        if AdMobManager.shared.getAdInterstitial(unitId: unitId) != nil {
             guard let rootVC = UIApplication.getTopViewController() else {
                 return
             }
@@ -76,6 +90,7 @@ extension AdMobManager: GADFullScreenContentDelegate {
                 loadingVC.view.removeFromSuperview()
                 loadingVC.removeFromParent()
             }
+            loadingVC.blockWillDismiss = blockWillDismiss
             loadingVC.view.snp.makeConstraints { make in
                 make.edges.equalToSuperview()
             }
