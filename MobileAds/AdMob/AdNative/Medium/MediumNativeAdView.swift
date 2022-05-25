@@ -45,7 +45,7 @@ class MediumNativeAdView: GADNativeAdView, NativeViewProtocol {
         (advertiserView as? UILabel)?.text = nativeAd.advertiser
         advertiserView?.isHidden = nativeAd.advertiser == nil
         
-        callToActionView?.isUserInteractionEnabled = false
+        backgroundColor = AdMobManager.shared.backgroundAdsNative
         
         self.nativeAd = nativeAd
     }

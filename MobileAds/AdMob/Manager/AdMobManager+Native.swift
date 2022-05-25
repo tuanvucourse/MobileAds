@@ -83,6 +83,7 @@ extension AdMobManager {
         adNativeView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        adNativeView.layoutIfNeeded()
         adNativeView.isSkeletonable = true
         adNativeView.showAnimatedGradientSkeleton()
         self.loadAdNative(unitId: unitId, rootVC: rootVC)

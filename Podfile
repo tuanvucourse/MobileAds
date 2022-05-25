@@ -11,5 +11,6 @@ pod 'SkeletonView', '~> 1.29.2'
 pod 'MONActivityIndicatorView', '~> 0.0.3'
 pod 'SnapKit', '~> 5.6.0'
 pod 'Adjust', '~> 4.29.2'
+pod 'Toast-Swift', '~> 5.0.1'
 
 end

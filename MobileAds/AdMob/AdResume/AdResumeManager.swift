@@ -5,16 +5,8 @@
 //  Created by ANH VU on 21/01/2022.
 //
 
-import Foundation
 import GoogleMobileAds
-
-// NOTE: Appdelegate : gọi loadAd()
-
-//func applicationDidBecomeActive(_ application: UIApplication) {
-//    if let rootView = UIApplication.getTopViewController() {
-//        AdResumeManager.shared.showAdIfAvailable(viewController: rootView)
-//    }
-//}
+import UIKit
 
 protocol AdResumeManagerDelegate: AnyObject {
     func appOpenAdManagerAdDidComplete(_ appOpenAdManager: AdResumeManager)
@@ -83,7 +75,28 @@ open class AdResumeManager: NSObject {
         if let ad = appOpenAd {
             print("App open ad will be displayed.")
             isShowingAd = true
-            ad.present(fromRootViewController: viewController)
+            var showVC: UIViewController? = viewController
+            if showVC?.navigationController != nil {
+                showVC = showVC?.navigationController
+                if showVC?.tabBarController != nil {
+                    showVC = showVC?.tabBarController
+                }
+            }
+            guard let showVC = showVC else { return }
+            
+            let loadingVC = AdFullScreenLoadingVC()
+            loadingVC.modalPresentationStyle = .fullScreen
+            showVC.addChild(loadingVC)
+            showVC.view.addSubview(loadingVC.view)
+            loadingVC.view.snp.makeConstraints { make in
+                make.edges.equalToSuperview()
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                loadingVC.view.removeFromSuperview()
+                loadingVC.removeFromParent()
+                loadingVC.willMove(toParent: nil)
+                ad.present(fromRootViewController: showVC)
+            }
         }
     }
 }
@@ -96,6 +109,11 @@ extension AdResumeManager: GADFullScreenContentDelegate {
         print("App open ad was dismissed.")
         appOpenAdManagerAdDidComplete()
         loadAd()
+    }
+    
+    public func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        isShowingAd = true
+        print("App open ad is presented.")
     }
     
     public func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {

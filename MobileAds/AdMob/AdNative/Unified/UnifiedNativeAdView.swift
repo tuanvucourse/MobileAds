@@ -50,8 +50,8 @@ class UnifiedNativeAdView: GADNativeAdView {
 
         (self.advertiserView as? UILabel)?.text = nativeAd.advertiser
         self.advertiserView?.isHidden = nativeAd.advertiser == nil
-
-        self.callToActionView?.isUserInteractionEnabled = false
+        
+        backgroundColor = AdMobManager.shared.backgroundAdsNative
 
         self.nativeAd = nativeAd
     }

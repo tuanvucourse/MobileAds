@@ -64,9 +64,15 @@ extension AdMobManager {
     
     public func showRewarded(unitId: String, completion: BoolBlockAds?) {
         if AdMobManager.shared.getAdRewarded(unitId: unitId) != nil {
-            guard let rootVC = UIApplication.getTopViewController() else {
-                return
+            var rootVC = UIApplication.getTopViewController()
+            if rootVC?.navigationController != nil {
+                rootVC = rootVC?.navigationController
+                if rootVC?.tabBarController != nil {
+                    rootVC = rootVC?.tabBarController
+                }
             }
+            guard let rootVC = rootVC else { return }
+            
             let loadingVC = AdFullScreenLoadingVC.createViewController(unitId: unitId, adType: .reward(id: unitId))
             rootVC.addChild(loadingVC)
             rootVC.view.addSubview(loadingVC.view)
@@ -78,6 +84,10 @@ extension AdMobManager {
             loadingVC.view.snp.makeConstraints { make in
                 make.edges.equalToSuperview()
             }
+        } else {
+            Utils.showToast(rewardErrorString)
+            createAdRewardedIfNeed(unitId: unitId)
+            completion?(false)
         }
     }
     

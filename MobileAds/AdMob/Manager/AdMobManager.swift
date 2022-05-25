@@ -35,7 +35,9 @@ public struct SampleAdUnitID {
     
     //    MARK: - UI NAtive
     public var backgroundButtonAdsNative: UIColor = UIColor(hex: 0x007AFF)
+    public var backgroundAdsNative: UIColor = UIColor(hex: 0xF2F2F2)
     public var nativeButtonCornerRadius: CGFloat = 8
+    public var rewardErrorString: String = "An error occurred"
     
     //    MARK: - Block Ads
     public var blockLoadFullScreenAdSuccess: StringBlockAds?
