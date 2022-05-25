@@ -23,7 +23,7 @@ public struct SampleAdUnitID {
     public static let adFormatNativeAdvancedVideo  = "ca-app-pub-3940256099942544/1044960115"
 }
 
- open class AdMobManager: NSObject {
+open class AdMobManager: NSObject {
     
     //    MARK: - Property
     public static let shared = AdMobManager()
@@ -36,6 +36,10 @@ public struct SampleAdUnitID {
     //    MARK: - UI NAtive
     public var backgroundButtonAdsNative: UIColor = UIColor(hex: 0x007AFF)
     public var backgroundAdsNative: UIColor = UIColor(hex: 0xF2F2F2)
+    public var adsNativeCornerRadius: CGFloat = 4
+    public var adsNativeBorderWidth: CGFloat = 0
+    public var adsNativeBorderColor: UIColor = .clear
+    
     public var nativeButtonCornerRadius: CGFloat = 8
     public var rewardErrorString: String = "An error occurred"
     
