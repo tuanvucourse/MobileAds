@@ -19,6 +19,7 @@ open class AdResumeManager: NSObject {
     public let timeoutInterval: TimeInterval = 4 * 3600
     public var isLoadingAd = false
     public var isShowingAd = false
+    public var resumeAdId: String = ""
     var appOpenAd: GADAppOpenAd?
     weak var appOpenAdManagerDelegate: AdResumeManagerDelegate?
     var loadTime: Date?
@@ -45,7 +46,7 @@ open class AdResumeManager: NSObject {
             return
         }
         isLoadingAd = true
-        GADAppOpenAd.load(withAdUnitID: "", request: GADRequest(), orientation: .portrait) { ad, error in
+        GADAppOpenAd.load(withAdUnitID: resumeAdId, request: GADRequest(), orientation: .portrait) { ad, error in
             self.isLoadingAd = false
             if let error = error {
                 self.appOpenAd = nil
