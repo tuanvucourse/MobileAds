@@ -65,7 +65,7 @@
                     </variation>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="65N-Xa-kTz">
-                    <rect key="frame" x="20" y="172" width="365" height="147"/>
+                    <rect key="frame" x="20" y="172" width="365" height="141"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="RV9-Ul-HTG">
                             <rect key="frame" x="0.0" y="0.0" width="365" height="40"/>
@@ -133,7 +133,7 @@
                             </userDefinedRuntimeAttributes>
                         </stackView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="753" verticalCompressionResistancePriority="753" text="Body that is really really long and can take up" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PEQ-D9-2Vv">
-                            <rect key="frame" x="0.0" y="48" width="365" height="23"/>
+                            <rect key="frame" x="0.0" y="48" width="365" height="17"/>
                             <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="12"/>
                             <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -142,7 +142,7 @@
                             </userDefinedRuntimeAttributes>
                         </label>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Wbn-G9-7Cl">
-                            <rect key="frame" x="0.0" y="79" width="365" height="16"/>
+                            <rect key="frame" x="0.0" y="73" width="365" height="16"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ad" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lp1-oz-XOs">
                                     <rect key="frame" x="0.0" y="0.0" width="37" height="16"/>
@@ -193,7 +193,7 @@
                             </constraints>
                         </stackView>
                         <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E5w-YA-UY8">
-                            <rect key="frame" x="0.0" y="103" width="365" height="44"/>
+                            <rect key="frame" x="0.0" y="97" width="365" height="44"/>
                             <color key="backgroundColor" systemColor="linkColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="KSX-Na-GdZ"/>
@@ -236,7 +236,7 @@
             <constraints>
                 <constraint firstItem="k7u-4q-ueh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="Ktg-di-iDi"/>
                 <constraint firstItem="k7u-4q-ueh" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="W0P-QD-tqW"/>
-                <constraint firstAttribute="bottom" secondItem="65N-Xa-kTz" secondAttribute="bottom" constant="6" id="fL9-Ir-Stg"/>
+                <constraint firstAttribute="bottom" secondItem="65N-Xa-kTz" secondAttribute="bottom" constant="12" id="fL9-Ir-Stg"/>
                 <constraint firstItem="65N-Xa-kTz" firstAttribute="top" secondItem="k7u-4q-ueh" secondAttribute="bottom" id="kjU-Pf-Cb2"/>
                 <constraint firstItem="k7u-4q-ueh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="oZ3-VV-fDI"/>
                 <constraint firstItem="65N-Xa-kTz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="qjS-aB-OGC"/>

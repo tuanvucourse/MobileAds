@@ -20,11 +20,16 @@ class AdFullScreenLoadingVC: UIViewController {
     var blockDidDismiss: VoidBlockAds?
     var blocWillPresent: VoidBlockAds?
     let textLoading = "Ad is loading"
+    var needLoadAd = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadAd()
         // Do any additional setup after loading the view.
+        if needLoadAd {
+            loadAd()
+        } else {
+            showLoadingDotAds(backgroundColor: .white, textLoading: textLoading)
+        }
     }
     
     func loadAd() {
