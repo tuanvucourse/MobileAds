@@ -167,12 +167,6 @@
                 <userDefinedRuntimeAttribute type="number" keyPath="XcornerRadius">
                     <real key="value" value="4"/>
                 </userDefinedRuntimeAttribute>
-                <userDefinedRuntimeAttribute type="number" keyPath="XborderWidth">
-                    <real key="value" value="1"/>
-                </userDefinedRuntimeAttribute>
-                <userDefinedRuntimeAttribute type="color" keyPath="XborderColor">
-                    <color key="value" name="#C9C9CF"/>
-                </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="advertiserView" destination="uC1-OX-SkN" id="Db6-Qo-XQi"/>
@@ -198,9 +192,6 @@
         </namedColor>
         <namedColor name="#666666">
             <color red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="#C9C9CF">
-            <color red="0.78823529411764703" green="0.78823529411764703" blue="0.81176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="#FDB812">
             <color red="0.99215686274509807" green="0.72156862745098038" blue="0.070588235294117646" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
