@@ -52,6 +52,10 @@ class UnifiedNativeAdView: GADNativeAdView {
         self.advertiserView?.isHidden = nativeAd.advertiser == nil
         
         backgroundColor = AdMobManager.shared.backgroundAdsNative
+        layer.borderWidth = AdMobManager.shared.adsNativeBorderWidth
+        layer.borderColor = AdMobManager.shared.adsNativeBorderColor.cgColor
+        layer.cornerRadius = AdMobManager.shared.adsNativeCornerRadius
+        clipsToBounds = true
 
         self.nativeAd = nativeAd
     }

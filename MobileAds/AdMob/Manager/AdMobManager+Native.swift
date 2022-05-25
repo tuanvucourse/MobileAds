@@ -7,6 +7,7 @@
 
 import Foundation
 import GoogleMobileAds
+import SkeletonView
 
 public enum NativeAdType {
     case small
@@ -85,7 +86,7 @@ extension AdMobManager {
         }
         adNativeView.layoutIfNeeded()
         adNativeView.isSkeletonable = true
-        adNativeView.showAnimatedGradientSkeleton()
+        adNativeView.showAnimatedGradientSkeleton(animation: SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight, duration: 0.7))
         self.loadAdNative(unitId: unitId, rootVC: rootVC)
     }
     
