@@ -56,7 +56,7 @@ open class AdMobManager: NSObject {
     public var blockBannerFaild      : ((String) -> Void)?
     public var blockLoadBannerSuccess: ((Bool) -> Void)?
     
-    func removeAd(unitId: String) {
+    public func removeAd(unitId: String) {
         listAd.removeObject(forKey: unitId)
     }
     
