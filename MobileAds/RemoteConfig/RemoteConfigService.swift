@@ -15,6 +15,7 @@ public enum RemoteKey<T>{
 open class RemoteConfigService {
     // MARK: - Singleton
     public static let shared = RemoteConfigService()
+    var isFetch: Bool = false
     
     // MARK: - init
     private init() {
@@ -41,9 +42,17 @@ open class RemoteConfigService {
             
             RemoteConfig.remoteConfig().activate { _, _ in
                 DispatchQueue.main.async {
+                    self.isFetch = true
                     complete(true)
                 }
             }
+        }
+    }
+    
+    func number(forKey key: RemoteKey<String>) -> Int {
+        switch key {
+        case .key(let value):
+           return RemoteConfig.remoteConfig()[value].numberValue.intValue
         }
     }
     
@@ -52,7 +61,6 @@ open class RemoteConfigService {
         case .key(let value):
            return RemoteConfig.remoteConfig()[value].boolValue
         }
-        
     }
     
     public func string(forKey key: RemoteKey<String>) -> String {
