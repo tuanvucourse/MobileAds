@@ -39,6 +39,8 @@ open class AdMobManager: NSObject {
     public var adsNativeCornerRadius: CGFloat = 4
     public var adsNativeBorderWidth: CGFloat = 0
     public var adsNativeBorderColor: UIColor = .clear
+    public var adsNativeSmallWidthButton: CGFloat = 80
+    public var adsNativeTitleHeadline: UIColor = .black
     
     public var nativeButtonCornerRadius: CGFloat = 8
     public var rewardErrorString: String = "An error occurred"

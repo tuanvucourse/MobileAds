@@ -11,6 +11,8 @@ import SkeletonView
 
 class SmallNativeAdView: GADNativeAdView, NativeViewProtocol {
     
+    @IBOutlet weak var viewRateStar: UIView!
+    @IBOutlet weak var cstWidthBtn: NSLayoutConstraint!
     @IBOutlet weak var viewLinePrice: UIView!
     @IBOutlet weak var stackAppStore: UIStackView!
     
@@ -44,6 +46,8 @@ class SmallNativeAdView: GADNativeAdView, NativeViewProtocol {
         layer.borderWidth = AdMobManager.shared.adsNativeBorderWidth
         layer.borderColor = AdMobManager.shared.adsNativeBorderColor.cgColor
         layer.cornerRadius = AdMobManager.shared.adsNativeCornerRadius
+        cstWidthBtn.constant = AdMobManager.shared.adsNativeSmallWidthButton
+        (self.headlineView as? UILabel)?.textColor = AdMobManager.shared.adsNativeTitleHeadline
         clipsToBounds = true
         
         self.nativeAd = nativeAd
