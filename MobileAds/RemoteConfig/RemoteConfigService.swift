@@ -8,8 +8,8 @@
 import UIKit
 import FirebaseRemoteConfig
 
-public enum RemoteKey<T> {
-    case key(T)
+public struct RemoteKey {
+    public var rawValue: String = ""
 }
 
 open class RemoteConfigService {
@@ -49,32 +49,19 @@ open class RemoteConfigService {
         }
     }
     
-    public func number(forKey key: RemoteKey<String>) -> Int {
-        switch key {
-        case .key(let value):
-           return RemoteConfig.remoteConfig()[value].numberValue.intValue
-        }
+    public func number(forKey key: RemoteKey) -> Int {
+        return RemoteConfig.remoteConfig()[key.rawValue].numberValue.intValue
     }
     
-    public func bool(forKey key: RemoteKey<String>) -> Bool {
-        switch key {
-        case .key(let value):
-           return RemoteConfig.remoteConfig()[value].boolValue
-        }
+    public func bool(forKey key: RemoteKey) -> Bool {
+        return RemoteConfig.remoteConfig()[key.rawValue].boolValue
     }
     
-    public func string(forKey key: RemoteKey<String>) -> String {
-        switch key {
-        case .key(let value):
-           return RemoteConfig.remoteConfig()[value].stringValue ?? ""
-        }
+    public func string(forKey key: RemoteKey) -> String {
+        return RemoteConfig.remoteConfig()[key.rawValue].stringValue ?? ""
     }
     
-    public func double(forKey key: RemoteKey<String>) -> Double {
-        switch key {
-        case .key(let value):
-           return RemoteConfig.remoteConfig()[value].numberValue.doubleValue
-        }
-        
+    public func double(forKey key: RemoteKey) -> Double {
+        return RemoteConfig.remoteConfig()[key.rawValue].numberValue.doubleValue
     }
 }

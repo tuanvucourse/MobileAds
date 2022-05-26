@@ -11,7 +11,6 @@ import SkeletonView
 
 class SmallNativeAdView: GADNativeAdView, NativeViewProtocol {
     
-    @IBOutlet weak var viewRateStar: UIView!
     @IBOutlet weak var cstWidthBtn: NSLayoutConstraint!
     @IBOutlet weak var viewLinePrice: UIView!
     @IBOutlet weak var stackAppStore: UIStackView!
