@@ -153,4 +153,5 @@ Pod::Spec.new do |spec|
   spec.dependency "Adjust", '~> 4.29.2'
   spec.dependency "SkeletonView", '~> 1.29.2'
   spec.dependency 'Toast-Swift', '~> 5.0.1'
+  spec.dependency 'Firebase/RemoteConfig', '~> 9.1.0'
 end

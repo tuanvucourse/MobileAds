@@ -13,5 +13,6 @@ pod 'SnapKit', '~> 5.6.0'
 pod 'Adjust', '~> 4.29.2'
 pod 'Toast-Swift', '~> 5.0.1'
 pod 'Firebase/RemoteConfig', '~> 9.1.0'
+#pod 'Firebase'
 
 end
