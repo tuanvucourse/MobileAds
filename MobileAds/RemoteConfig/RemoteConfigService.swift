@@ -6,16 +6,16 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseRemoteConfig
 
-public enum RemoteKey<T>{
+public enum RemoteKey<T> {
     case key(T)
 }
 
 open class RemoteConfigService {
     // MARK: - Singleton
     public static let shared = RemoteConfigService()
-    var isFetch: Bool = false
+    public var isFetch: Bool = false
     
     // MARK: - init
     private init() {
@@ -31,7 +31,7 @@ open class RemoteConfigService {
         RemoteConfig.remoteConfig().configSettings = settings
     }
     
-  public func fetchCloudValues(complete: @escaping BoolBlockAds) {
+   public func fetchCloudValues(complete: @escaping BoolBlockAds) {
         RemoteConfig.remoteConfig().fetch { _, error in
             if error != nil {
                 DispatchQueue.main.async {
@@ -49,7 +49,7 @@ open class RemoteConfigService {
         }
     }
     
-    func number(forKey key: RemoteKey<String>) -> Int {
+    public func number(forKey key: RemoteKey<String>) -> Int {
         switch key {
         case .key(let value):
            return RemoteConfig.remoteConfig()[value].numberValue.intValue
