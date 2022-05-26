@@ -22,10 +22,7 @@ extension UIViewController {
         overLayView.tag = -112
         overLayView.frame = keyWindow!.frame
         
-        let dotView = MONActivityIndicatorView()
-        dotView.numberOfCircles = 3
-        dotView.radius = 7
-        dotView.duration = 0.6
+        let dotView = UIActivityIndicatorView()
         dotView.tag = -111
         self.view.addSubview(overLayView)
         overLayView.snp.makeConstraints { make in

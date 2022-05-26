@@ -86,6 +86,7 @@ open class AdResumeManager: NSObject {
             guard let showVC = showVC else { return }
             
             let loadingVC = AdFullScreenLoadingVC()
+            loadingVC.needLoadAd = false
             loadingVC.modalPresentationStyle = .fullScreen
             showVC.addChild(loadingVC)
             showVC.view.addSubview(loadingVC.view)

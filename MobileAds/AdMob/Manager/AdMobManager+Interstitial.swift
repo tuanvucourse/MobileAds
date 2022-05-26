@@ -91,9 +91,9 @@ extension AdMobManager: GADFullScreenContentDelegate {
             let loadingVC = AdFullScreenLoadingVC.createViewController(unitId: unitId, adType: .interstitial(id: unitId))
             rootVC.addChild(loadingVC)
             rootVC.view.addSubview(loadingVC.view)
-            loadingVC.blockDidDismiss = {
-                loadingVC.view.removeFromSuperview()
-                loadingVC.removeFromParent()
+            loadingVC.blockDidDismiss = { [weak loadingVC] in
+                loadingVC?.view.removeFromSuperview()
+                loadingVC?.removeFromParent()
             }
             loadingVC.blockWillDismiss = blockWillDismiss
             loadingVC.view.snp.makeConstraints { make in
