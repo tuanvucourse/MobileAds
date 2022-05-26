@@ -44,6 +44,13 @@ PODS:
     - nanopb (< 2.30910.0, >= 2.30908.0)
   - FirebaseCoreInternal (9.1.0):
     - "GoogleUtilities/NSData+zlib (~> 7.7)"
+  - FirebaseCrashlytics (9.1.0):
+    - FirebaseCore (~> 9.0)
+    - FirebaseInstallations (~> 9.0)
+    - GoogleDataTransport (< 10.0.0, >= 9.1.4)
+    - GoogleUtilities/Environment (~> 7.7)
+    - nanopb (< 2.30910.0, >= 2.30908.0)
+    - PromisesObjC (~> 2.1)
   - FirebaseInstallations (9.1.0):
     - FirebaseCore (~> 9.0)
     - GoogleUtilities/Environment (~> 7.7)
@@ -116,7 +123,9 @@ PODS:
 DEPENDENCIES:
   - Adjust (~> 4.29.2)
   - Firebase
-  - Firebase/RemoteConfig (~> 9.1.0)
+  - Firebase/RemoteConfig
+  - FirebaseAnalytics
+  - FirebaseCrashlytics
   - Google-Mobile-Ads-SDK (~> 9.5.0)
   - MONActivityIndicatorView (~> 0.0.3)
   - SkeletonView (~> 1.29.2)
@@ -132,6 +141,7 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseCoreDiagnostics
     - FirebaseCoreInternal
+    - FirebaseCrashlytics
     - FirebaseInstallations
     - FirebaseRemoteConfig
     - Google-Mobile-Ads-SDK
@@ -154,6 +164,7 @@ SPEC CHECKSUMS:
   FirebaseCore: b7bfc258e996eada23b3666bd6b9a22ca092acb8
   FirebaseCoreDiagnostics: 2dabba3412b23b524823325739f45e520f67d1e7
   FirebaseCoreInternal: f3c838ae0b41cd840bbf34f90debfede78d352e5
+  FirebaseCrashlytics: 8e21736dcf15d814b79229eb7e79ba3a5eec5f30
   FirebaseInstallations: a91c74276b544524ce144c8315d8cdbce2dbe30b
   FirebaseRemoteConfig: ebd0eb74b9a0593ab2a3f0788a5be5595b46a05c
   Google-Mobile-Ads-SDK: caf686ba55108412e02a3eedb136e12e488dbfaa
@@ -168,6 +179,6 @@ SPEC CHECKSUMS:
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: b842783013de9c68e6f945463f1afd41f8f528a7
+PODFILE CHECKSUM: b993235cd2c1d6e3af0760defdee2860dec61253
 
 COCOAPODS: 1.11.3

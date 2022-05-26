@@ -147,12 +147,15 @@ Pod::Spec.new do |spec|
   spec.requires_arc = true
 
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
+  spec.dependency 'Firebase'
+  spec.dependency 'FirebaseCrashlytics'
+  spec.dependency 'FirebaseAnalytics'
+  spec.dependency 'Firebase/RemoteConfig'
   spec.dependency "Google-Mobile-Ads-SDK", '~> 9.5.0'
   spec.dependency "MONActivityIndicatorView", '~> 0.0.3'
   spec.dependency "SnapKit", '~> 5.6.0'
   spec.dependency "Adjust", '~> 4.29.2'
   spec.dependency "SkeletonView", '~> 1.29.2'
   spec.dependency 'Toast-Swift', '~> 5.0.1'
-  spec.dependency 'Firebase/RemoteConfig', '~> 9.1.0'
-  spec.dependency 'Firebase'
+
 end
