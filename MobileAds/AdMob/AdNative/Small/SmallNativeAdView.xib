@@ -70,6 +70,9 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Headline" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZl-M2-hcX">
                                             <rect key="frame" x="0.0" y="2" width="171" height="33"/>
@@ -106,6 +109,9 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="14" id="NQZ-xy-7eb"/>
                                             </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
                                             <variation key="default">
                                                 <mask key="subviews">
                                                     <exclude reference="hhi-jm-RNC"/>
@@ -128,6 +134,9 @@
                                                 <constraint firstItem="erQ-uI-FIC" firstAttribute="leading" secondItem="BWa-dz-lyu" secondAttribute="leading" id="TAr-cr-Rc9"/>
                                                 <constraint firstAttribute="bottom" secondItem="erQ-uI-FIC" secondAttribute="bottom" constant="1" id="bqj-Hm-6W5"/>
                                             </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDc-he-TL9">
                                             <rect key="frame" x="0.0" y="49" width="171" height="2"/>
@@ -211,6 +220,9 @@
                                         <constraint firstAttribute="trailing" secondItem="pId-gB-no8" secondAttribute="trailing" id="WGh-gz-yBg"/>
                                         <constraint firstItem="pId-gB-no8" firstAttribute="leading" secondItem="Ktg-Vq-3fQ" secondAttribute="leading" id="on9-u3-XCo"/>
                                     </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
                                 </view>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -231,6 +243,9 @@
                         <constraint firstAttribute="trailing" secondItem="twe-86-SDZ" secondAttribute="trailing" id="aiE-gT-p6Y"/>
                         <constraint firstAttribute="bottom" secondItem="twe-86-SDZ" secondAttribute="bottom" id="gFi-zd-3i6"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ad" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mKq-th-SYp">
                     <rect key="frame" x="0.0" y="0.0" width="14" height="10"/>
