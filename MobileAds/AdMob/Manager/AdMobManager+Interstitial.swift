@@ -78,7 +78,7 @@ extension AdMobManager: GADFullScreenContentDelegate {
            return
         }
         
-        if AdMobManager.shared.getAdInterstitial(unitId: unitId) != nil || isSplash {
+        if AdMobManager.shared.getAdInterstitial(unitId: unitId) != nil {
             var rootVC = UIApplication.getTopViewController()
             if rootVC?.navigationController != nil {
                 rootVC = rootVC?.navigationController
@@ -99,6 +99,8 @@ extension AdMobManager: GADFullScreenContentDelegate {
             loadingVC.view.snp.makeConstraints { make in
                 make.edges.equalToSuperview()
             }
+        } else {
+            blockWillDismiss?()
         }
     }
     
