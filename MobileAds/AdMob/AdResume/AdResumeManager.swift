@@ -88,8 +88,7 @@ open class AdResumeManager: NSObject {
             let loadingVC = AdFullScreenLoadingVC()
             loadingVC.needLoadAd = false
             loadingVC.modalPresentationStyle = .fullScreen
-            showVC.addChild(loadingVC)
-            showVC.view.addSubview(loadingVC.view)
+            UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.addSubview(loadingVC.view)
             loadingVC.view.snp.makeConstraints { make in
                 make.edges.equalToSuperview()
             }
