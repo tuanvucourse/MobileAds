@@ -31,7 +31,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ang-bg-8qJ">
                     <rect key="frame" x="16" y="10" width="326" height="51"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="twe-86-SDZ">
+                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="twe-86-SDZ">
                             <rect key="frame" x="0.0" y="0.0" width="326" height="51"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lXJ-Sz-pQT">
@@ -52,6 +52,7 @@
                                         <constraint firstItem="YhR-TB-Aaz" firstAttribute="top" secondItem="lXJ-Sz-pQT" secondAttribute="top" id="CGh-gC-uhb"/>
                                         <constraint firstAttribute="trailing" secondItem="YhR-TB-Aaz" secondAttribute="trailing" id="KDc-8j-9wZ"/>
                                         <constraint firstItem="YhR-TB-Aaz" firstAttribute="leading" secondItem="lXJ-Sz-pQT" secondAttribute="leading" id="S0M-ze-Y1V"/>
+                                        <constraint firstAttribute="height" constant="51" id="WeY-Og-ywZ"/>
                                         <constraint firstAttribute="bottom" secondItem="YhR-TB-Aaz" secondAttribute="bottom" id="pBR-PV-ath"/>
                                         <constraint firstAttribute="width" secondItem="lXJ-Sz-pQT" secondAttribute="height" id="rFy-yH-9OP"/>
                                     </constraints>
@@ -60,7 +61,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Rw3-xt-Vx2">
-                                    <rect key="frame" x="63" y="0.0" width="171" height="51"/>
+                                    <rect key="frame" x="63" y="3.5" width="171" height="44.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J44-ac-MO8">
                                             <rect key="frame" x="0.0" y="0.0" width="171" height="2"/>
@@ -87,10 +88,10 @@
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="wRg-vJ-18K">
-                                            <rect key="frame" x="0.0" y="16.5" width="171" height="34.5"/>
+                                            <rect key="frame" x="0.0" y="16.5" width="171" height="28"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Body that is really really long and can take up" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wgJ-AX-tyd">
-                                                    <rect key="frame" x="0.0" y="0.0" width="171" height="34.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="171" height="28"/>
                                                     <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="10"/>
                                                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
