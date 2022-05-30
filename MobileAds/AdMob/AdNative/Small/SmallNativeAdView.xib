@@ -75,7 +75,10 @@
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Headline" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZl-M2-hcX">
-                                            <rect key="frame" x="0.0" y="2" width="171" height="33"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="171" height="16.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="16.5" id="zRL-DT-Z3z"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
                                             <color key="textColor" red="0.011764705882352941" green="0.015686274509803921" blue="0.11372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -84,10 +87,10 @@
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="wRg-vJ-18K">
-                                            <rect key="frame" x="0.0" y="35" width="171" height="14"/>
+                                            <rect key="frame" x="0.0" y="16.5" width="171" height="34.5"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Body that is really really long and can take up" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wgJ-AX-tyd">
-                                                    <rect key="frame" x="0.0" y="0.0" width="171" height="14"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="171" height="34.5"/>
                                                     <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="10"/>
                                                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -106,9 +109,6 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="14" id="NQZ-xy-7eb"/>
-                                            </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                             </userDefinedRuntimeAttributes>
@@ -118,8 +118,8 @@
                                                 </mask>
                                             </variation>
                                         </stackView>
-                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BWa-dz-lyu">
-                                            <rect key="frame" x="0.0" y="49" width="171" height="15"/>
+                                        <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BWa-dz-lyu">
+                                            <rect key="frame" x="0.0" y="51" width="171" height="15"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stars_4_5" translatesAutoresizingMaskIntoConstraints="NO" id="erQ-uI-FIC">
                                                     <rect key="frame" x="0.0" y="2" width="76" height="12"/>
@@ -151,6 +151,13 @@
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                     </userDefinedRuntimeAttributes>
+                                    <variation key="default">
+                                        <mask key="subviews">
+                                            <exclude reference="J44-ac-MO8"/>
+                                            <exclude reference="BWa-dz-lyu"/>
+                                            <exclude reference="iDc-he-TL9"/>
+                                        </mask>
+                                    </variation>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="g8U-5G-CYi">
                                     <rect key="frame" x="104" y="0.0" width="102" height="61"/>
