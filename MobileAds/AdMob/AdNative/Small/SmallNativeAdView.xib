@@ -61,7 +61,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Rw3-xt-Vx2">
-                                    <rect key="frame" x="63" y="3.5" width="171" height="44.5"/>
+                                    <rect key="frame" x="63" y="17.5" width="171" height="16.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J44-ac-MO8">
                                             <rect key="frame" x="0.0" y="0.0" width="171" height="2"/>
@@ -75,7 +75,7 @@
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                             </userDefinedRuntimeAttributes>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Headline" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZl-M2-hcX">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZl-M2-hcX">
                                             <rect key="frame" x="0.0" y="0.0" width="171" height="16.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="16.5" id="zRL-DT-Z3z"/>
@@ -88,10 +88,10 @@
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="wRg-vJ-18K">
-                                            <rect key="frame" x="0.0" y="16.5" width="171" height="28"/>
+                                            <rect key="frame" x="0.0" y="16.5" width="171" height="0.0"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Body that is really really long and can take up" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wgJ-AX-tyd">
-                                                    <rect key="frame" x="0.0" y="0.0" width="171" height="28"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wgJ-AX-tyd">
+                                                    <rect key="frame" x="0.0" y="0.0" width="171" height="0.0"/>
                                                     <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="10"/>
                                                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>

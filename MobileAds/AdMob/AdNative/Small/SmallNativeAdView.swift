@@ -35,11 +35,17 @@ class SmallNativeAdView: GADNativeAdView, NativeViewProtocol {
             self.viewLinePrice.isHidden = false
         }
         
-        if nativeAd.advertiser == nil {
-            (self.advertiserView as? UILabel)?.text = nativeAd.body
+        if nativeAd.body == nil {
+            (self.bodyView as? UILabel)?.text = nativeAd.advertiser
         } else {
-            (self.advertiserView as? UILabel)?.text = nativeAd.advertiser
+            (self.bodyView as? UILabel)?.text = nativeAd.body
         }
+        
+//        if nativeAd.body == nil {
+//            (self.advertiserView as? UILabel)?.text = nativeAd.advertiser
+//        } else {
+//            (self.advertiserView as? UILabel)?.text = nativeAd.body
+//        }
         
         backgroundColor = AdMobManager.shared.backgroundAdsNative
         layer.borderWidth = AdMobManager.shared.adsNativeBorderWidth

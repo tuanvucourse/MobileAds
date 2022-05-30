@@ -61,8 +61,8 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="mSF-aK-ObU">
                                             <rect key="frame" x="10" y="0.0" width="259" height="111"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Headline View" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wor-yd-UPO">
-                                                    <rect key="frame" x="0.0" y="0.0" width="259" height="16.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wor-yd-UPO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="259" height="0.0"/>
                                                     <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="14"/>
                                                     <color key="textColor" name="#0303B3"/>
                                                     <nil key="highlightedColor"/>
@@ -70,8 +70,8 @@
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Body View" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DT4-4U-NyG">
-                                                    <rect key="frame" x="0.0" y="20.5" width="259" height="70.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DT4-4U-NyG">
+                                                    <rect key="frame" x="0.0" y="4" width="259" height="87"/>
                                                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="12"/>
                                                     <color key="textColor" name="#666666"/>
                                                     <nil key="highlightedColor"/>
@@ -96,8 +96,8 @@
                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Advertiser" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uC1-OX-SkN">
-                                                            <rect key="frame" x="47" y="0.0" width="54.5" height="16"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uC1-OX-SkN">
+                                                            <rect key="frame" x="47" y="0.0" width="0.0" height="16"/>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="12"/>
                                                             <color key="textColor" name="#666666"/>
                                                             <nil key="highlightedColor"/>
@@ -106,9 +106,9 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="rQr-6q-TB1">
-                                                            <rect key="frame" x="111.5" y="0.0" width="101" height="16"/>
+                                                            <rect key="frame" x="57" y="0.0" width="101" height="16"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIQ-cI-Qke">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIQ-cI-Qke">
                                                                     <rect key="frame" x="0.0" y="0.0" width="7" height="16"/>
                                                                     <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="12"/>
                                                                     <color key="textColor" name="#666666"/>
@@ -131,8 +131,8 @@
                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </stackView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g24-uJ-whK">
-                                                            <rect key="frame" x="222.5" y="0.0" width="36.5" height="16"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g24-uJ-whK">
+                                                            <rect key="frame" x="168" y="0.0" width="91" height="16"/>
                                                             <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="12"/>
                                                             <color key="textColor" name="#666666"/>
                                                             <nil key="highlightedColor"/>
