@@ -45,6 +45,7 @@ open class AdMobManager: NSObject {
     //    MARK: - UI NAtive
     public var backgroundButtonAdsNative: UIColor = UIColor(hex: 0x007AFF)
     public var backgroundAdsNative: UIColor = UIColor(hex: 0xF2F2F2)
+    public var adsNativeCornerRadiusButton: CGFloat = 8
     public var adsNativeCornerRadius: CGFloat = 4
     public var adsNativeBorderWidth: CGFloat = 1
     public var adsNativeBorderColor: UIColor = .clear

@@ -46,7 +46,7 @@ class SmallNativeAdView: GADNativeAdView, NativeViewProtocol {
 //        } else {
 //            (self.advertiserView as? UILabel)?.text = nativeAd.body
 //        }
-        
+        self.callToActionView?.layer.cornerRadius = AdMobManager.shared.adsNativeCornerRadiusButton
         backgroundColor = AdMobManager.shared.backgroundAdsNative
         layer.borderWidth = AdMobManager.shared.adsNativeBorderWidth
         layer.borderColor = AdMobManager.shared.adsNativeBorderColor.cgColor
