@@ -11,33 +11,33 @@ import GoogleMobileAds
 // MARK: - GADInterstitial
 extension AdMobManager {
     
-    func getAdRewarded(unitId: String) -> GADRewardedAd? {
-        if let rewarded = listAd.object(forKey: unitId) as? GADRewardedAd {
+    func getAdRewarded(unitId: AdUnitID) -> GADRewardedAd? {
+        if let rewarded = listAd.object(forKey: unitId.rawValue) as? GADRewardedAd {
             return rewarded
         }
         return nil
     }
     
     /// khởi tạo id ads trước khi show
-    public func createAdRewardedIfNeed(unitId: String) {
+    public func createAdRewardedIfNeed(unitId: AdUnitID) {
         if self.getAdRewarded(unitId: unitId) != nil {
             return
         }
         
         let request = GADRequest()
-        GADRewardedAd.load(withAdUnitID: unitId, request: request) { [weak self] ad, error in
+        GADRewardedAd.load(withAdUnitID: unitId.rawValue, request: request) { [weak self] ad, error in
             if let error = error {
                 print("Failed to load rewarded ad with error: \(error.localizedDescription)")
                 
-                self?.removeAd(unitId: unitId)
-                self?.blockFullScreenAdFaild?(unitId)
+                self?.removeAd(unitId: unitId.rawValue)
+                self?.blockFullScreenAdFaild?(unitId.rawValue)
                 self?.blockCompletionHandeler?(false)
                 return
             }
             
             guard let ad = ad else {
-                self?.removeAd(unitId: unitId)
-                self?.blockFullScreenAdFaild?(unitId)
+                self?.removeAd(unitId: unitId.rawValue)
+                self?.blockFullScreenAdFaild?(unitId.rawValue)
                 self?.blockCompletionHandeler?(false)
                 return
             }
@@ -45,12 +45,12 @@ extension AdMobManager {
             ad.paidEventHandler = { value in
                 self?.trackAdRevenue(value: value)
             }
-            self?.listAd.setObject(ad, forKey: unitId as NSCopying)
-            self?.blockLoadFullScreenAdSuccess?(unitId)
+            self?.listAd.setObject(ad, forKey: unitId.rawValue as NSCopying)
+            self?.blockLoadFullScreenAdSuccess?(unitId.rawValue)
         }
     }
     
-    public func presentAdRewarded(unitId: String) {
+    public func presentAdRewarded(unitId: AdUnitID) {
         createAdRewardedIfNeed(unitId: unitId)
         let rewarded = getAdRewarded(unitId: unitId)
         didEarnReward = false
@@ -62,7 +62,7 @@ extension AdMobManager {
         }
     }
     
-    public func showRewarded(unitId: String, completion: BoolBlockAds?) {
+    public func showRewarded(unitId: AdUnitID, completion: BoolBlockAds?) {
         if AdMobManager.shared.getAdRewarded(unitId: unitId) != nil {
             var rootVC = UIApplication.getTopViewController()
             if rootVC?.navigationController != nil {

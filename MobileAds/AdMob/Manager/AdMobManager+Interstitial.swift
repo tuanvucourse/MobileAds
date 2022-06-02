@@ -12,29 +12,29 @@ import GoogleMobileAds
 extension AdMobManager: GADFullScreenContentDelegate {
 
     /// khởi tạo id ads trước khi show
-    public func createAdInterstitialIfNeed(unitId: String, completion: BoolBlockAds? = nil) {
+    public func createAdInterstitialIfNeed(unitId: AdUnitID, completion: BoolBlockAds? = nil) {
         if self.getAdInterstitial(unitId: unitId) != nil {
             return
         }
         
         let request = GADRequest()
-        GADInterstitialAd.load(withAdUnitID: unitId,
+        GADInterstitialAd.load(withAdUnitID: unitId.rawValue,
                                request: request,
                                completionHandler: { [weak self] ad, error in
             guard let self = self else { return }
             if let error = error {
                 print("Failed to load interstitial ad with error: \(error.localizedDescription)")
                 
-                self.removeAd(unitId: unitId)
-                self.blockFullScreenAdFaild?(unitId)
+                self.removeAd(unitId: unitId.rawValue)
+                self.blockFullScreenAdFaild?(unitId.rawValue)
                 self.blockCompletionHandeler?(false)
                 completion?(false)
                 return
             }
             
             guard let ad = ad else {
-                self.removeAd(unitId: unitId)
-                self.blockFullScreenAdFaild?(unitId)
+                self.removeAd(unitId: unitId.rawValue)
+                self.blockFullScreenAdFaild?(unitId.rawValue)
                 self.blockCompletionHandeler?(false)
                 completion?(false)
                 return
@@ -43,21 +43,21 @@ extension AdMobManager: GADFullScreenContentDelegate {
             ad.paidEventHandler = { value in
                 self.trackAdRevenue(value: value)
             }
-            self.listAd.setObject(ad, forKey: unitId as NSCopying)
-            self.blockLoadFullScreenAdSuccess?(unitId)
+            self.listAd.setObject(ad, forKey: unitId.rawValue as NSCopying)
+            self.blockLoadFullScreenAdSuccess?(unitId.rawValue)
             completion?(true)
         })
     }
     
-    func getAdInterstitial(unitId: String) -> GADInterstitialAd? {
-         if let interstitial = listAd.object(forKey: unitId) as? GADInterstitialAd {
+    func getAdInterstitial(unitId: AdUnitID) -> GADInterstitialAd? {
+        if let interstitial = listAd.object(forKey: unitId.rawValue) as? GADInterstitialAd {
              return interstitial
          }
          return nil
      }
     
     /// show ads Interstitial
-    func presentAdInterstitial(unitId: String) {
+    func presentAdInterstitial(unitId: AdUnitID) {
         self.createAdInterstitialIfNeed(unitId: unitId)
         let interstitial = self.getAdInterstitial(unitId: unitId)
         if let topVC =  UIApplication.getTopViewController() {
@@ -66,7 +66,7 @@ extension AdMobManager: GADFullScreenContentDelegate {
         }
     }
     
-    public func showIntertitial(unitId: String, isSplash: Bool = false, blockWillDismiss: VoidBlockAds? = nil) {
+    public func showIntertitial(unitId: AdUnitID, isSplash: Bool = false, blockWillDismiss: VoidBlockAds? = nil) {
         if isSplash {
             createAdInterstitialIfNeed(unitId: unitId) { [weak self] result in
                 if result {

@@ -11,28 +11,28 @@ import GoogleMobileAds
 // MARK: - GADBannerView
 extension AdMobManager: GADBannerViewDelegate {
     
-   fileprivate func getAdBannerView(unitId: String) -> GADBannerView? {
-        if let interstitial = listAd.object(forKey: unitId) as? GADBannerView  {
+   fileprivate func getAdBannerView(unitId: AdUnitID) -> GADBannerView? {
+       if let interstitial = listAd.object(forKey: unitId.rawValue) as? GADBannerView  {
             return interstitial
         }
         return nil
     }
     
-   public func createAdBannerIfNeed(unitId: String) -> GADBannerView {
-        if let adBannerView = self.getAdBannerView(unitId: unitId) {
+   public func createAdBannerIfNeed(unitId: AdUnitID) -> GADBannerView {
+       if let adBannerView = self.getAdBannerView(unitId: unitId) {
             return adBannerView
         }
         let adBannerView = GADBannerView()
-        adBannerView.adUnitID = unitId
+       adBannerView.adUnitID = unitId.rawValue
         adBannerView.paidEventHandler = { value in
             self.trackAdRevenue(value: value)
         }
-        listAd.setObject(adBannerView, forKey: unitId as NSCopying)
+       listAd.setObject(adBannerView, forKey: unitId.rawValue as NSCopying)
         return adBannerView
     }
     
     // quảng cáo xác định kích thước
-    public func addAdBanner(unitId: String, rootVC: UIViewController, view: UIView) {
+    public func addAdBanner(unitId: AdUnitID, rootVC: UIViewController, view: UIView) {
         let adBannerView = self.createAdBannerIfNeed(unitId: unitId)
         adBannerView.rootViewController = rootVC
         view.addSubview(adBannerView)
@@ -50,7 +50,7 @@ extension AdMobManager: GADBannerViewDelegate {
     }
     
     // quảng có thích ứng với chiều cao không cố định
-    public func addAdBannerAdaptive(unitId: String, rootVC: UIViewController, view: UIView) {
+    public func addAdBannerAdaptive(unitId: AdUnitID, rootVC: UIViewController, view: UIView) {
         let adBannerView = self.createAdBannerIfNeed(unitId: unitId)
         adBannerView.rootViewController = rootVC
         view.addSubview(adBannerView)

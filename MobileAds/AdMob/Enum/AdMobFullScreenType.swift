@@ -8,8 +8,8 @@
 import Foundation
 
 enum AdMobFullScreenType {
-    case interstitial(id: String)
-    case reward(id: String)
+    case interstitial(id: AdUnitID)
+    case reward(id: AdUnitID)
     
     func createAd() {
         switch self {

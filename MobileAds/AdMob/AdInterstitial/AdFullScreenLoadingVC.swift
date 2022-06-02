@@ -14,7 +14,7 @@ class AdFullScreenLoadingVC: UIViewController {
     var timer: Timer?
     var timeOut: Int = 30
     var timeCount = 0
-    var adUnitId: String?
+    var adUnitId: AdUnitID?
     var adType: AdMobFullScreenType?
     var blockWillDismiss: VoidBlockAds?
     var blockDidDismiss: VoidBlockAds?
@@ -51,7 +51,7 @@ class AdFullScreenLoadingVC: UIViewController {
             }
             
             AdMobManager.shared.blockFullScreenAdDidDismiss = { [weak self] in
-                AdMobManager.shared.removeAd(unitId: adUnitId)
+                AdMobManager.shared.removeAd(unitId: adUnitId.rawValue)
                 adType.createAd()
                 guard let _self = self else {
                     return
@@ -61,7 +61,7 @@ class AdFullScreenLoadingVC: UIViewController {
             }
             
             AdMobManager.shared.blockFullScreenAdWillPresent =  { [weak self] unitId in
-                guard let _self = self, _self.adUnitId == unitId else {
+                guard let _self = self, _self.adUnitId?.rawValue == unitId else {
                     return
                 }
                 _self.blocWillPresent?()
@@ -76,7 +76,7 @@ class AdFullScreenLoadingVC: UIViewController {
             }
             
             AdMobManager.shared.blockFullScreenAdFaild =  { [weak self] unitId in
-                guard let _self = self, _self.adUnitId == unitId else {
+                guard let _self = self, _self.adUnitId?.rawValue == unitId else {
                     return
                 }
                 _self.stopCheckTimmer()
@@ -86,7 +86,7 @@ class AdFullScreenLoadingVC: UIViewController {
         } else {
             showLoadingDotAds(backgroundColor: .white, textLoading: textLoading)
             AdMobManager.shared.blockLoadFullScreenAdSuccess = { [weak self] unitId in
-                guard let _self = self, _self.adUnitId == unitId else {
+                guard let _self = self, _self.adUnitId?.rawValue == unitId else {
                     return
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1000)) {
@@ -107,7 +107,7 @@ class AdFullScreenLoadingVC: UIViewController {
             }
             
             AdMobManager.shared.blockFullScreenAdDidDismiss = { [weak self] in
-                AdMobManager.shared.removeAd(unitId: adUnitId)
+                AdMobManager.shared.removeAd(unitId: adUnitId.rawValue)
                 adType.createAd()
                 guard let _self = self else {
                     return
@@ -117,14 +117,14 @@ class AdFullScreenLoadingVC: UIViewController {
             }
             
             AdMobManager.shared.blockFullScreenAdWillPresent =  { [weak self] unitId in
-                guard let _self = self, _self.adUnitId == unitId else {
+                guard let _self = self, _self.adUnitId?.rawValue == unitId else {
                     return
                 }
                 _self.blocWillPresent?()
             }
             
             AdMobManager.shared.blockFullScreenAdFaild =  { [weak self] unitId in
-                guard let _self = self, _self.adUnitId == unitId else {
+                guard let _self = self, _self.adUnitId?.rawValue == unitId else {
                     return
                 }
                 _self.stopCheckTimmer()
@@ -156,7 +156,7 @@ class AdFullScreenLoadingVC: UIViewController {
         print("\( self.timeCount)")
     }
     
-    static func createViewController(unitId: String, adType: AdMobFullScreenType) -> AdFullScreenLoadingVC {
+    static func createViewController(unitId: AdUnitID, adType: AdMobFullScreenType) -> AdFullScreenLoadingVC {
         let vc = AdFullScreenLoadingVC(nibName: "AdFullScreenLoadingVC", bundle: nil)
         vc.modalPresentationStyle = .fullScreen
         vc.adUnitId = unitId

@@ -23,6 +23,15 @@ public struct SampleAdUnitID {
     public static let adFormatNativeAdvancedVideo  = "ca-app-pub-3940256099942544/1044960115"
 }
 
+//    MARK: - Enum AdUnitID
+public struct AdUnitID {
+    public var rawValue: String = ""
+    
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+}
+
 open class AdMobManager: NSObject {
     
     //    MARK: - Property

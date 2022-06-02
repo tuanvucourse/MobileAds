@@ -14,7 +14,7 @@ open class AdBannerBottomVC: UIViewController {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var bottomBannerView: UIView!
     @IBOutlet weak var adHeightConstraint: NSLayoutConstraint!
-    var unitId: String?
+    var unitId: AdUnitID?
     var isAdaptive: Bool = true
     var adSize = CGSize(width: screenWidthAds, height: 90)
    
@@ -25,7 +25,7 @@ open class AdBannerBottomVC: UIViewController {
     open override func viewDidDisappear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if let unitId = unitId {
-            AdMobManager.shared.removeAd(unitId: unitId)
+            AdMobManager.shared.removeAd(unitId: unitId.rawValue)
         }
     }
     
@@ -46,7 +46,7 @@ open class AdBannerBottomVC: UIViewController {
      
     }
 
-    public static func createViewController(contentVC: UIViewController, unitId: String, isAdaptive: Bool = true) -> AdBannerBottomVC {
+    public static func createViewController(contentVC: UIViewController, unitId: AdUnitID, isAdaptive: Bool = true) -> AdBannerBottomVC {
         let vc = AdBannerBottomVC.instance()
         vc.loadViewIfNeeded()
         vc.addChild(contentVC)

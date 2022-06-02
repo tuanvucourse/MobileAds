@@ -29,8 +29,8 @@ public enum NativeAdType {
 // MARK: - GADUnifiedNativeAdView
 extension AdMobManager {
    
-    private func getNativeAdLoader(unitId: String) -> GADAdLoader? {
-        return listLoader.object(forKey: unitId) as? GADAdLoader
+    private func getNativeAdLoader(unitId: AdUnitID) -> GADAdLoader? {
+        return listLoader.object(forKey: unitId.rawValue) as? GADAdLoader
     }
 
     private func getAdNative(unitId: String) -> GADNativeAdView? {
@@ -40,8 +40,8 @@ extension AdMobManager {
         return nil
     }
     
-    private func createAdNativeIfNeed(unitId: String, type: NativeAdType = .small) -> GADNativeAdView? {
-        if let adNativeView = getAdNative(unitId: unitId) {
+    private func createAdNativeIfNeed(unitId: AdUnitID, type: NativeAdType = .small) -> GADNativeAdView? {
+        if let adNativeView = getAdNative(unitId: unitId.rawValue) {
             return adNativeView
         }
         guard
@@ -49,17 +49,17 @@ extension AdMobManager {
             let adNativeView = nibObjects.first as? GADNativeAdView else {
                 return nil
             }
-        listAd.setObject(adNativeView, forKey: unitId as NSCopying)
+        listAd.setObject(adNativeView, forKey: unitId.rawValue as NSCopying)
         return adNativeView
     }
     
-    private func reloadAdNative(unitId: String) {
+    private func reloadAdNative(unitId: AdUnitID) {
         if let loader = self.getNativeAdLoader(unitId: unitId) {
             loader.load(GADRequest())
         }
     }
     
-    public func addAdNative(unitId: String, rootVC: UIViewController, view: UIView, type: NativeAdType = .small) {
+    public func addAdNative(unitId: AdUnitID, rootVC: UIViewController, view: UIView, type: NativeAdType = .small) {
         guard let adNativeView = self.createAdNativeIfNeed(unitId: unitId, type: type) else {
             return
         }
@@ -91,14 +91,14 @@ extension AdMobManager {
     }
     
     
-    private func loadAdNative(unitId: String, rootVC: UIViewController) {
+    private func loadAdNative(unitId: AdUnitID, rootVC: UIViewController) {
         let multipleAdsOptions = GADMultipleAdsAdLoaderOptions()
         multipleAdsOptions.numberOfAds = 5
-        let adLoader = GADAdLoader(adUnitID: unitId,
+        let adLoader = GADAdLoader(adUnitID: unitId.rawValue,
             rootViewController: rootVC,
             adTypes: [ .native ],
             options: [multipleAdsOptions])
-        listLoader.setObject(adLoader, forKey: unitId as NSCopying)
+        listLoader.setObject(adLoader, forKey: unitId.rawValue as NSCopying)
         adLoader.delegate = self
         adLoader.load(GADRequest())
     }
