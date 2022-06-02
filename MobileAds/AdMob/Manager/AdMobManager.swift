@@ -55,6 +55,8 @@ open class AdMobManager: NSObject {
     public var nativeButtonCornerRadius: CGFloat = 8
     public var rewardErrorString: String = "An error occurred"
     
+    var loadingRewardIds: [String] = []
+    
     //    MARK: - Block Ads
     public var blockLoadFullScreenAdSuccess: StringBlockAds?
     public var blockFullScreenAdWillDismiss: VoidBlockAds?

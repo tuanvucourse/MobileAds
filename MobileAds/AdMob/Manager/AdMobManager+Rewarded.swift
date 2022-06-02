@@ -23,9 +23,11 @@ extension AdMobManager {
         if self.getAdRewarded(unitId: unitId) != nil {
             return
         }
-        
+        if loadingRewardIds.contains(unitId.rawValue) { return }
+        loadingRewardIds.append(unitId.rawValue)
         let request = GADRequest()
         GADRewardedAd.load(withAdUnitID: unitId.rawValue, request: request) { [weak self] ad, error in
+            self?.loadingRewardIds.removeAll(where: { $0 == unitId.rawValue })
             if let error = error {
                 print("Failed to load rewarded ad with error: \(error.localizedDescription)")
                 
