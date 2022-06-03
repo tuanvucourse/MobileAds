@@ -100,6 +100,7 @@ extension AdMobManager: GADFullScreenContentDelegate {
                 make.edges.equalToSuperview()
             }
         } else {
+            createAdInterstitialIfNeed(unitId: unitId)
             blockWillDismiss?()
         }
     }
