@@ -80,8 +80,8 @@ extension AdMobManager: GADBannerViewDelegate {
         print("ad==> bannerView faild \(error.localizedDescription)")
         if let unitId = bannerView.adUnitID {
             self.removeAd(unitId: unitId)
+            self.blockBannerFaild?(unitId)
         }
-        self.blockBannerFaild?(error.localizedDescription)
     }
     
     

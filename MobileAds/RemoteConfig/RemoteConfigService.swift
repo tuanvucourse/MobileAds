@@ -53,6 +53,11 @@ open class RemoteConfigService {
         }
     }
     
+    public func loadDefaultValues(allKey: [RemoteKey], value: Any) {
+        let defaults = Dictionary(uniqueKeysWithValues: allKey.map{ ($0.rawValue, value) })
+        RemoteConfig.remoteConfig().setDefaults(defaults as? [String: NSObject])
+    }
+    
     public func number(forKey key: RemoteKey) -> Int {
         return RemoteConfig.remoteConfig()[key.rawValue].numberValue.intValue
     }
