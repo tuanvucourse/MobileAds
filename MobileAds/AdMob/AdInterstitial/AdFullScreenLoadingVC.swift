@@ -19,7 +19,7 @@ class AdFullScreenLoadingVC: UIViewController {
     var blockWillDismiss: VoidBlockAds?
     var blockDidDismiss: VoidBlockAds?
     var blocWillPresent: VoidBlockAds?
-    let textLoading = "Ad is loading"
+
     var needLoadAd = true
     
     override func viewDidLoad() {
@@ -28,7 +28,7 @@ class AdFullScreenLoadingVC: UIViewController {
         if needLoadAd {
             loadAd()
         } else {
-            showLoadingDotAds(backgroundColor: .white, textLoading: textLoading)
+            showLoadingDotAds(backgroundColor: .white, textLoading: AdMobManager.shared.adFullScreenLoadingString)
         }
     }
     
@@ -45,7 +45,7 @@ class AdFullScreenLoadingVC: UIViewController {
         
         if adType.isExisted {
             self.stopCheckTimmer()
-            self.showLoadingDotAds(backgroundColor: .white, textLoading: textLoading)
+            self.showLoadingDotAds(backgroundColor: .white, textLoading: AdMobManager.shared.adFullScreenLoadingString)
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1000)) {
                 adType.presentAd()
             }
@@ -84,7 +84,7 @@ class AdFullScreenLoadingVC: UIViewController {
             }
 
         } else {
-            showLoadingDotAds(backgroundColor: .white, textLoading: textLoading)
+            showLoadingDotAds(backgroundColor: .white, textLoading: AdMobManager.shared.adFullScreenLoadingString)
             AdMobManager.shared.blockLoadFullScreenAdSuccess = { [weak self] unitId in
                 guard let _self = self, _self.adUnitId?.rawValue == unitId else {
                     return
