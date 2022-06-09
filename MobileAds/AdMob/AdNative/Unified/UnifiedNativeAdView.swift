@@ -32,8 +32,7 @@ class UnifiedNativeAdView: GADNativeAdView {
 //        bannerImageView.image = nativeAd.images?.first?.image
         (self.callToActionView as? UIButton)?.setTitle(nativeAd.callToAction, for: .normal)
         self.callToActionView?.isHidden = nativeAd.callToAction == nil
-        self.callToActionView?.layer.cornerRadius = AdMobManager.shared.nativeButtonCornerRadius
-        self.callToActionView?.layer.backgroundColor = AdMobManager.shared.backgroundButtonAdsNative.cgColor
+        
         
         (self.iconView as? UIImageView)?.image = nativeAd.icon?.image
         self.iconView?.isHidden = nativeAd.icon == nil
@@ -51,8 +50,20 @@ class UnifiedNativeAdView: GADNativeAdView {
         (self.advertiserView as? UILabel)?.text = nativeAd.advertiser
         self.advertiserView?.isHidden = nativeAd.advertiser == nil
         
+        let (backgroundColor, titleColor, vertiserColor, contenColor, actionColor, backgroundAction) = AdMobManager.shared.adsNativeColor.colors
+        
+        self.callToActionView?.layer.cornerRadius = AdMobManager.shared.nativeButtonCornerRadius
+        self.callToActionView?.layer.backgroundColor = backgroundAction.cgColor
+        (self.callToActionView as? UIButton)?.setTitleColor(actionColor, for: .normal)
         self.callToActionView?.layer.cornerRadius = AdMobManager.shared.adsNativeCornerRadiusButton
-        backgroundColor = AdMobManager.shared.backgroundAdsNative
+        (self.bodyView as? UILabel)?.textColor = contenColor
+        (advertiserView as? UILabel)?.textColor = vertiserColor
+        lblRateCount.textColor = contenColor
+        (priceView as? UILabel)?.textColor = contenColor
+        (self.storeView as? UILabel)?.textColor = contenColor
+        (self.headlineView as? UILabel)?.textColor = titleColor
+        
+        self.backgroundColor = backgroundColor
         layer.borderWidth = AdMobManager.shared.adsNativeBorderWidth
         layer.borderColor = AdMobManager.shared.adsNativeBorderColor.cgColor
         layer.cornerRadius = AdMobManager.shared.adsNativeCornerRadius

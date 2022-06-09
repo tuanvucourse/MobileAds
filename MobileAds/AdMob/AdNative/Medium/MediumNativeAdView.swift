@@ -23,7 +23,7 @@ class MediumNativeAdView: GADNativeAdView, NativeViewProtocol {
         (headlineView as? UILabel)?.text = nativeAd.headline
         (callToActionView as? UIButton)?.setTitle(nativeAd.callToAction, for: .normal)
         callToActionView?.isHidden = nativeAd.callToAction == nil
-        callToActionView?.backgroundColor = AdMobManager.shared.backgroundButtonAdsNative
+        
         (iconView as? UIImageView)?.image = nativeAd.icon?.image
         iconView?.isHidden = nativeAd.icon == nil
         
@@ -45,8 +45,17 @@ class MediumNativeAdView: GADNativeAdView, NativeViewProtocol {
         (advertiserView as? UILabel)?.text = nativeAd.advertiser
         advertiserView?.isHidden = nativeAd.advertiser == nil
         
+        let (backgroundColor, titleColor, vertiserColor, contenColor, actionColor, backgroundAction) = AdMobManager.shared.adsNativeColor.colors
+        
+        (self.callToActionView as? UIButton)?.setTitleColor(actionColor, for: .normal)
+        self.callToActionView?.backgroundColor = backgroundAction
         self.callToActionView?.layer.cornerRadius = AdMobManager.shared.adsNativeCornerRadiusButton
-        backgroundColor = AdMobManager.shared.backgroundAdsNative
+        (self.bodyView as? UILabel)?.textColor = contenColor
+        (self.advertiserView as? UILabel)?.textColor = vertiserColor
+        starNumberLabel.textColor = contenColor
+        (self.headlineView as? UILabel)?.textColor = titleColor
+        (priceView as? UILabel)?.textColor = contenColor
+        self.backgroundColor = backgroundColor
         layer.borderWidth = AdMobManager.shared.adsNativeBorderWidth
         layer.borderColor = AdMobManager.shared.adsNativeBorderColor.cgColor
         layer.cornerRadius = AdMobManager.shared.adsNativeCornerRadius

@@ -11,6 +11,7 @@ import SkeletonView
 
 class SmallNativeAdView: GADNativeAdView, NativeViewProtocol {
     
+    @IBOutlet weak var lblAds: UILabel!
     @IBOutlet weak var cstWidthBtn: NSLayoutConstraint!
     @IBOutlet weak var viewLinePrice: UIView!
     @IBOutlet weak var stackAppStore: UIStackView!
@@ -27,7 +28,7 @@ class SmallNativeAdView: GADNativeAdView, NativeViewProtocol {
         
         (self.starRatingView as? UIImageView)?.image = self.imageOfStars(from: nativeAd.starRating)
         self.starRatingView?.isHidden = nativeAd.starRating == nil
-        self.callToActionView?.backgroundColor = AdMobManager.shared.backgroundButtonAdsNative
+        
     
         if nativeAd.price == nil || nativeAd.price == "" {
             self.viewLinePrice.isHidden = true
@@ -46,13 +47,20 @@ class SmallNativeAdView: GADNativeAdView, NativeViewProtocol {
 //        } else {
 //            (self.advertiserView as? UILabel)?.text = nativeAd.body
 //        }
+        
+        let (backgroundColor, titleColor, _, contenColor, actionColor, backgroundAction) = AdMobManager.shared.adsNativeColor.colors
+        
+        (self.callToActionView as? UIButton)?.backgroundColor = backgroundAction
+        (self.callToActionView as? UIButton)?.setTitleColor(actionColor, for: .normal)
         self.callToActionView?.layer.cornerRadius = AdMobManager.shared.adsNativeCornerRadiusButton
-        backgroundColor = AdMobManager.shared.backgroundAdsNative
+        (self.bodyView as? UILabel)?.textColor = contenColor
+        (self.headlineView as? UILabel)?.textColor = titleColor
+        lblAds.textColor = AdMobManager.shared.adNativeAdsLabelColor
+        self.backgroundColor = backgroundColor
         layer.borderWidth = AdMobManager.shared.adsNativeBorderWidth
         layer.borderColor = AdMobManager.shared.adsNativeBorderColor.cgColor
         layer.cornerRadius = AdMobManager.shared.adsNativeCornerRadius
         cstWidthBtn.constant = AdMobManager.shared.adsNativeSmallWidthButton
-        (self.headlineView as? UILabel)?.textColor = AdMobManager.shared.adsNativeTitleHeadline
         clipsToBounds = true
         
         self.nativeAd = nativeAd

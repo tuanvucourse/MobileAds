@@ -22,7 +22,11 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner">
+            <connections>
+                <outlet property="lblAds" destination="mKq-th-SYp" id="33p-T1-ipE"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SmallNativeAdView" customModule="MobileAds" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="358" height="71"/>
@@ -281,6 +285,7 @@
                 <outlet property="cstWidthBtn" destination="Diw-ph-T5C" id="qeP-gS-sLi"/>
                 <outlet property="headlineView" destination="UZl-M2-hcX" id="OnL-RA-9JO"/>
                 <outlet property="iconView" destination="YhR-TB-Aaz" id="FnP-FA-Rmg"/>
+                <outlet property="lblAds" destination="mKq-th-SYp" id="I8w-W4-cgW"/>
                 <outlet property="priceView" destination="kwf-B5-rCR" id="qUN-Jg-eMh"/>
                 <outlet property="stackAppStore" destination="g8U-5G-CYi" id="o1e-pD-Ppv"/>
                 <outlet property="starRatingView" destination="erQ-uI-FIC" id="C6l-6e-8AM"/>

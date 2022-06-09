@@ -32,6 +32,21 @@ public struct AdUnitID {
     }
 }
 
+//    MARK: - Enum Theme Style Ads
+public enum ThemeStyleAds {
+    case origin
+    case custom(backgroundColor: UIColor, titleColor: UIColor, vertiserColor: UIColor, contenColor: UIColor, actionColor: UIColor, backgroundAction: UIColor)
+    
+    var colors: (backgroundColor: UIColor, titleColor: UIColor, vertiserColor: UIColor, contenColor: UIColor, actionColor: UIColor, backgroundAction: UIColor) {
+        switch self {
+        case .origin:
+            return (UIColor(hex: 0xFFFFFF), UIColor(hex: 0x0303B3), UIColor(hex: 0x001868), UIColor(hex: 0x666666), UIColor(hex: 0xFFFFFF), UIColor(hex: 0x007AFF))
+        case .custom(let backgroundColor, let titleColor, let vertiserColor, let contenColor, let actionColor, let backgroundAction):
+            return (backgroundColor, titleColor, vertiserColor, contenColor, actionColor, backgroundAction)
+        }
+    }
+}
+
 open class AdMobManager: NSObject {
     
     //    MARK: - Property
@@ -42,18 +57,21 @@ open class AdMobManager: NSObject {
     public var listAd: NSMutableDictionary = NSMutableDictionary()
     public var listLoader: NSMutableDictionary = NSMutableDictionary()
     
-    //    MARK: - UI NAtive
-    public var backgroundButtonAdsNative: UIColor = UIColor(hex: 0x007AFF)
-    public var backgroundAdsNative: UIColor = UIColor(hex: 0xF2F2F2)
-    public var adsNativeCornerRadiusButton: CGFloat = 8
-    public var adsNativeCornerRadius: CGFloat = 4
-    public var adsNativeBorderWidth: CGFloat = 1
-    public var adsNativeBorderColor: UIColor = .clear
-    public var adsNativeSmallWidthButton: CGFloat = 80
-    public var adsNativeTitleHeadline: UIColor = .black
+    //    MARK: - Type Theme color
+    public var adsNativeColor: ThemeStyleAds = .origin
+    
+    //    MARK: - UI Native
+    public var adsNativeCornerRadiusButton:      CGFloat = 8
+    public var adsNativeCornerRadius:            CGFloat = 4
+    public var adsNativeBorderWidth:             CGFloat = 1
+    public var adsNativeSmallWidthButton:        CGFloat = 80
+   
+    public var adsNativeBorderColor:             UIColor = .clear
+    public var adNativeAdsLabelColor:            UIColor = .white
+    public var adNativeBackgroundAdsLabelColor:  UIColor = UIColor(hex: 0xFDB812)
     
     public var nativeButtonCornerRadius: CGFloat = 8
-    public var rewardErrorString: String = "An error occurred"
+    public var rewardErrorString: String         = "An error occurred"
     public var adFullScreenLoadingString: String = "Ad is loading"
     
     var loadingRewardIds: [String] = []
@@ -71,6 +89,7 @@ open class AdMobManager: NSObject {
     public var blockBannerFaild      : ((String) -> Void)?
     public var blockLoadBannerSuccess: ((Bool) -> Void)?
     
+    //    MARK: - Remove ID ads
     public func removeAd(unitId: String) {
         listAd.removeObject(forKey: unitId)
     }
