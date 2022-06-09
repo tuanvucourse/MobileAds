@@ -93,7 +93,7 @@ extension AdMobManager {
     
     private func loadAdNative(unitId: AdUnitID, rootVC: UIViewController) {
         let multipleAdsOptions = GADMultipleAdsAdLoaderOptions()
-        multipleAdsOptions.numberOfAds = 5
+        multipleAdsOptions.numberOfAds = 1
         let adLoader = GADAdLoader(adUnitID: unitId.rawValue,
             rootViewController: rootVC,
             adTypes: [ .native ],
