@@ -74,6 +74,7 @@ open class AdMobManager: NSObject {
     public var rewardErrorString: String         = "An error occurred"
     public var adFullScreenLoadingString: String = "Ad is loading"
     
+    var isSplash = false
     var loadingRewardIds: [String] = []
     
     //    MARK: - Block Ads

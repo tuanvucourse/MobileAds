@@ -52,7 +52,9 @@ class AdFullScreenLoadingVC: UIViewController {
             
             AdMobManager.shared.blockFullScreenAdDidDismiss = { [weak self] in
                 AdMobManager.shared.removeAd(unitId: adUnitId.rawValue)
-                adType.createAd()
+                if !AdMobManager.shared.isSplash {
+                    adType.createAd()
+                }
                 guard let _self = self else {
                     return
                 }
@@ -108,7 +110,9 @@ class AdFullScreenLoadingVC: UIViewController {
             
             AdMobManager.shared.blockFullScreenAdDidDismiss = { [weak self] in
                 AdMobManager.shared.removeAd(unitId: adUnitId.rawValue)
-                adType.createAd()
+                if !AdMobManager.shared.isSplash {
+                    adType.createAd()
+                }
                 guard let _self = self else {
                     return
                 }
