@@ -16,6 +16,13 @@ class SmallNativeAdView: GADNativeAdView, NativeViewProtocol {
     @IBOutlet weak var viewLinePrice: UIView!
     @IBOutlet weak var stackAppStore: UIStackView!
     
+    let (viewBackgroundColor, titleColor, _, contenColor, actionColor, backgroundAction) = AdMobManager.shared.adsNativeColor.colors
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.backgroundColor = viewBackgroundColor
+    }
+    
     func bindingData(nativeAd: GADNativeAd) {
         self.hideSkeleton()
         (self.headlineView as? UILabel)?.text = nativeAd.headline
@@ -48,15 +55,14 @@ class SmallNativeAdView: GADNativeAdView, NativeViewProtocol {
 //            (self.advertiserView as? UILabel)?.text = nativeAd.body
 //        }
         
-        let (backgroundColor, titleColor, _, contenColor, actionColor, backgroundAction) = AdMobManager.shared.adsNativeColor.colors
-        
         (self.callToActionView as? UIButton)?.backgroundColor = backgroundAction
         (self.callToActionView as? UIButton)?.setTitleColor(actionColor, for: .normal)
         self.callToActionView?.layer.cornerRadius = AdMobManager.shared.adsNativeCornerRadiusButton
         (self.bodyView as? UILabel)?.textColor = contenColor
         (self.headlineView as? UILabel)?.textColor = titleColor
         lblAds.textColor = AdMobManager.shared.adNativeAdsLabelColor
-        self.backgroundColor = backgroundColor
+        lblAds.backgroundColor = AdMobManager.shared.adNativeBackgroundAdsLabelColor
+        self.backgroundColor = viewBackgroundColor
         layer.borderWidth = AdMobManager.shared.adsNativeBorderWidth
         layer.borderColor = AdMobManager.shared.adsNativeBorderColor.cgColor
         layer.cornerRadius = AdMobManager.shared.adsNativeCornerRadius

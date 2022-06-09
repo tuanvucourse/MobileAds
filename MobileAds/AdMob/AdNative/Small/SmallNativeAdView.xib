@@ -22,11 +22,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner">
-            <connections>
-                <outlet property="lblAds" destination="mKq-th-SYp" id="33p-T1-ipE"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SmallNativeAdView" customModule="MobileAds" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="358" height="71"/>

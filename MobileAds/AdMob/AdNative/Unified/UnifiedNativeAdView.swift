@@ -11,9 +11,17 @@ import GoogleMobileAds
 import SkeletonView
 
 class UnifiedNativeAdView: GADNativeAdView {
-
+    
+    @IBOutlet weak var lblAds: UILabel!
     @IBOutlet weak var bannerImageView: UIImageView!
     @IBOutlet weak var lblRateCount: UILabel!
+    
+    let (viewBackgroundColor, titleColor, vertiserColor, contenColor, actionColor, backgroundAction) = AdMobManager.shared.adsNativeColor.colors
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.backgroundColor = viewBackgroundColor
+    }
     
     func bindingData(nativeAd: GADNativeAd) {
         self.hideSkeleton()
@@ -49,9 +57,7 @@ class UnifiedNativeAdView: GADNativeAdView {
 
         (self.advertiserView as? UILabel)?.text = nativeAd.advertiser
         self.advertiserView?.isHidden = nativeAd.advertiser == nil
-        
-        let (backgroundColor, titleColor, vertiserColor, contenColor, actionColor, backgroundAction) = AdMobManager.shared.adsNativeColor.colors
-        
+                
         self.callToActionView?.layer.cornerRadius = AdMobManager.shared.nativeButtonCornerRadius
         self.callToActionView?.layer.backgroundColor = backgroundAction.cgColor
         (self.callToActionView as? UIButton)?.setTitleColor(actionColor, for: .normal)
@@ -62,8 +68,9 @@ class UnifiedNativeAdView: GADNativeAdView {
         (priceView as? UILabel)?.textColor = contenColor
         (self.storeView as? UILabel)?.textColor = contenColor
         (self.headlineView as? UILabel)?.textColor = titleColor
-        
-        self.backgroundColor = backgroundColor
+        lblAds.textColor = AdMobManager.shared.adNativeAdsLabelColor
+        lblAds.backgroundColor = AdMobManager.shared.adNativeBackgroundAdsLabelColor
+        self.backgroundColor = viewBackgroundColor
         layer.borderWidth = AdMobManager.shared.adsNativeBorderWidth
         layer.borderColor = AdMobManager.shared.adsNativeBorderColor.cgColor
         layer.cornerRadius = AdMobManager.shared.adsNativeCornerRadius

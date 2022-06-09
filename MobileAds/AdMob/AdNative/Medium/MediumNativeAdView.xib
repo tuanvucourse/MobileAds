@@ -220,6 +220,7 @@
                 <outlet property="callToActionView" destination="TCa-s2-Yhv" id="cIc-If-mU8"/>
                 <outlet property="headlineView" destination="wor-yd-UPO" id="Frx-Ea-X3f"/>
                 <outlet property="iconView" destination="OzW-zq-671" id="f47-Y1-QHp"/>
+                <outlet property="lblAds" destination="WTH-i4-1EK" id="fha-yq-yhN"/>
                 <outlet property="priceView" destination="g24-uJ-whK" id="LmG-eG-kyM"/>
                 <outlet property="ratingStackView" destination="rQr-6q-TB1" id="K8e-7h-r7e"/>
                 <outlet property="starNumberLabel" destination="zIQ-cI-Qke" id="9aC-J4-29h"/>
