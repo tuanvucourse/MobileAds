@@ -86,7 +86,8 @@ extension AdMobManager {
         }
         adNativeView.layoutIfNeeded()
         adNativeView.isSkeletonable = true
-        adNativeView.showAnimatedGradientSkeleton(animation: SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight, duration: 0.7))
+        let gradient = SkeletonGradient(baseColor: self.skeletonGradient)
+        adNativeView.showAnimatedGradientSkeleton(usingGradient: gradient, animation: SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight, duration: 0.7))
         self.loadAdNative(unitId: unitId, rootVC: rootVC)
     }
     
