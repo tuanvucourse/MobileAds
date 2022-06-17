@@ -9,10 +9,15 @@ import Foundation
 import GoogleMobileAds
 import SkeletonView
 
+public enum OptionAdType {
+    case option_1
+    case option_2
+}
+
 public enum NativeAdType {
     case small
     case medium
-    case unified
+    case unified(OptionAdType)
     
     var nibName: String {
         switch self {
@@ -20,8 +25,14 @@ public enum NativeAdType {
             return "SmallNativeAdView"
         case .medium:
             return "MediumNativeAdView"
-        case .unified:
-            return "UnifiedNativeAdView"
+        case .unified(let option):
+            switch option {
+            case .option_1:
+                return "UnifiedNativeAdView"
+            case .option_2:
+                return "UnifiedNativeAdView_2"
+            }
+            
         }
     }
 }
