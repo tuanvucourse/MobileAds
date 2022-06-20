@@ -70,7 +70,7 @@ extension AdMobManager: GADFullScreenContentDelegate {
         if isSplash {
             createAdInterstitialIfNeed(unitId: unitId) { [weak self] result in
                 if result {
-                    AdMobManager.shared.isSplash = true
+                    self?.isSplash = true
                     self?.showIntertitial(unitId: unitId, blockWillDismiss: blockWillDismiss)
                 } else {
                     blockWillDismiss?()
@@ -95,7 +95,7 @@ extension AdMobManager: GADFullScreenContentDelegate {
             loadingVC.blockDidDismiss = { [weak loadingVC] in
                 loadingVC?.view.removeFromSuperview()
                 loadingVC?.removeFromParent()
-                AdMobManager.shared.isSplash = false
+                self.isSplash = false
             }
             loadingVC.blockWillDismiss = blockWillDismiss
             loadingVC.view.snp.makeConstraints { make in
