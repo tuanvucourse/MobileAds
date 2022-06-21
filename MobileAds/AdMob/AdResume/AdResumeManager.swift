@@ -24,6 +24,8 @@ open class AdResumeManager: NSObject {
     weak var appOpenAdManagerDelegate: AdResumeManagerDelegate?
     var loadTime: Date?
     
+    public var blockadDidDismissFullScreenContent: VoidBlockAds?
+    
     private func wasLoadTimeLessThanNHoursAgo(timeoutInterval: TimeInterval) -> Bool {
         // Check if ad was loaded more than n hours ago.
         if let loadTime = loadTime {
@@ -111,6 +113,7 @@ extension AdResumeManager: GADFullScreenContentDelegate {
         print("App open ad was dismissed.")
         appOpenAdManagerAdDidComplete()
         loadAd()
+        blockadDidDismissFullScreenContent?()
     }
     
     public func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
