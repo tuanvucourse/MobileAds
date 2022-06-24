@@ -62,12 +62,13 @@ extension AdMobManager: GADFullScreenContentDelegate {
         let interstitial = self.getAdInterstitial(unitId: unitId)
         if let topVC =  UIApplication.getTopViewController() {
             interstitial?.present(fromRootViewController: topVC)
-            AdResumeManager.shared.isShowingAd = true // check nếu show inter thig ko show réume
+            AdResumeManager.shared.isShowingAd = true // kiểm tra nếu show inter thì ko show resume
         }
     }
     
     public func showIntertitial(unitId: AdUnitID, isSplash: Bool = false, blockWillDismiss: VoidBlockAds? = nil) {
         if isSplash {
+            AdResumeManager.shared.isShowingAd = true // kiểm tra nếu show inter thì ko show resume
             createAdInterstitialIfNeed(unitId: unitId) { [weak self] result in
                 if result {
                     self?.isSplash = true
@@ -80,6 +81,7 @@ extension AdMobManager: GADFullScreenContentDelegate {
         }
         
         if AdMobManager.shared.getAdInterstitial(unitId: unitId) != nil {
+            AdResumeManager.shared.isShowingAd = true // kiểm tra nếu show inter thì ko show resume
             var rootVC = UIApplication.getTopViewController()
             if rootVC?.navigationController != nil {
                 rootVC = rootVC?.navigationController
