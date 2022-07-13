@@ -73,4 +73,9 @@ open class RemoteConfigService {
     public func double(forKey key: RemoteKey) -> Double {
         return RemoteConfig.remoteConfig()[key.rawValue].numberValue.doubleValue
     }
+    
+    public func objectJson<T: Decodable>(forKey key: RemoteKey, type: T.Type) -> T? {
+        let data = RemoteConfig.remoteConfig()[key.rawValue].dataValue
+        return try? JSONDecoder().decode(type, from: data)
+    }
 }
