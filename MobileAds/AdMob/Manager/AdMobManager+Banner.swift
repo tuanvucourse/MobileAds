@@ -7,6 +7,7 @@
 
 import Foundation
 import GoogleMobileAds
+import SkeletonView
 
 // MARK: - GADBannerView
 extension AdMobManager: GADBannerViewDelegate {
@@ -42,7 +43,8 @@ extension AdMobManager: GADBannerViewDelegate {
         }
         if view.isSkeletonable == false {
             adBannerView.isSkeletonable = true
-            adBannerView.showAnimatedGradientSkeleton()
+            let gradient = SkeletonGradient(baseColor: self.skeletonGradient)
+            adBannerView.showAnimatedGradientSkeleton(usingGradient: gradient, animation: SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight, duration: 0.7))
         }
         //adBannerView.adSize = GADAdSizeFromCGSize(view.bounds.size)
         let request = GADRequest()
@@ -61,7 +63,8 @@ extension AdMobManager: GADBannerViewDelegate {
         }
         if view.isSkeletonable == false {
             adBannerView.isSkeletonable = true
-            adBannerView.showAnimatedGradientSkeleton()
+            let gradient = SkeletonGradient(baseColor: self.skeletonGradient)
+            adBannerView.showAnimatedGradientSkeleton(usingGradient: gradient, animation: SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight, duration: 0.7))
         }
         
         adBannerView.adSize =  GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(screenWidthAds)
