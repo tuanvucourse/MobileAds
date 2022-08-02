@@ -101,4 +101,8 @@ extension AdMobManager: GADBannerViewDelegate {
         blockLoadBannerSuccess?(true)
     }
     
+    public func bannerViewDidRecordClick(_ bannerView: GADBannerView) {
+        blockBannerClick?(bannerView.adUnitID ?? "")
+    }
+    
 }

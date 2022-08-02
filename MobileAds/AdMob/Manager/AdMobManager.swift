@@ -88,11 +88,13 @@ open class AdMobManager: NSObject {
     public var blockFullScreenAdWillPresent: StringBlockAds?
     public var blockFullScreenAdDidPresent : StringBlockAds?
     public var blockFullScreenAdFaild      : StringBlockAds?
+    public var blockFullScreenAdClick      : VoidBlockAds?
     public var blockCompletionHandeler     : BoolBlockAds?
     public var blockNativeFaild            : StringBlockAds?
     public var blockLoadNativeSuccess      : BoolBlockAds?
     public var blockBannerFaild      : ((String) -> Void)?
     public var blockLoadBannerSuccess: ((Bool) -> Void)?
+    public var blockBannerClick      : StringBlockAds?
     
     //    MARK: - Remove ID ads
     public func removeAd(unitId: String) {

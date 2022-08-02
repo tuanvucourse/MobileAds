@@ -136,4 +136,8 @@ extension AdMobManager: GADFullScreenContentDelegate {
         print("Ad did dismiss full screen content.")
     }
     
+    public func adDidRecordClick(_ ad: GADFullScreenPresentingAd) {
+        blockFullScreenAdClick?()
+    }
+    
 }
