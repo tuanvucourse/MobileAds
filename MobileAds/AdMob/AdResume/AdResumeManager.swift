@@ -25,6 +25,7 @@ open class AdResumeManager: NSObject {
     var loadTime: Date?
     
     public var blockadDidDismissFullScreenContent: VoidBlockAds?
+    public var blockAdResumeClick                : VoidBlockAds?
     
     private func wasLoadTimeLessThanNHoursAgo(timeoutInterval: TimeInterval) -> Bool {
         // Check if ad was loaded more than n hours ago.
@@ -127,6 +128,10 @@ extension AdResumeManager: GADFullScreenContentDelegate {
         print("App open ad failed to present with error: \(error.localizedDescription).")
         appOpenAdManagerAdDidComplete()
         loadAd()
+    }
+    
+    public func adDidRecordClick(_ ad: GADFullScreenPresentingAd) {
+        blockAdResumeClick?()
     }
 }
 
