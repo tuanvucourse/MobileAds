@@ -91,6 +91,7 @@ open class AdResumeManager: NSObject {
             
             let loadingVC = AdFullScreenLoadingVC()
             loadingVC.needLoadAd = false
+            loadingVC.isOpenAd = true
             loadingVC.modalPresentationStyle = .fullScreen
             UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.addSubview(loadingVC.view)
             showVC.view.endEditing(true)
