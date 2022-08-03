@@ -23,6 +23,7 @@ open class AdResumeManager: NSObject {
     var appOpenAd: GADAppOpenAd?
     weak var appOpenAdManagerDelegate: AdResumeManagerDelegate?
     var loadTime: Date?
+    public var adResumeLoadingString = "Welcome back"
     
     public var blockadDidDismissFullScreenContent: VoidBlockAds?
     public var blockAdResumeClick                : VoidBlockAds?
