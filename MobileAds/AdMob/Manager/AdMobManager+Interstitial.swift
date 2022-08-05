@@ -113,7 +113,6 @@ extension AdMobManager: GADFullScreenContentDelegate {
     
     public func adWillDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         self.blockFullScreenAdWillDismiss?()
-        AdResumeManager.shared.isShowingAd = false
     }
     
     /// Tells the delegate that the ad failed to present full screen content.
@@ -132,7 +131,9 @@ extension AdMobManager: GADFullScreenContentDelegate {
     /// Tells the delegate that the ad dismissed full screen content.
     public func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         blockFullScreenAdDidDismiss?()
-        AdResumeManager.shared.isShowingAd = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            AdResumeManager.shared.isShowingAd = false
+        }
         print("Ad did dismiss full screen content.")
     }
     
