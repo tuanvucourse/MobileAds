@@ -71,6 +71,7 @@ extension AdMobManager {
     }
     
     public func addAdNative(unitId: AdUnitID, rootVC: UIViewController, view: UIView, type: NativeAdType = .small) {
+        self.removeAd(unitId: unitId.rawValue)
         guard let adNativeView = self.createAdNativeIfNeed(unitId: unitId, type: type) else {
             return
         }
