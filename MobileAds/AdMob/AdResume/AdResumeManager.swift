@@ -19,6 +19,7 @@ open class AdResumeManager: NSObject {
     public let timeoutInterval: TimeInterval = 4 * 3600
     public var isLoadingAd = false
     public var isShowingAd = false
+    public var isRequestingPermission: Bool = false
     public var resumeAdId: AdUnitID?
     var appOpenAd: GADAppOpenAd?
     weak var appOpenAdManagerDelegate: AdResumeManagerDelegate?
@@ -67,7 +68,7 @@ open class AdResumeManager: NSObject {
     }
     
     public func showAdIfAvailable(viewController: UIViewController) {
-        if isShowingAd {
+        if isShowingAd || isRequestingPermission {
             print("App open ad is already showing.")
             return
         }
