@@ -24,7 +24,7 @@ extension AdMobManager: GADFullScreenContentDelegate {
             guard let self = self else { return }
             if let error = error {
                 print("Failed to load interstitial ad with error: \(error.localizedDescription)")
-                
+                AdResumeManager.shared.isShowingAd = false
                 self.removeAd(unitId: unitId.rawValue)
                 self.blockFullScreenAdFaild?(unitId.rawValue)
                 self.blockCompletionHandeler?(false)
@@ -33,6 +33,7 @@ extension AdMobManager: GADFullScreenContentDelegate {
             }
             
             guard let ad = ad else {
+                AdResumeManager.shared.isShowingAd = false
                 self.removeAd(unitId: unitId.rawValue)
                 self.blockFullScreenAdFaild?(unitId.rawValue)
                 self.blockCompletionHandeler?(false)
