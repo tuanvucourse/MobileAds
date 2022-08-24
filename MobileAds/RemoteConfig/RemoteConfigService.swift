@@ -32,6 +32,7 @@ open class RemoteConfigService {
     private func settingForDebug() {
         let settings = RemoteConfigSettings()
         settings.minimumFetchInterval = 0
+        settings.fetchTimeout = 5
         RemoteConfig.remoteConfig().configSettings = settings
     }
     
