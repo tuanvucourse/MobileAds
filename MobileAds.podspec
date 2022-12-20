@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "MobileAds"
-  spec.version      = "1.1.0"
+  spec.version      = "1.1.1"
   spec.summary      = "A small framework extending from Google-Mobile-Ads-SDK"
 
   # This description is used to generate tags and improve search results.
@@ -147,11 +147,11 @@ Pod::Spec.new do |spec|
   spec.requires_arc = true
 
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  spec.dependency 'Firebase'
-  spec.dependency 'FirebaseCrashlytics'
-  spec.dependency 'FirebaseAnalytics'
-  spec.dependency 'Firebase/RemoteConfig'
-  spec.dependency "Google-Mobile-Ads-SDK", '~> 9.5.0'
+  spec.dependency 'Firebase', '~> 10.3.0'
+  spec.dependency 'FirebaseCrashlytics', '~> 10.3.0'
+  spec.dependency 'FirebaseAnalytics', '~> 10.3.0'
+  spec.dependency 'Firebase/RemoteConfig', '~> 10.3.0'
+  spec.dependency "Google-Mobile-Ads-SDK", '~> 9.14.0'
   spec.dependency "MONActivityIndicatorView", '~> 0.0.3'
   spec.dependency "SnapKit", '~> 5.6.0'
   spec.dependency "Adjust", '~> 4.29.2'
