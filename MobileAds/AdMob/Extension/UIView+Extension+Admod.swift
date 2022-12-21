@@ -34,7 +34,7 @@ class DesignableGradient: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.backgroundColor = UIColor().gradientColor(bounds: self.bounds, colorStart: startGradient, colorEnd: endGradient, isHorizontalMode: false)
+        self.backgroundColor = UIColor().gradientColor(bounds: self.bounds, colorStart: startGradient, colorEnd: endGradient, isHorizontalMode: true)
     }
     
 }
@@ -45,7 +45,7 @@ class DesignableGradientButton: UIButton {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.backgroundColor = UIColor().gradientColor(bounds: self.bounds, colorStart: startGradient, colorEnd: endGradient, isHorizontalMode: false)
+        self.backgroundColor = UIColor().gradientColor(bounds: self.bounds, colorStart: startGradient, colorEnd: endGradient, isHorizontalMode: true)
     }
     
 }
@@ -57,7 +57,7 @@ class DesignableGradientLablel: UILabel {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.backgroundColor = UIColor().gradientColor(bounds: self.bounds, colorStart: startGradient, colorEnd: endGradient, isHorizontalMode: false)
+        self.backgroundColor = UIColor().gradientColor(bounds: self.bounds, colorStart: startGradient, colorEnd: endGradient, isHorizontalMode: true)
     }
     
 }
@@ -69,7 +69,7 @@ class DesignableGradientLablelText: UILabel {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.textColor = UIColor().gradientColor(bounds: self.bounds, colorStart: startGradient, colorEnd: endGradient, isHorizontalMode: false)
+        self.textColor = UIColor().gradientColor(bounds: self.bounds, colorStart: startGradient, colorEnd: endGradient, isHorizontalMode: true)
     }
     
 }

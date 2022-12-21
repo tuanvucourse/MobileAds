@@ -150,7 +150,16 @@ extension AdMobManager: GADNativeAdLoaderDelegate {
         }
         guard let nativeAdView = self.getAdNative(unitId: adLoader.adUnitID) else {return}
         nativeAd.mediaContent.videoController.delegate = self
-        if let nativeAdView = nativeAdView as? NativeAdProtocol {
+        if let nativeAdView = nativeAdView as? UnifiedNativeAdView {
+            nativeAdView.hideSkeleton()
+            nativeAdView.bindingData(nativeAd: nativeAd)
+        } else if let nativeAdView = nativeAdView as? SmallNativeAdView {
+            nativeAdView.hideSkeleton()
+            nativeAdView.bindingData(nativeAd: nativeAd)
+        } else if let nativeAdView = nativeAdView as? MediumNativeAdView {
+            nativeAdView.hideSkeleton()
+            nativeAdView.bindingData(nativeAd: nativeAd)
+        } else if let nativeAdView = nativeAdView as? FreeSizeNativeAdView {
             nativeAdView.bindingData(nativeAd: nativeAd)
         }
     }
