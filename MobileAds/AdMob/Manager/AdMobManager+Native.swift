@@ -18,6 +18,7 @@ public enum NativeAdType {
     case small
     case medium
     case unified(OptionAdType)
+    case freeSize
     
     var nibName: String {
         switch self {
@@ -32,6 +33,8 @@ public enum NativeAdType {
             case .option_2:
                 return "UnifiedNativeAdView_2"
             }
+        case .freeSize:
+            return  "FreeSizeNativeAdView"
             
         }
     }
@@ -147,17 +150,7 @@ extension AdMobManager: GADNativeAdLoaderDelegate {
         }
         guard let nativeAdView = self.getAdNative(unitId: adLoader.adUnitID) else {return}
         nativeAd.mediaContent.videoController.delegate = self
-        if let nativeAdView = nativeAdView as? UnifiedNativeAdView {
-            nativeAdView.hideSkeleton()
-            nativeAdView.bindingData(nativeAd: nativeAd)
-        } else if let nativeAdView = nativeAdView as? SmallNativeAdView {
-            nativeAdView.hideSkeleton()
-            nativeAdView.bindingData(nativeAd: nativeAd)
-        } else if let nativeAdView = nativeAdView as? MediumNativeAdView {
-            nativeAdView.hideSkeleton()
-            nativeAdView.bindingData(nativeAd: nativeAd)
-        } else if let nativeAdView = nativeAdView as? UnifiedNativeAdView_2 {
-            nativeAdView.hideSkeleton()
+        if let nativeAdView = nativeAdView as? NativeAdProtocol {
             nativeAdView.bindingData(nativeAd: nativeAd)
         }
     }

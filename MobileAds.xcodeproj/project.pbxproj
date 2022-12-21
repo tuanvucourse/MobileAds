@@ -45,6 +45,10 @@
 		76A495AB28365022008685CF /* stars_4_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 76A495A728365022008685CF /* stars_4_5.png */; };
 		76A83C64285C24FF0089E814 /* UnifiedNativeAdView_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A83C62285C24FF0089E814 /* UnifiedNativeAdView_2.swift */; };
 		76A83C65285C24FF0089E814 /* UnifiedNativeAdView_2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76A83C63285C24FF0089E814 /* UnifiedNativeAdView_2.xib */; };
+		76BDA4C52952B609005D7FBA /* FreeSizeNativeAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BDA4C32952B609005D7FBA /* FreeSizeNativeAdView.swift */; };
+		76BDA4C62952B609005D7FBA /* FreeSizeNativeAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76BDA4C42952B609005D7FBA /* FreeSizeNativeAdView.xib */; };
+		76BDA4C82952B789005D7FBA /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BDA4C72952B789005D7FBA /* UIColor+Extension.swift */; };
+		76BDA4CA2952B868005D7FBA /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BDA4C92952B868005D7FBA /* UIView+Extension.swift */; };
 		76DF877F28A3B59A0078B20E /* SKProduct+LocalizedPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DF877028A3B59A0078B20E /* SKProduct+LocalizedPrice.swift */; };
 		76DF878028A3B59A0078B20E /* InAppProductQueryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DF877128A3B59A0078B20E /* InAppProductQueryRequest.swift */; };
 		76DF878128A3B59A0078B20E /* InAppReceiptRefreshRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DF877228A3B59A0078B20E /* InAppReceiptRefreshRequest.swift */; };
@@ -107,6 +111,10 @@
 		76A495A728365022008685CF /* stars_4_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stars_4_5.png; sourceTree = "<group>"; };
 		76A83C62285C24FF0089E814 /* UnifiedNativeAdView_2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnifiedNativeAdView_2.swift; sourceTree = "<group>"; };
 		76A83C63285C24FF0089E814 /* UnifiedNativeAdView_2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UnifiedNativeAdView_2.xib; sourceTree = "<group>"; };
+		76BDA4C32952B609005D7FBA /* FreeSizeNativeAdView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreeSizeNativeAdView.swift; sourceTree = "<group>"; };
+		76BDA4C42952B609005D7FBA /* FreeSizeNativeAdView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FreeSizeNativeAdView.xib; sourceTree = "<group>"; };
+		76BDA4C72952B789005D7FBA /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		76BDA4C92952B868005D7FBA /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		76DF877028A3B59A0078B20E /* SKProduct+LocalizedPrice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKProduct+LocalizedPrice.swift"; sourceTree = "<group>"; };
 		76DF877128A3B59A0078B20E /* InAppProductQueryRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppProductQueryRequest.swift; sourceTree = "<group>"; };
 		76DF877228A3B59A0078B20E /* InAppReceiptRefreshRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppReceiptRefreshRequest.swift; sourceTree = "<group>"; };
@@ -253,6 +261,7 @@
 		762F5520281A709E0000FB10 /* AdNative */ = {
 			isa = PBXGroup;
 			children = (
+				76BDA4C22952B53C005D7FBA /* FreeSize */,
 				762F5521281A709E0000FB10 /* Unified */,
 				762F5524281A709E0000FB10 /* Medium */,
 				762F5527281A709E0000FB10 /* Small */,
@@ -374,7 +383,9 @@
 		7695570227E1A2A80028127E /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				76BDA4C72952B789005D7FBA /* UIColor+Extension.swift */,
 				7695570527E1A6010028127E /* BundleAds.swift */,
+				76BDA4C92952B868005D7FBA /* UIView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -403,6 +414,15 @@
 				76A83C63285C24FF0089E814 /* UnifiedNativeAdView_2.xib */,
 			);
 			path = Option_2;
+			sourceTree = "<group>";
+		};
+		76BDA4C22952B53C005D7FBA /* FreeSize */ = {
+			isa = PBXGroup;
+			children = (
+				76BDA4C32952B609005D7FBA /* FreeSizeNativeAdView.swift */,
+				76BDA4C42952B609005D7FBA /* FreeSizeNativeAdView.xib */,
+			);
+			path = FreeSize;
 			sourceTree = "<group>";
 		};
 		76DF876F28A3B59A0078B20E /* SwiftyStoreKit */ = {
@@ -552,6 +572,7 @@
 				76A495A828365022008685CF /* stars_3_5.png in Resources */,
 				76A495AB28365022008685CF /* stars_4_5.png in Resources */,
 				76A495A928365022008685CF /* stars_5.png in Resources */,
+				76BDA4C62952B609005D7FBA /* FreeSizeNativeAdView.xib in Resources */,
 				7660A7E62837406600262745 /* UnifiedNativeAdView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -614,6 +635,7 @@
 				762F554B281A709E0000FB10 /* AdFullScreenLoadingVC.swift in Sources */,
 				76DF878C28A3B59A0078B20E /* SKProductDiscount+LocalizedPrice.swift in Sources */,
 				9AF73B2D283CF2F60084DDDF /* Utils.swift in Sources */,
+				76BDA4C82952B789005D7FBA /* UIColor+Extension.swift in Sources */,
 				762F554E281A709E0000FB10 /* AdBannerBottomVC.swift in Sources */,
 				7695570027E19EAE0028127E /* TestViewController.swift in Sources */,
 				76DF878228A3B59A0078B20E /* SwiftyStoreKit+Types.swift in Sources */,
@@ -636,6 +658,8 @@
 				762F5547281A709E0000FB10 /* AdMobManager+Rewarded.swift in Sources */,
 				042F528227D8E09E008D5330 /* MobileAds.docc in Sources */,
 				76DF878528A3B59A0078B20E /* ProductsInfoController.swift in Sources */,
+				76BDA4C52952B609005D7FBA /* FreeSizeNativeAdView.swift in Sources */,
+				76BDA4CA2952B868005D7FBA /* UIView+Extension.swift in Sources */,
 				76DF878928A3B59A0078B20E /* RestorePurchasesController.swift in Sources */,
 				76DF878428A3B59A0078B20E /* SwiftyStoreKit.swift in Sources */,
 				762F554C281A709E0000FB10 /* UIViewControll+Extension+Ads.swift in Sources */,

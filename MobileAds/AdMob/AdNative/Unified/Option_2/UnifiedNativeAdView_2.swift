@@ -10,7 +10,11 @@ import UIKit
 import GoogleMobileAds
 import SkeletonView
 
-class UnifiedNativeAdView_2: GADNativeAdView {
+protocol NativeAdProtocol {
+    func bindingData(nativeAd: GADNativeAd)
+}
+
+class UnifiedNativeAdView_2: GADNativeAdView, NativeAdProtocol {
     
     @IBOutlet weak var lblAds: UILabel!
     @IBOutlet weak var bannerImageView: UIImageView!
