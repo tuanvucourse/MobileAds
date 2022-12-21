@@ -116,11 +116,11 @@ PODS:
 
 DEPENDENCIES:
   - Adjust (~> 4.29.2)
-  - Firebase
-  - Firebase/RemoteConfig
-  - FirebaseAnalytics
-  - FirebaseCrashlytics
-  - Google-Mobile-Ads-SDK
+  - Firebase (~> 10.3.0)
+  - Firebase/RemoteConfig (~> 10.3.0)
+  - FirebaseAnalytics (~> 10.3.0)
+  - FirebaseCrashlytics (~> 10.3.0)
+  - Google-Mobile-Ads-SDK (~> 9.14.0)
   - MONActivityIndicatorView (~> 0.0.3)
   - SkeletonView (~> 1.29.2)
   - SnapKit (~> 5.6.0)
@@ -171,6 +171,6 @@ SPEC CHECKSUMS:
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 51d895995e3fced9cfbf3679ff2ef512e1252bc1
+PODFILE CHECKSUM: 2b6d61a4902a2219ec05d99e8459061ad300d005
 
 COCOAPODS: 1.11.3
