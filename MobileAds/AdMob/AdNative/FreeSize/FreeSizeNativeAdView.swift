@@ -30,6 +30,7 @@ class FreeSizeNativeAdView: GADNativeAdView, NativeViewProtocol {
         (self.iconView as? UIImageView)?.image = nativeAd.icon?.image
         self.iconView?.isHidden = nativeAd.icon == nil
         self.iconView?.layer.cornerRadius = 12
+        self.iconView?.clipsToBounds = true
         (self.starRatingView as? UIImageView)?.image = self.imageOfStars(from: nativeAd.starRating)
         self.starRatingView?.isHidden = nativeAd.starRating == nil
         

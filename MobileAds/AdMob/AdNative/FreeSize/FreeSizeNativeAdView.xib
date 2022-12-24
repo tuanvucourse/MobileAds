@@ -43,21 +43,12 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="wRg-vJ-18K">
-                            <rect key="frame" x="16" y="127" width="179" height="161"/>
+                            <rect key="frame" x="16" y="127" width="179" height="6"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="500" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZl-M2-hcX">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZl-M2-hcX">
                                     <rect key="frame" x="0.0" y="0.0" width="179" height="0.0"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                     <color key="textColor" red="0.99607843137254903" green="0.17254901960784313" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <nil key="highlightedColor"/>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                    </userDefinedRuntimeAttributes>
-                                </label>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wgJ-AX-tyd">
-                                    <rect key="frame" x="0.0" y="6" width="179" height="155"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
@@ -68,6 +59,15 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="12"/>
                                     <color key="textColor" red="0.71372549019607845" green="0.69411764705882351" blue="0.69411764705882351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wgJ-AX-tyd">
+                                    <rect key="frame" x="0.0" y="6" width="179" height="0.0"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
@@ -84,12 +84,12 @@
                             </variation>
                         </stackView>
                         <button opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pId-gB-no8" customClass="DesignableGradientButton" customModule="MobileAds" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="302" width="211" height="34"/>
+                            <rect key="frame" x="0.0" y="288" width="211" height="48"/>
                             <color key="backgroundColor" red="0.12156862745098039" green="0.57647058823529407" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="34" id="F6g-kx-OUj"/>
+                                <constraint firstAttribute="height" constant="48" id="F6g-kx-OUj"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                             <state key="normal" title="Install">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -111,7 +111,7 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="pId-gB-no8" secondAttribute="trailing" id="FUk-ZL-6Z2"/>
-                        <constraint firstItem="pId-gB-no8" firstAttribute="top" secondItem="wRg-vJ-18K" secondAttribute="bottom" constant="14" id="GIV-H2-NNE"/>
+                        <constraint firstItem="pId-gB-no8" firstAttribute="top" secondItem="wRg-vJ-18K" secondAttribute="bottom" priority="100" constant="14" id="GIV-H2-NNE"/>
                         <constraint firstItem="wRg-vJ-18K" firstAttribute="top" secondItem="lXJ-Sz-pQT" secondAttribute="bottom" constant="12" id="Kg8-du-KA8"/>
                         <constraint firstItem="pId-gB-no8" firstAttribute="leading" secondItem="ang-bg-8qJ" secondAttribute="leading" id="NQe-sI-ecB"/>
                         <constraint firstAttribute="bottom" secondItem="pId-gB-no8" secondAttribute="bottom" id="UGp-Sp-JYQ"/>
@@ -150,11 +150,11 @@
                     </variation>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ad" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mKq-th-SYp">
-                    <rect key="frame" x="0.0" y="0.0" width="22" height="16"/>
+                    <rect key="frame" x="0.0" y="0.0" width="24" height="16"/>
                     <color key="backgroundColor" red="0.99215686274509807" green="0.72156862745098038" blue="0.070588235294117646" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="16" id="PPg-bJ-SQ3"/>
-                        <constraint firstAttribute="width" constant="22" id="TCf-1U-V54"/>
+                        <constraint firstAttribute="width" constant="24" id="TCf-1U-V54"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -193,7 +193,7 @@
     </objects>
     <designables>
         <designable name="pId-gB-no8">
-            <size key="intrinsicContentSize" width="32" height="24"/>
+            <size key="intrinsicContentSize" width="38" height="27"/>
         </designable>
     </designables>
     <resources>
