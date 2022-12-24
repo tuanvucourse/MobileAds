@@ -9,8 +9,9 @@ import UIKit
 import Toast_Swift
 
 class Utils {
-    static func showToast(_ message: String, on view: UIView? = UIApplication.getTopViewController()?.view) {
-        view?.hideToast()
-        view?.makeToast(message, duration: 2.0, position: .center)
+    static func showToast(_ message: String, on view: UIView? = nil) {
+        let topView = view == nil ? UIApplication.shared.windows.last : UIApplication.getTopViewController()?.view
+        topView?.hideToast()
+        topView?.makeToast(message, duration: 2.0, position: .center)
     }
 }
