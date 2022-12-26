@@ -87,7 +87,7 @@ extension AdMobManager {
                 make.edges.equalToSuperview()
             }
         } else {
-            Utils.showToast(rewardErrorString)
+            Utils.showToast(rewardErrorString, on: UIApplication.getTopViewController()?.view)
             createAdRewardedIfNeed(unitId: unitId)
             completion?(false)
         }
