@@ -111,7 +111,7 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="pId-gB-no8" secondAttribute="trailing" id="FUk-ZL-6Z2"/>
-                        <constraint firstItem="pId-gB-no8" firstAttribute="top" secondItem="wRg-vJ-18K" secondAttribute="bottom" priority="100" constant="14" id="GIV-H2-NNE"/>
+                        <constraint firstItem="pId-gB-no8" firstAttribute="top" relation="greaterThanOrEqual" secondItem="wRg-vJ-18K" secondAttribute="bottom" constant="14" id="GIV-H2-NNE"/>
                         <constraint firstItem="wRg-vJ-18K" firstAttribute="top" secondItem="lXJ-Sz-pQT" secondAttribute="bottom" constant="12" id="Kg8-du-KA8"/>
                         <constraint firstItem="pId-gB-no8" firstAttribute="leading" secondItem="ang-bg-8qJ" secondAttribute="leading" id="NQe-sI-ecB"/>
                         <constraint firstAttribute="bottom" secondItem="pId-gB-no8" secondAttribute="bottom" id="UGp-Sp-JYQ"/>
