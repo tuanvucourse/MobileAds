@@ -47,24 +47,48 @@ extension AdMobManager {
         return listLoader.object(forKey: unitId.rawValue) as? GADAdLoader
     }
 
-    private func getAdNative(unitId: String) -> GADNativeAdView? {
-        if let adNativeView = listAd.object(forKey: unitId) as? GADNativeAdView  {
+    private func getAdNative(unitId: String) -> [GADNativeAdView] {
+        if let adNativeView = listAd.object(forKey: unitId) as? [GADNativeAdView] {
             return adNativeView
         }
-        return nil
+        return []
     }
     
-    private func createAdNativeIfNeed(unitId: AdUnitID, type: NativeAdType = .small) -> GADNativeAdView? {
-        if let adNativeView = getAdNative(unitId: unitId.rawValue) {
-            return adNativeView
-        }
-        guard
-            let nibObjects = Bundle.main.loadNibNamed(type.nibName, owner: nil, options: nil),
-            let adNativeView = nibObjects.first as? GADNativeAdView else {
-                return nil
+    private func createAdNativeView(unitId: AdUnitID, type: NativeAdType = .small, views: [UIView]) -> Bool {
+        let adNativeViews = getAdNative(unitId: unitId.rawValue)
+        if !adNativeViews.isEmpty {
+            adNativeViews.forEach { adNativeView in
+                let view = views.first(where: {$0.tag == 0})
+                view?.subviews.forEach({ viewAd in
+                    viewAd.removeFromSuperview()
+                })
+                view?.addSubview(adNativeView)
+                adNativeView.snp.makeConstraints { make in
+                    make.edges.equalToSuperview()
+                }
             }
-        listAd.setObject(adNativeView, forKey: unitId.rawValue as NSCopying)
-        return adNativeView
+           return false
+        }
+        var nativeViews: [GADNativeAdView] = []
+        views.forEach { view in
+            guard
+                let nibObjects = Bundle.main.loadNibNamed(type.nibName, owner: nil, options: nil),
+                let adNativeView = nibObjects.first as? GADNativeAdView else {
+                    return
+                }
+            view.addSubview(adNativeView)
+            adNativeView.snp.makeConstraints { make in
+                make.edges.equalToSuperview()
+            }
+            adNativeView.layoutIfNeeded()
+            adNativeView.isSkeletonable = true
+            let gradient = SkeletonGradient(baseColor: self.skeletonGradient)
+            adNativeView.showAnimatedGradientSkeleton(usingGradient: gradient, animation: SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight, duration: 0.7))
+            nativeViews.append(adNativeView)
+        }
+        
+        listAd.setObject(nativeViews, forKey: unitId.rawValue as NSCopying)
+        return true
     }
     
     private func reloadAdNative(unitId: AdUnitID) {
@@ -73,43 +97,18 @@ extension AdMobManager {
         }
     }
     
-    public func addAdNative(unitId: AdUnitID, rootVC: UIViewController, view: UIView, type: NativeAdType = .small) {
-        self.removeAd(unitId: unitId.rawValue)
-        guard let adNativeView = self.createAdNativeIfNeed(unitId: unitId, type: type) else {
-            return
+    public func addAdNative(unitId: AdUnitID, rootVC: UIViewController, views: [UIView], type: NativeAdType = .small) {
+        views.forEach{$0.tag = 0}
+        removeAd(unitId: unitId.rawValue)
+        let isNeedLoadNew = createAdNativeView(unitId: unitId, type: type, views: views)
+        if isNeedLoadNew {
+            loadAdNative(unitId: unitId, rootVC: rootVC, numberOfAds: views.count)
         }
-        
-        adNativeView.tag = 2525
-
-        if let unitData = listAd[unitId] as? GADNativeAdView, let ad = unitData.nativeAd, let adNative = adNativeView as? NativeViewProtocol {
-            adNative.bindingData(nativeAd: ad)
-
-            if let viewWithTag = view.viewWithTag(2525) {
-                viewWithTag.removeFromSuperview()
-            }
-            view.addSubview(adNativeView)
-
-            adNativeView.snp.makeConstraints { make in
-                make.edges.equalToSuperview()
-            }
-            return
-        }
-        
-        view.addSubview(adNativeView)
-        adNativeView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        adNativeView.layoutIfNeeded()
-        adNativeView.isSkeletonable = true
-        let gradient = SkeletonGradient(baseColor: self.skeletonGradient)
-        adNativeView.showAnimatedGradientSkeleton(usingGradient: gradient, animation: SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight, duration: 0.7))
-        self.loadAdNative(unitId: unitId, rootVC: rootVC)
     }
     
-    
-    private func loadAdNative(unitId: AdUnitID, rootVC: UIViewController) {
+    private func loadAdNative(unitId: AdUnitID, rootVC: UIViewController, numberOfAds: Int) {
         let multipleAdsOptions = GADMultipleAdsAdLoaderOptions()
-        multipleAdsOptions.numberOfAds = 1
+        multipleAdsOptions.numberOfAds = 2
         let adLoader = GADAdLoader(adUnitID: unitId.rawValue,
             rootViewController: rootVC,
             adTypes: [ .native ],
@@ -148,7 +147,8 @@ extension AdMobManager: GADNativeAdLoaderDelegate {
         nativeAd.paidEventHandler = { value in
             self.trackAdRevenue(value: value)
         }
-        guard let nativeAdView = self.getAdNative(unitId: adLoader.adUnitID) else {return}
+        guard let nativeAdView = self.getAdNative(unitId: adLoader.adUnitID).first(where: {$0.tag == 0}) else {return}
+        nativeAdView.tag = 2
         nativeAd.mediaContent.videoController.delegate = self
         if let nativeAdView = nativeAdView as? UnifiedNativeAdView {
             nativeAdView.hideSkeleton()
