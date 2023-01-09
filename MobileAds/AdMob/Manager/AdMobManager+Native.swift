@@ -54,20 +54,13 @@ extension AdMobManager {
         return []
     }
     
-    private func createAdNativeView(unitId: AdUnitID, type: NativeAdType = .small, views: [UIView]) -> Bool {
+    private func createAdNativeView(unitId: AdUnitID, type: NativeAdType = .small, views: [UIView]) {
         let adNativeViews = getAdNative(unitId: unitId.rawValue)
+        removeAd(unitId: unitId.rawValue)
         if !adNativeViews.isEmpty {
             adNativeViews.forEach { adNativeView in
-                let view = views.first(where: {$0.tag == 0})
-                view?.subviews.forEach({ viewAd in
-                    viewAd.removeFromSuperview()
-                })
-                view?.addSubview(adNativeView)
-                adNativeView.snp.makeConstraints { make in
-                    make.edges.equalToSuperview()
-                }
+                adNativeView.removeFromSuperview()
             }
-           return false
         }
         var nativeViews: [GADNativeAdView] = []
         views.forEach { view in
@@ -88,7 +81,6 @@ extension AdMobManager {
         }
         
         listAd.setObject(nativeViews, forKey: unitId.rawValue as NSCopying)
-        return true
     }
     
     private func reloadAdNative(unitId: AdUnitID) {
@@ -99,11 +91,8 @@ extension AdMobManager {
     
     public func addAdNative(unitId: AdUnitID, rootVC: UIViewController, views: [UIView], type: NativeAdType = .small) {
         views.forEach{$0.tag = 0}
-        removeAd(unitId: unitId.rawValue)
-        let isNeedLoadNew = createAdNativeView(unitId: unitId, type: type, views: views)
-        if isNeedLoadNew {
-            loadAdNative(unitId: unitId, rootVC: rootVC, numberOfAds: views.count)
-        }
+        createAdNativeView(unitId: unitId, type: type, views: views)
+        loadAdNative(unitId: unitId, rootVC: rootVC, numberOfAds: views.count)
     }
     
     private func loadAdNative(unitId: AdUnitID, rootVC: UIViewController, numberOfAds: Int) {
