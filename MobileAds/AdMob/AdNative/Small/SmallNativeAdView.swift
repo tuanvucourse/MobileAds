@@ -15,6 +15,7 @@ class SmallNativeAdView: GADNativeAdView, NativeViewProtocol {
     @IBOutlet weak var cstWidthBtn: NSLayoutConstraint!
     @IBOutlet weak var viewLinePrice: UIView!
     @IBOutlet weak var stackAppStore: UIStackView!
+    @IBOutlet weak var starContainerView: UIView!
     
     let (viewBackgroundColor, titleColor, _, contenColor, actionColor, backgroundAction) = AdMobManager.shared.adsNativeColor.colors
     
@@ -33,9 +34,13 @@ class SmallNativeAdView: GADNativeAdView, NativeViewProtocol {
         (self.iconView as? UIImageView)?.image = nativeAd.icon?.image
         self.iconView?.isHidden = nativeAd.icon == nil
         
-        (self.starRatingView as? UIImageView)?.image = self.imageOfStars(from: nativeAd.starRating)
-        self.starRatingView?.isHidden = nativeAd.starRating == nil
-        
+        if nativeAd.starRating != nil, nativeAd.starRating != 0 {
+            (self.starRatingView as? UIImageView)?.image = self.imageOfStars(from: nativeAd.starRating)
+            starContainerView.isHidden = false
+        } else {
+            starContainerView.removeFromSuperview()
+            starRatingView?.removeFromSuperview()
+        }
     
         if nativeAd.price == nil || nativeAd.price == "" {
             self.viewLinePrice.isHidden = true
