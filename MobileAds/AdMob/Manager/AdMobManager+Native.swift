@@ -142,6 +142,9 @@ extension AdMobManager: GADNativeAdLoaderDelegate {
         if let nativeAdView = nativeAdView as? UnifiedNativeAdView {
             nativeAdView.hideSkeleton()
             nativeAdView.bindingData(nativeAd: nativeAd)
+        } else if let nativeAdView = nativeAdView as? UnifiedNativeAdView_2 {
+            nativeAdView.hideSkeleton()
+            nativeAdView.bindingData(nativeAd: nativeAd)
         } else if let nativeAdView = nativeAdView as? SmallNativeAdView {
             nativeAdView.hideSkeleton()
             nativeAdView.bindingData(nativeAd: nativeAd)
