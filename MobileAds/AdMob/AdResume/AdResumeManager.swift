@@ -26,6 +26,7 @@ open class AdResumeManager: NSObject {
     var loadTime: Date?
     public var adResumeLoadingString = "Welcome back"
     
+    private var showVC: UIViewController?
     public var blockadDidDismissFullScreenContent: VoidBlockAds?
     public var blockAdResumeClick                : VoidBlockAds?
     
@@ -81,7 +82,7 @@ open class AdResumeManager: NSObject {
         if let ad = appOpenAd {
             print("App open ad will be displayed.")
             isShowingAd = true
-            var showVC: UIViewController? = viewController
+            showVC = viewController
             if showVC?.navigationController != nil {
                 showVC = showVC?.navigationController
                 if showVC?.tabBarController != nil {
@@ -103,15 +104,32 @@ open class AdResumeManager: NSObject {
                 loadingVC.view.removeFromSuperview()
                 loadingVC.removeFromParent()
                 loadingVC.willMove(toParent: nil)
+                self.addBackGroundViewWhenShowAd()
                 ad.present(fromRootViewController: showVC)
             }
         }
     }
+    
+    private func addBackGroundViewWhenShowAd() {
+         let backgroudView = UIView()
+         backgroudView.backgroundColor = .white
+         backgroudView.tag = 1000
+         showVC?.view.addSubview(backgroudView)
+         backgroudView.snp.makeConstraints { make in
+             make.edges.equalToSuperview()
+         }
+     }
+
+     private func removeBackGroundWhenDismissAd() {
+         showVC?.view.subviews.first(where: { $0.tag == 1000 })?.removeFromSuperview()
+     }
 }
 
 extension AdResumeManager: GADFullScreenContentDelegate {
     
     public func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        removeBackGroundWhenDismissAd()
+        showVC = nil
         appOpenAd = nil
         isShowingAd = false
         print("App open ad was dismissed.")
