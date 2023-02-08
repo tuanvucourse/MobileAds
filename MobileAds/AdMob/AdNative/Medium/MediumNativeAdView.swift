@@ -25,6 +25,11 @@ class MediumNativeAdView: GADNativeAdView, NativeViewProtocol {
         self.backgroundColor = viewBackgroundColor
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        lblAds.roundCorners(corners: [.topLeft, .bottomRight], radius: 6)
+    }
+    
     func bindingData(nativeAd: GADNativeAd) {
         hideSkeleton()
         stopSkeletonAnimation()

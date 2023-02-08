@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -84,34 +84,19 @@
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="RV9-Ul-HTG">
                             <rect key="frame" x="0.0" y="0.0" width="365" height="40"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gig-ft-SsC">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iNa-bH-h1m">
                                     <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iNa-bH-h1m">
-                                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="XcornerRadius">
-                                                    <real key="value" value="8"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                            </userDefinedRuntimeAttributes>
-                                        </imageView>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="40" id="Amz-a2-iXD"/>
-                                        <constraint firstAttribute="trailing" secondItem="iNa-bH-h1m" secondAttribute="trailing" id="FTW-Hs-RyI"/>
-                                        <constraint firstItem="iNa-bH-h1m" firstAttribute="top" secondItem="Gig-ft-SsC" secondAttribute="top" id="RKs-kp-TkV"/>
-                                        <constraint firstAttribute="bottom" secondItem="iNa-bH-h1m" secondAttribute="bottom" id="SmA-66-HUw"/>
-                                        <constraint firstItem="iNa-bH-h1m" firstAttribute="leading" secondItem="Gig-ft-SsC" secondAttribute="leading" id="jbE-VM-pWY"/>
+                                        <constraint firstAttribute="height" constant="40" id="Z1c-UV-fKj"/>
+                                        <constraint firstAttribute="width" constant="40" id="ug1-1N-XkR"/>
                                     </constraints>
                                     <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                         <userDefinedRuntimeAttribute type="number" keyPath="XcornerRadius">
                                             <real key="value" value="8"/>
                                         </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                     </userDefinedRuntimeAttributes>
-                                </view>
+                                </imageView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="auX-TY-NSs">
                                     <rect key="frame" x="49" y="0.0" width="316" height="40"/>
                                     <subviews>
@@ -147,7 +132,7 @@
                             </userDefinedRuntimeAttributes>
                         </stackView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="753" verticalCompressionResistancePriority="753" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PEQ-D9-2Vv">
-                            <rect key="frame" x="0.0" y="48" width="365" height="13"/>
+                            <rect key="frame" x="0.0" y="48" width="365" height="21"/>
                             <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="12"/>
                             <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -156,7 +141,7 @@
                             </userDefinedRuntimeAttributes>
                         </label>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Wbn-G9-7Cl">
-                            <rect key="frame" x="0.0" y="69" width="365" height="16"/>
+                            <rect key="frame" x="0.0" y="77" width="365" height="16"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xnd-bl-1p1">
                                     <rect key="frame" x="0.0" y="0.0" width="50" height="16"/>
@@ -203,11 +188,10 @@
                             </userDefinedRuntimeAttributes>
                         </stackView>
                         <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E5w-YA-UY8">
-                            <rect key="frame" x="0.0" y="93" width="365" height="44"/>
+                            <rect key="frame" x="0.0" y="101" width="365" height="36"/>
                             <color key="backgroundColor" systemColor="linkColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="KSX-Na-GdZ"/>
-                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="36" id="RTW-4d-9eh"/>
+                                <constraint firstAttribute="height" constant="36" id="RTW-4d-9eh"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="14"/>
                             <state key="normal">
