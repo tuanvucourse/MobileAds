@@ -27,10 +27,16 @@ class UnifiedNativeAdView_2: GADNativeAdView, NativeAdProtocol {
         self.backgroundColor = viewBackgroundColor
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        lblAds.roundCorners(corners: [.topLeft, .bottomRight], radius: 6)
+    }
+    
     func bindingData(nativeAd: GADNativeAd) {
         self.hideSkeleton()
         (self.headlineView as? UILabel)?.text = nativeAd.headline
         self.mediaView?.mediaContent = nativeAd.mediaContent
+        self.iconView?.isHidden = nativeAd.icon == nil
 
         let mediaContent = nativeAd.mediaContent
         if mediaContent.hasVideoContent {
@@ -65,13 +71,13 @@ class UnifiedNativeAdView_2: GADNativeAdView, NativeAdProtocol {
         self.callToActionView?.layer.cornerRadius = AdMobManager.shared.nativeButtonCornerRadius
         self.callToActionView?.layer.backgroundColor = backgroundAction.cgColor
         (self.callToActionView as? UIButton)?.setTitleColor(actionColor, for: .normal)
-        self.callToActionView?.layer.cornerRadius = AdMobManager.shared.adsNativeCornerRadiusButton
         (self.bodyView as? UILabel)?.textColor = contenColor
         (advertiserView as? UILabel)?.textColor = vertiserColor
         lblRateCount.textColor = contenColor
         (priceView as? UILabel)?.textColor = contenColor
         (self.storeView as? UILabel)?.textColor = contenColor
         (self.headlineView as? UILabel)?.textColor = titleColor
+        (self.headlineView as? UILabel)?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         lblAds.textColor = AdMobManager.shared.adNativeAdsLabelColor
         lblAds.backgroundColor = AdMobManager.shared.adNativeBackgroundAdsLabelColor
         self.backgroundColor = viewBackgroundColor
