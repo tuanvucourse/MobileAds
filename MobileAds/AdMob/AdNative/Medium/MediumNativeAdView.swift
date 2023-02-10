@@ -8,17 +8,14 @@
 import UIKit
 import GoogleMobileAds
 
-protocol NativeViewProtocol {
-    func  bindingData(nativeAd: GADNativeAd)
-}
-
-class MediumNativeAdView: GADNativeAdView, NativeViewProtocol {
+class MediumNativeAdView: GADNativeAdView, NativeAdProtocol {
     
     @IBOutlet weak var lblAds: UILabel!
     @IBOutlet weak var ratingStackView: UIStackView!
     @IBOutlet weak var starNumberLabel: UILabel!
     
     let (viewBackgroundColor, titleColor, vertiserColor, contenColor, actionColor, backgroundAction) = AdMobManager.shared.adsNativeColor.colors
+    var adUnitID: String?
     
     override func awakeFromNib() {
         super.awakeFromNib()

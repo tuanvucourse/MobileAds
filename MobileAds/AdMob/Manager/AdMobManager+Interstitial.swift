@@ -7,6 +7,7 @@
 
 import Foundation
 import GoogleMobileAds
+import FirebaseAnalytics
 
 // MARK: - GADInterstitial
 extension AdMobManager: GADFullScreenContentDelegate {
@@ -42,7 +43,7 @@ extension AdMobManager: GADFullScreenContentDelegate {
             }
             ad.fullScreenContentDelegate = self
             ad.paidEventHandler = { value in
-                self.trackAdRevenue(value: value)
+                self.trackAdRevenue(value: value, unitId: ad.adUnitID)
             }
             self.listAd.setObject(ad, forKey: unitId.rawValue as NSCopying)
             self.blockLoadFullScreenAdSuccess?(unitId.rawValue)
@@ -141,6 +142,10 @@ extension AdMobManager: GADFullScreenContentDelegate {
     
     public func adDidRecordClick(_ ad: GADFullScreenPresentingAd) {
         blockFullScreenAdClick?()
+        if let ad = ad as? GADInterstitialAd {
+            logEvenClick(id: ad.adUnitID)
+        } else if let ad = ad as? GADRewardedAd {
+            logEvenClick(id: ad.adUnitID)
+        }
     }
-    
 }

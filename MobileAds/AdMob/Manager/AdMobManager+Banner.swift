@@ -8,6 +8,7 @@
 import Foundation
 import GoogleMobileAds
 import SkeletonView
+import FirebaseAnalytics
 
 // MARK: - GADBannerView
 extension AdMobManager: GADBannerViewDelegate {
@@ -24,9 +25,9 @@ extension AdMobManager: GADBannerViewDelegate {
             return adBannerView
         }
         let adBannerView = GADBannerView()
-       adBannerView.adUnitID = unitId.rawValue
+        adBannerView.adUnitID = unitId.rawValue
         adBannerView.paidEventHandler = { value in
-            self.trackAdRevenue(value: value)
+            self.trackAdRevenue(value: value, unitId: adBannerView.adUnitID ?? "")
         }
        listAd.setObject(adBannerView, forKey: unitId.rawValue as NSCopying)
         return adBannerView
@@ -103,6 +104,7 @@ extension AdMobManager: GADBannerViewDelegate {
     
     public func bannerViewDidRecordClick(_ bannerView: GADBannerView) {
         blockBannerClick?(bannerView.adUnitID ?? "")
+        AdMobManager.shared.logEvenClick(id: bannerView.adUnitID ?? "")
     }
     
 }

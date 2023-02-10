@@ -7,6 +7,7 @@
 
 import GoogleMobileAds
 import UIKit
+import FirebaseAnalytics
 
 protocol AdResumeManagerDelegate: AnyObject {
     func appOpenAdManagerAdDidComplete(_ appOpenAdManager: AdResumeManager)
@@ -100,6 +101,11 @@ open class AdResumeManager: NSObject {
             loadingVC.view.snp.makeConstraints { make in
                 make.edges.equalToSuperview()
             }
+            
+            ad.paidEventHandler = { [weak self] value in
+                AdMobManager.shared.trackAdRevenue(value: value, unitId: self?.resumeAdId?.rawValue ?? "")
+            }
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 loadingVC.view.removeFromSuperview()
                 loadingVC.removeFromParent()
@@ -153,6 +159,9 @@ extension AdResumeManager: GADFullScreenContentDelegate {
     
     public func adDidRecordClick(_ ad: GADFullScreenPresentingAd) {
         blockAdResumeClick?()
+        if ad is GADAppOpenAd {
+            AdMobManager.shared.logEvenClick(id: resumeAdId?.rawValue ?? "")
+        }
     }
 }
 
