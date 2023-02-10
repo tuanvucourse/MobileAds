@@ -17,6 +17,7 @@ class UnifiedNativeAdView: GADNativeAdView, NativeAdProtocol {
     @IBOutlet weak var lblRateCount: UILabel!
     
     let (viewBackgroundColor, titleColor, vertiserColor, contenColor, actionColor, backgroundAction) = AdMobManager.shared.adsNativeColor.colors
+    var adUnitID: String?
     
     override func awakeFromNib() {
         super.awakeFromNib()

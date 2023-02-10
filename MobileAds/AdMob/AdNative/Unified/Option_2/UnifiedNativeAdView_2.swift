@@ -11,6 +11,8 @@ import GoogleMobileAds
 import SkeletonView
 
 protocol NativeAdProtocol {
+    var adUnitID: String? {get set}
+    
     func bindingData(nativeAd: GADNativeAd)
 }
 
@@ -21,6 +23,7 @@ class UnifiedNativeAdView_2: GADNativeAdView, NativeAdProtocol {
     @IBOutlet weak var lblRateCount: UILabel!
     
     let (viewBackgroundColor, titleColor, vertiserColor, contenColor, actionColor, backgroundAction) = AdMobManager.shared.adsNativeColor.colors
+    var adUnitID: String?
     
     override func awakeFromNib() {
         super.awakeFromNib()

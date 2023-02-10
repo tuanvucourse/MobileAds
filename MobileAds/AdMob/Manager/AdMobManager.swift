@@ -10,6 +10,7 @@ import UIKit
 import GoogleMobileAds
 import SkeletonView
 import Adjust
+import FirebaseAnalytics
 
 //    MARK: - Google-provided demo ad units
 public struct SampleAdUnitID {
@@ -102,11 +103,16 @@ open class AdMobManager: NSObject {
     }
     
     //    MARK: - Track Ad Revenue
-    func trackAdRevenue(value: GADAdValue) {
+    func trackAdRevenue(value: GADAdValue, unitId: String) {
+        Analytics.logEvent("ad_impression_value", parameters: ["adunitid" : unitId, "value" : "\(value.value.doubleValue)"])
         if let adRevenue = ADJAdRevenue(source: ADJAdRevenueSourceAdMob) {
             adRevenue.setRevenue(value.value.doubleValue, currency: value.currencyCode)
             Adjust.trackAdRevenue(adRevenue)
         }
+    }
+    
+    func logEvenClick(id: String) {
+        Analytics.logEvent("user_click_ads", parameters: ["adunitid" : id])
     }
     
 }

@@ -9,11 +9,12 @@ import UIKit
 import GoogleMobileAds
 import SkeletonView
 
-class FreeSizeNativeAdView: GADNativeAdView, NativeViewProtocol {
-    
+class FreeSizeNativeAdView: GADNativeAdView, NativeAdProtocol {
+
     @IBOutlet weak var lblAds: UILabel!
     
     let (viewBackgroundColor, titleColor, _, contenColor, actionColor, backgroundAction) = AdMobManager.shared.adsNativeColor.colors
+    var adUnitID: String?
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -8,6 +8,7 @@
 import Foundation
 import GoogleMobileAds
 import SkeletonView
+import FirebaseAnalytics
 
 public enum OptionAdType {
     case option_1
@@ -112,6 +113,34 @@ extension AdMobManager {
 extension AdMobManager: GADNativeAdDelegate {
     public func nativeAdDidRecordClick(_ nativeAd: GADNativeAd) {
         print("ad==> nativeAdDidRecordClick ")
+        logEventNative(nativeAd: nativeAd)
+    }
+    
+    func logEventNative(nativeAd: GADNativeAd) {
+        let adViews = listAd.allValues
+        adViews.forEach { ad in
+            if let nativeAdViews = ad as? [UnifiedNativeAdView] {
+                if let ad = nativeAdViews.first(where: {$0.nativeAd == nativeAd}) {
+                    logEvenClick(id: ad.adUnitID ?? "")
+                }
+            } else if let nativeAdViews = ad as? [UnifiedNativeAdView_2] {
+                if let ad = nativeAdViews.first(where: {$0.nativeAd == nativeAd}) {
+                    logEvenClick(id: ad.adUnitID ?? "")
+                }
+            } else if let nativeAdViews = ad as? [SmallNativeAdView] {
+                if let ad = nativeAdViews.first(where: {$0.nativeAd == nativeAd}) {
+                    logEvenClick(id: ad.adUnitID ?? "")
+                }
+            } else if let nativeAdViews = ad as? [MediumNativeAdView] {
+                if let ad = nativeAdViews.first(where: {$0.nativeAd == nativeAd}) {
+                    logEvenClick(id: ad.adUnitID ?? "")
+                }
+            } else if let nativeAdViews = ad as? [FreeSizeNativeAdView] {
+                if let ad = nativeAdViews.first(where: {$0.nativeAd == nativeAd}) {
+                    logEvenClick(id: ad.adUnitID ?? "")
+                }
+            }
+        }
     }
 }
 
@@ -134,24 +163,29 @@ extension AdMobManager: GADNativeAdLoaderDelegate {
     public func adLoader(_ adLoader: GADAdLoader, didReceive nativeAd: GADNativeAd) {
         nativeAd.delegate = self
         nativeAd.paidEventHandler = { value in
-            self.trackAdRevenue(value: value)
+            self.trackAdRevenue(value: value, unitId: adLoader.adUnitID)
         }
         guard let nativeAdView = self.getAdNative(unitId: adLoader.adUnitID).first(where: {$0.tag == 0}) else {return}
         nativeAdView.tag = 2
         nativeAd.mediaContent.videoController.delegate = self
         if let nativeAdView = nativeAdView as? UnifiedNativeAdView {
+            nativeAdView.adUnitID = adLoader.adUnitID
             nativeAdView.hideSkeleton()
             nativeAdView.bindingData(nativeAd: nativeAd)
         } else if let nativeAdView = nativeAdView as? UnifiedNativeAdView_2 {
+            nativeAdView.adUnitID = adLoader.adUnitID
             nativeAdView.hideSkeleton()
             nativeAdView.bindingData(nativeAd: nativeAd)
         } else if let nativeAdView = nativeAdView as? SmallNativeAdView {
+            nativeAdView.adUnitID = adLoader.adUnitID
             nativeAdView.hideSkeleton()
             nativeAdView.bindingData(nativeAd: nativeAd)
         } else if let nativeAdView = nativeAdView as? MediumNativeAdView {
+            nativeAdView.adUnitID = adLoader.adUnitID
             nativeAdView.hideSkeleton()
             nativeAdView.bindingData(nativeAd: nativeAd)
         } else if let nativeAdView = nativeAdView as? FreeSizeNativeAdView {
+            nativeAdView.adUnitID = adLoader.adUnitID
             nativeAdView.bindingData(nativeAd: nativeAd)
         }
     }

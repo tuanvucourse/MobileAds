@@ -45,7 +45,7 @@ extension AdMobManager {
             }
             ad.fullScreenContentDelegate = self
             ad.paidEventHandler = { value in
-                self?.trackAdRevenue(value: value)
+                self?.trackAdRevenue(value: value, unitId: ad.adUnitID)
             }
             self?.listAd.setObject(ad, forKey: unitId.rawValue as NSCopying)
             self?.blockLoadFullScreenAdSuccess?(unitId.rawValue)
