@@ -76,7 +76,7 @@ extension AdMobManager: GADFullScreenContentDelegate {
                     self?.isSplash = true
                     self?.showIntertitial(unitId: unitId, blockWillDismiss: blockWillDismiss, blockDidDismiss: blockDidDismiss)
                 } else {
-                    blockDidDismiss?()
+                    blockWillDismiss?()
                 }
             }
            return
