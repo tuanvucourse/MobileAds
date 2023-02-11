@@ -21,6 +21,11 @@ class FreeSizeNativeAdView: GADNativeAdView, NativeAdProtocol {
         self.backgroundColor = viewBackgroundColor
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        lblAds.roundCorners(corners: [.topLeft, .bottomRight], radius: 6)
+    }
+    
     func bindingData(nativeAd: GADNativeAd) {
         self.hideSkeleton()
         (self.headlineView as? UILabel)?.text = nativeAd.headline
