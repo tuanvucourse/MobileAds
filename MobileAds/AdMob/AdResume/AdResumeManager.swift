@@ -25,6 +25,7 @@ open class AdResumeManager: NSObject {
     var appOpenAd: GADAppOpenAd?
     weak var appOpenAdManagerDelegate: AdResumeManagerDelegate?
     var loadTime: Date?
+    var backgroudView = UIView()
     public var adResumeLoadingString = "Welcome back"
     
     private var showVC: UIViewController?
@@ -117,17 +118,17 @@ open class AdResumeManager: NSObject {
     }
     
     private func addBackGroundViewWhenShowAd() {
-         let backgroudView = UIView()
+         backgroudView = UIView()
          backgroudView.backgroundColor = .white
          backgroudView.tag = 1000
-         showVC?.view.addSubview(backgroudView)
+         UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.addSubview(backgroudView)
          backgroudView.snp.makeConstraints { make in
              make.edges.equalToSuperview()
          }
      }
 
      private func removeBackGroundWhenDismissAd() {
-         showVC?.view.subviews.first(where: { $0.tag == 1000 })?.removeFromSuperview()
+         backgroudView.removeFromSuperview()
      }
 }
 
