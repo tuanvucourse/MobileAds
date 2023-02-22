@@ -15,6 +15,7 @@ protocol AdResumeManagerDelegate: AnyObject {
 }
  
 open class AdResumeManager: NSObject {
+    var backgroudView = UIView()
     public static let shared = AdResumeManager()
     
     public let timeoutInterval: TimeInterval = 4 * 3600
@@ -25,7 +26,6 @@ open class AdResumeManager: NSObject {
     var appOpenAd: GADAppOpenAd?
     weak var appOpenAdManagerDelegate: AdResumeManagerDelegate?
     var loadTime: Date?
-    var backgroudView = UIView()
     public var adResumeLoadingString = "Welcome back"
     
     private var showVC: UIViewController?
