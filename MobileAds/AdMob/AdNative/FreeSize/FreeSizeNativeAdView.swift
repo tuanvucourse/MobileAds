@@ -53,7 +53,7 @@ class FreeSizeNativeAdView: GADNativeAdView, NativeAdProtocol {
         (self.bodyView as? UILabel)?.textColor = contenColor
         (self.headlineView as? UILabel)?.textColor = titleColor
         lblAds.textColor = AdMobManager.shared.adNativeAdsLabelColor
-        lblAds.backgroundColor = AdMobManager.shared.adNativeBackgroundAdsLabelColor
+        lblAds.backgroundColor = backgroundAction
         self.backgroundColor = viewBackgroundColor
         layer.borderWidth = AdMobManager.shared.adsNativeBorderWidth
         layer.borderColor = AdMobManager.shared.adsNativeBorderColor.cgColor
