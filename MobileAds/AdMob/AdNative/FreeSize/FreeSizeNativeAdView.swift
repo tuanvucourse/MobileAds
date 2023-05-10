@@ -47,13 +47,18 @@ class FreeSizeNativeAdView: GADNativeAdView, NativeAdProtocol {
             (self.bodyView as? UILabel)?.text = nativeAd.body
         }
         
-        (self.callToActionView as? UIButton)?.backgroundColor = backgroundAction
+        if backgroundAction.count > 1 {
+            self.callToActionView?.gradient(startColor: backgroundAction.first!, endColor: backgroundAction.last!, cornerRadius: AdMobManager.shared.nativeButtonCornerRadius)
+        } else {
+            (self.callToActionView as? UIButton)?.backgroundColor = backgroundAction.first
+            self.callToActionView?.layer.cornerRadius = 0
+        }
+        
         (self.callToActionView as? UIButton)?.setTitleColor(actionColor, for: .normal)
-        self.callToActionView?.layer.cornerRadius = 0
         (self.bodyView as? UILabel)?.textColor = contenColor
         (self.headlineView as? UILabel)?.textColor = titleColor
         lblAds.textColor = AdMobManager.shared.adNativeAdsLabelColor
-        lblAds.backgroundColor = backgroundAction
+        lblAds.backgroundColor = backgroundAction.first
         self.backgroundColor = viewBackgroundColor
         layer.borderWidth = AdMobManager.shared.adsNativeBorderWidth
         layer.borderColor = AdMobManager.shared.adsNativeBorderColor.cgColor

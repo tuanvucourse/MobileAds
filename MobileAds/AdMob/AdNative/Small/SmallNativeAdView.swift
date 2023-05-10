@@ -66,9 +66,13 @@ class SmallNativeAdView: GADNativeAdView, NativeAdProtocol {
 //            (self.advertiserView as? UILabel)?.text = nativeAd.body
 //        }
         
-        (self.callToActionView as? UIButton)?.backgroundColor = backgroundAction
+        if backgroundAction.count > 1 {
+            self.callToActionView?.gradient(startColor: backgroundAction.first!, endColor: backgroundAction.last!, cornerRadius: AdMobManager.shared.adsNativeCornerRadiusButton)
+        } else {
+            self.callToActionView?.layer.backgroundColor = backgroundAction.first?.cgColor
+            self.callToActionView?.layer.cornerRadius = AdMobManager.shared.adsNativeCornerRadiusButton
+        }
         (self.callToActionView as? UIButton)?.setTitleColor(actionColor, for: .normal)
-        self.callToActionView?.layer.cornerRadius = AdMobManager.shared.adsNativeCornerRadiusButton
         (self.bodyView as? UILabel)?.textColor = contenColor
         (self.headlineView as? UILabel)?.textColor = titleColor
         lblAds.textColor = AdMobManager.shared.adNativeAdsLabelColor

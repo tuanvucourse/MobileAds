@@ -56,8 +56,12 @@ class MediumNativeAdView: GADNativeAdView, NativeAdProtocol {
         advertiserView?.isHidden = nativeAd.advertiser == nil
                 
         (self.callToActionView as? UIButton)?.setTitleColor(actionColor, for: .normal)
-        self.callToActionView?.backgroundColor = backgroundAction
-        self.callToActionView?.layer.cornerRadius = AdMobManager.shared.adsNativeCornerRadiusButton
+        if backgroundAction.count > 1 {
+            self.callToActionView?.gradient(startColor: backgroundAction.first!, endColor: backgroundAction.last!, cornerRadius: AdMobManager.shared.adsNativeCornerRadiusButton)
+        } else {
+            self.callToActionView?.layer.backgroundColor = backgroundAction.first?.cgColor
+            self.callToActionView?.layer.cornerRadius = AdMobManager.shared.adsNativeCornerRadiusButton
+        }
         (self.bodyView as? UILabel)?.textColor = contenColor
         (self.advertiserView as? UILabel)?.textColor = vertiserColor
         starNumberLabel.textColor = contenColor
