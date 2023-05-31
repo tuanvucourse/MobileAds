@@ -13,6 +13,7 @@ class MediumNativeAdView: GADNativeAdView, NativeAdProtocol {
     @IBOutlet weak var lblAds: UILabel!
     @IBOutlet weak var ratingStackView: UIStackView!
     @IBOutlet weak var starNumberLabel: UILabel!
+    @IBOutlet weak var actionButtonHeightConstraint: NSLayoutConstraint!
     
     let (viewBackgroundColor, titleColor, vertiserColor, contenColor, actionColor, backgroundAction) = AdMobManager.shared.adsNativeColor.colors
     var adUnitID: String?
@@ -25,6 +26,7 @@ class MediumNativeAdView: GADNativeAdView, NativeAdProtocol {
     override func layoutSubviews() {
         super.layoutSubviews()
         lblAds.roundCorners(corners: [.topLeft, .bottomRight], radius: 6)
+        actionButtonHeightConstraint.constant = AdMobManager.shared.adsNativeMediumHeightButton
     }
     
     func bindingData(nativeAd: GADNativeAd) {
