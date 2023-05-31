@@ -69,6 +69,7 @@ open class AdMobManager: NSObject {
     public var adsNativeCornerRadius:            CGFloat = 4
     public var adsNativeBorderWidth:             CGFloat = 1
     public var adsNativeSmallWidthButton:        CGFloat = 80
+    public var adsNativeMediumHeightButton:      CGFloat = 48
    
     public var adsNativeBorderColor:             UIColor = .clear
     public var adNativeAdsLabelColor:            UIColor = .white
