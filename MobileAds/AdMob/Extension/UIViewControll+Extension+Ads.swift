@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import MONActivityIndicatorView
 import SnapKit
 
 extension UIViewController {
