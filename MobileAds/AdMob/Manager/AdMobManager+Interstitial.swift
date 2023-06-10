@@ -77,6 +77,7 @@ extension AdMobManager: GADFullScreenContentDelegate {
                     self?.showIntertitial(unitId: unitId, blockWillDismiss: blockWillDismiss, blockDidDismiss: blockDidDismiss)
                 } else {
                     blockWillDismiss?()
+                    blockDidDismiss?()
                 }
             }
            return
@@ -109,6 +110,7 @@ extension AdMobManager: GADFullScreenContentDelegate {
         } else {
             createAdInterstitialIfNeed(unitId: unitId)
             blockWillDismiss?()
+            blockDidDismiss?()
         }
     }
     
