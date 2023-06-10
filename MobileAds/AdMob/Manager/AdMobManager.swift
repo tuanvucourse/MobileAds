@@ -105,11 +105,11 @@ open class AdMobManager: NSObject {
     
     //    MARK: - Track Ad Revenue
     func trackAdRevenue(value: GADAdValue, unitId: String) {
-        Analytics.logEvent("ad_impression_value", parameters: ["adunitid" : unitId, "value" : "\(value.value.doubleValue)"])
+//        Analytics.logEvent("ad_impression_value", parameters: ["adunitid" : unitId, "value" : "\(value.value.doubleValue)"])
     }
     
     func logEvenClick(id: String) {
-        Analytics.logEvent("user_click_ads", parameters: ["adunitid" : id])
+//        Analytics.logEvent("user_click_ads", parameters: ["adunitid" : id])
     }
     
 }
