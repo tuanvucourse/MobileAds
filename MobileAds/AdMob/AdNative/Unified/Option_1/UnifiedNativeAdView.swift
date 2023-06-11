@@ -26,7 +26,7 @@ class UnifiedNativeAdView: GADNativeAdView, NativeAdProtocol {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        lblAds.roundCorners(corners: [.topLeft, .bottomRight], radius: 6)
+        lblAds.layer.cornerRadius = 2
     }
     
     func bindingData(nativeAd: GADNativeAd) {

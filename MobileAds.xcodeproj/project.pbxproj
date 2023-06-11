@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		042F528227D8E09E008D5330 /* MobileAds.docc in Sources */ = {isa = PBXBuildFile; fileRef = 042F528127D8E09E008D5330 /* MobileAds.docc */; };
 		042F528327D8E09E008D5330 /* MobileAds.h in Headers */ = {isa = PBXBuildFile; fileRef = 042F528027D8E09E008D5330 /* MobileAds.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0E7215CB2A36224700759DCA /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E7215CA2A36224700759DCA /* close.png */; };
 		760580AC27E3221800975794 /* TestAdsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760580AB27E3221800975794 /* TestAdsTests.swift */; };
 		760580B627E3221800975794 /* TestAdsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760580B527E3221800975794 /* TestAdsUITests.swift */; };
 		760580B827E3221800975794 /* TestAdsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760580B727E3221800975794 /* TestAdsUITestsLaunchTests.swift */; };
@@ -70,6 +71,7 @@
 		042F527D27D8E09E008D5330 /* MobileAds.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MobileAds.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		042F528027D8E09E008D5330 /* MobileAds.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MobileAds.h; sourceTree = "<group>"; };
 		042F528127D8E09E008D5330 /* MobileAds.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = MobileAds.docc; sourceTree = "<group>"; };
+		0E7215CA2A36224700759DCA /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
 		3D6191E3A787BACD7741EE30 /* Pods-MobileAds.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileAds.release.xcconfig"; path = "Target Support Files/Pods-MobileAds/Pods-MobileAds.release.xcconfig"; sourceTree = "<group>"; };
 		760580A727E3221800975794 /* TestAdsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestAdsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		760580AB27E3221800975794 /* TestAdsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAdsTests.swift; sourceTree = "<group>"; };
@@ -350,6 +352,7 @@
 		7667C7882836001700D47F77 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				0E7215CA2A36224700759DCA /* close.png */,
 				76A495A428365022008685CF /* stars_3_5.png */,
 				76A495A728365022008685CF /* stars_4_5.png */,
 				76A495A628365022008685CF /* stars_4.png */,
@@ -563,6 +566,7 @@
 				762F554A281A709E0000FB10 /* AdFullScreenLoadingVC.xib in Resources */,
 				762F554F281A709E0000FB10 /* AdBannerBottomVC.xib in Resources */,
 				76A495AA28365022008685CF /* stars_4.png in Resources */,
+				0E7215CB2A36224700759DCA /* close.png in Resources */,
 				76A495A828365022008685CF /* stars_3_5.png in Resources */,
 				76A495AB28365022008685CF /* stars_4_5.png in Resources */,
 				76A495A928365022008685CF /* stars_5.png in Resources */,
