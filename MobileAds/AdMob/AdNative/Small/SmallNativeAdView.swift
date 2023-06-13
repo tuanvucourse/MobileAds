@@ -11,6 +11,7 @@ import SkeletonView
 
 class SmallNativeAdView: GADNativeAdView, NativeAdProtocol {
 
+    @IBOutlet weak var boundView: UIView!
     @IBOutlet weak var lblAds: UILabel!
     @IBOutlet weak var cstWidthBtn: NSLayoutConstraint!
     @IBOutlet weak var viewLinePrice: UIView!
@@ -27,7 +28,8 @@ class SmallNativeAdView: GADNativeAdView, NativeAdProtocol {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        lblAds.roundCorners(corners: [.topLeft, .bottomRight], radius: 6)
+        lblAds.layer.cornerRadius = 4
+        boundView.layer.cornerRadius = 8
     }
     
     func bindingData(nativeAd: GADNativeAd) {
@@ -40,13 +42,13 @@ class SmallNativeAdView: GADNativeAdView, NativeAdProtocol {
         (self.iconView as? UIImageView)?.image = nativeAd.icon?.image
         self.iconView?.isHidden = nativeAd.icon == nil
         
-        if nativeAd.starRating != nil, nativeAd.starRating != 0 {
-            (self.starRatingView as? UIImageView)?.image = self.imageOfStars(from: nativeAd.starRating)
-            starContainerView.isHidden = false
-        } else {
+//        if nativeAd.starRating != nil, nativeAd.starRating != 0 {
+//            (self.starRatingView as? UIImageView)?.image = self.imageOfStars(from: nativeAd.starRating)
+//            starContainerView.isHidden = false
+//        } else {
             starContainerView.removeFromSuperview()
             starRatingView?.removeFromSuperview()
-        }
+//        }
     
         if nativeAd.price == nil || nativeAd.price == "" {
             self.viewLinePrice.isHidden = true
@@ -77,7 +79,7 @@ class SmallNativeAdView: GADNativeAdView, NativeAdProtocol {
         (self.headlineView as? UILabel)?.textColor = titleColor
         lblAds.textColor = AdMobManager.shared.adNativeAdsLabelColor
         lblAds.backgroundColor = AdMobManager.shared.adNativeBackgroundAdsLabelColor
-        self.backgroundColor = viewBackgroundColor
+        self.backgroundColor = .clear//viewBackgroundColor
         layer.borderWidth = AdMobManager.shared.adsNativeBorderWidth
         layer.borderColor = AdMobManager.shared.adsNativeBorderColor.cgColor
         layer.cornerRadius = AdMobManager.shared.adsNativeCornerRadius
