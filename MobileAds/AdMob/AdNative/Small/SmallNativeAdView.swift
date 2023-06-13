@@ -30,6 +30,7 @@ class SmallNativeAdView: GADNativeAdView, NativeAdProtocol {
         super.layoutSubviews()
         lblAds.layer.cornerRadius = 4
         boundView.layer.cornerRadius = 8
+        boundView.clipsToBounds = true
     }
     
     func bindingData(nativeAd: GADNativeAd) {
