@@ -11,7 +11,7 @@ import SkeletonView
 
 class SmallNativeAdView: GADNativeAdView, NativeAdProtocol {
 
-    @IBOutlet weak var boundView: UIView!
+    @IBOutlet weak var borderView: UIView!
     @IBOutlet weak var lblAds: UILabel!
     @IBOutlet weak var cstWidthBtn: NSLayoutConstraint!
     @IBOutlet weak var viewLinePrice: UIView!
@@ -29,8 +29,8 @@ class SmallNativeAdView: GADNativeAdView, NativeAdProtocol {
     override func layoutSubviews() {
         super.layoutSubviews()
         lblAds.layer.cornerRadius = 4
-        boundView.layer.cornerRadius = 8
-        boundView.clipsToBounds = true
+        borderView.layer.cornerRadius = 8
+        borderView.clipsToBounds = true
     }
     
     func bindingData(nativeAd: GADNativeAd) {
