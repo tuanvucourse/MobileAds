@@ -105,7 +105,12 @@ open class AdResumeManager: NSObject {
             }
             
             ad.paidEventHandler = { [weak self] value in
-                AdMobManager.shared.trackAdRevenue(value: value, unitId: self?.resumeAdId?.rawValue ?? "")
+                let responseInfo = ad.responseInfo.loadedAdNetworkResponseInfo
+                self?.blockLoadAdsOpenSuccess?(self?.resumeAdId?.rawValue ?? "",
+                                               value.precision.rawValue,
+                                               Int(truncating: value.value),
+                                               responseInfo?.adSourceID ?? "",
+                                               responseInfo?.adSourceName ?? "")
             }
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -197,14 +202,6 @@ extension AdResumeManager: GADFullScreenContentDelegate {
     public func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         isShowingAd = true
         print("App open ad is presented.")
-        appOpenAd?.paidEventHandler = {[weak self] value in
-            let responseInfo = self?.appOpenAd?.responseInfo.loadedAdNetworkResponseInfo
-            self?.blockLoadAdsOpenSuccess?(self?.resumeAdId?.rawValue ?? "",
-                                           value.precision.rawValue,
-                                           Int(truncating: value.value),
-                                           responseInfo?.adSourceID ?? "",
-                                           responseInfo?.adSourceName ?? "")
-        }
     }
     
     public func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {

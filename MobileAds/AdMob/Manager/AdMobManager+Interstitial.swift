@@ -42,8 +42,13 @@ extension AdMobManager: GADFullScreenContentDelegate {
                 return
             }
             ad.fullScreenContentDelegate = self
-            ad.paidEventHandler = { value in
-                self.trackAdRevenue(value: value, unitId: ad.adUnitID)
+            ad.paidEventHandler = {[weak self] value in
+                let responseInfo = ad.responseInfo.loadedAdNetworkResponseInfo
+                self?.blockLoadInterstitialAdSuccess?(ad.adUnitID,
+                                                      value.precision.rawValue,
+                                                      Int(truncating: value.value),
+                                                      responseInfo?.adSourceID ?? "",
+                                                      responseInfo?.adSourceName ?? "")
             }
             self.listAd.setObject(ad, forKey: unitId.rawValue as NSCopying)
             self.blockLoadFullScreenAdSuccess?(unitId.rawValue)
@@ -131,25 +136,6 @@ extension AdMobManager: GADFullScreenContentDelegate {
     public func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         print("Ad did present full screen content.")
         blockCompletionHandeler?(true)
-        if let ad = ad as? GADInterstitialAd {
-            ad.paidEventHandler = {[weak self] value in
-                let responseInfo = ad.responseInfo.loadedAdNetworkResponseInfo
-                self?.blockLoadInterstitialAdSuccess?(ad.adUnitID,
-                                                      value.precision.rawValue,
-                                                      Int(truncating: value.value),
-                                                      responseInfo?.adSourceID ?? "",
-                                                      responseInfo?.adSourceName ?? "")
-            }
-        } else if let ad = ad as? GADRewardedAd {
-            ad.paidEventHandler = {[weak self] value in
-                let responseInfo = ad.responseInfo.loadedAdNetworkResponseInfo
-                self?.blockLoadRewardedAdSuccess?(ad.adUnitID,
-                                                  value.precision.rawValue,
-                                                  Int(truncating: value.value),
-                                                  responseInfo?.adSourceID ?? "",
-                                                  responseInfo?.adSourceName ?? "")
-            }
-        }
     }
     
     /// Tells the delegate that the ad dismissed full screen content.

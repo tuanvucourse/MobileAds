@@ -26,8 +26,13 @@ extension AdMobManager: GADBannerViewDelegate {
         }
         let adBannerView = GADBannerView()
         adBannerView.adUnitID = unitId.rawValue
-        adBannerView.paidEventHandler = { value in
-            self.trackAdRevenue(value: value, unitId: adBannerView.adUnitID ?? "")
+        adBannerView.paidEventHandler = {[weak self] value in
+            let responseInfo = adBannerView.responseInfo?.loadedAdNetworkResponseInfo
+            self?.blockLoadBannerSuccess?(unitId.rawValue,
+                                          value.precision.rawValue,
+                                          Int(truncating: value.value),
+                                          responseInfo?.adSourceID ?? "",
+                                          responseInfo?.adSourceName ?? "")
         }
        listAd.setObject(adBannerView, forKey: unitId.rawValue as NSCopying)
         return adBannerView
@@ -102,14 +107,6 @@ extension AdMobManager: GADBannerViewDelegate {
         bannerView.delegate = nil
         bannerView.hideSkeleton()
         bannerView.superview?.hideSkeleton()
-        bannerView.paidEventHandler = {[weak self] value in
-            let responseInfo = bannerView.responseInfo?.loadedAdNetworkResponseInfo
-            self?.blockLoadBannerSuccess?(bannerView.adUnitID ?? "",
-                                          value.precision.rawValue,
-                                          Int(truncating: value.value),
-                                          responseInfo?.adSourceID ?? "",
-                                          responseInfo?.adSourceName ?? "")
-        }
     }
     
     public func bannerViewDidRecordClick(_ bannerView: GADBannerView) {
