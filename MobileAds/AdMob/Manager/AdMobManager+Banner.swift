@@ -102,12 +102,19 @@ extension AdMobManager: GADBannerViewDelegate {
         bannerView.delegate = nil
         bannerView.hideSkeleton()
         bannerView.superview?.hideSkeleton()
-        blockLoadBannerSuccess?(true)
+        bannerView.paidEventHandler = {[weak self] value in
+            let responseInfo = bannerView.responseInfo?.loadedAdNetworkResponseInfo
+            self?.blockLoadBannerSuccess?(bannerView.adUnitID ?? "",
+                                          value.precision.rawValue,
+                                          Int(truncating: value.value),
+                                          responseInfo?.adSourceID ?? "",
+                                          responseInfo?.adSourceName ?? "")
+        }
     }
     
     public func bannerViewDidRecordClick(_ bannerView: GADBannerView) {
         blockBannerClick?(bannerView.adUnitID ?? "")
-        AdMobManager.shared.logEvenClick(id: bannerView.adUnitID ?? "")
+        AdMobManager.shared.logEvenClick(format: "ad_banner")
     }
     
 }

@@ -31,7 +31,8 @@ open class AdResumeManager: NSObject {
     private var showVC: UIViewController?
     public var blockadDidDismissFullScreenContent: VoidBlockAds?
     public var blockAdResumeClick                : VoidBlockAds?
-    
+    public var blockLoadAdsOpenSuccess: LogAdsOpenLoadSuccess?
+
     private func wasLoadTimeLessThanNHoursAgo(timeoutInterval: TimeInterval) -> Bool {
         // Check if ad was loaded more than n hours ago.
         if let loadTime = loadTime {
@@ -106,7 +107,7 @@ open class AdResumeManager: NSObject {
             ad.paidEventHandler = { [weak self] value in
                 AdMobManager.shared.trackAdRevenue(value: value, unitId: self?.resumeAdId?.rawValue ?? "")
             }
-            
+
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 loadingVC.view.removeFromSuperview()
                 loadingVC.removeFromParent()
@@ -196,6 +197,14 @@ extension AdResumeManager: GADFullScreenContentDelegate {
     public func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         isShowingAd = true
         print("App open ad is presented.")
+        appOpenAd?.paidEventHandler = {[weak self] value in
+            let responseInfo = self?.appOpenAd?.responseInfo.loadedAdNetworkResponseInfo
+            self?.blockLoadAdsOpenSuccess?(self?.resumeAdId?.rawValue ?? "",
+                                           value.precision.rawValue,
+                                           Int(truncating: value.value),
+                                           responseInfo?.adSourceID ?? "",
+                                           responseInfo?.adSourceName ?? "")
+        }
     }
     
     public func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
@@ -209,7 +218,7 @@ extension AdResumeManager: GADFullScreenContentDelegate {
     public func adDidRecordClick(_ ad: GADFullScreenPresentingAd) {
         blockAdResumeClick?()
         if ad is GADAppOpenAd {
-            AdMobManager.shared.logEvenClick(id: resumeAdId?.rawValue ?? "")
+            AdMobManager.shared.logEvenClick(format: "ad_open_ads_resume")
         }
     }
 }

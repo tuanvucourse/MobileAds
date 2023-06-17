@@ -119,27 +119,28 @@ extension AdMobManager: GADNativeAdDelegate {
     func logEventNative(nativeAd: GADNativeAd) {
         let adViews = listAd.allValues
         adViews.forEach { ad in
-            if let nativeAdViews = ad as? [UnifiedNativeAdView] {
-                if let ad = nativeAdViews.first(where: {$0.nativeAd == nativeAd}) {
-                    logEvenClick(id: ad.adUnitID ?? "")
-                }
-            } else if let nativeAdViews = ad as? [UnifiedNativeAdView_2] {
-                if let ad = nativeAdViews.first(where: {$0.nativeAd == nativeAd}) {
-                    logEvenClick(id: ad.adUnitID ?? "")
-                }
-            } else if let nativeAdViews = ad as? [SmallNativeAdView] {
-                if let ad = nativeAdViews.first(where: {$0.nativeAd == nativeAd}) {
-                    logEvenClick(id: ad.adUnitID ?? "")
-                }
-            } else if let nativeAdViews = ad as? [MediumNativeAdView] {
-                if let ad = nativeAdViews.first(where: {$0.nativeAd == nativeAd}) {
-                    logEvenClick(id: ad.adUnitID ?? "")
-                }
-            } else if let nativeAdViews = ad as? [FreeSizeNativeAdView] {
-                if let ad = nativeAdViews.first(where: {$0.nativeAd == nativeAd}) {
-                    logEvenClick(id: ad.adUnitID ?? "")
-                }
-            }
+            logEvenClick(format: "ad_native")
+//            if let nativeAdViews = ad as? [UnifiedNativeAdView] {
+//                if let ad = nativeAdViews.first(where: {$0.nativeAd == nativeAd}) {
+//                    logEvenClick(format: "ad_native")
+//                }
+//            } else if let nativeAdViews = ad as? [UnifiedNativeAdView_2] {
+//                if let ad = nativeAdViews.first(where: {$0.nativeAd == nativeAd}) {
+//                    logEvenClick(id: ad.adUnitID ?? "")
+//                }
+//            } else if let nativeAdViews = ad as? [SmallNativeAdView] {
+//                if let ad = nativeAdViews.first(where: {$0.nativeAd == nativeAd}) {
+//                    logEvenClick(id: ad.adUnitID ?? "")
+//                }
+//            } else if let nativeAdViews = ad as? [MediumNativeAdView] {
+//                if let ad = nativeAdViews.first(where: {$0.nativeAd == nativeAd}) {
+//                    logEvenClick(id: ad.adUnitID ?? "")
+//                }
+//            } else if let nativeAdViews = ad as? [FreeSizeNativeAdView] {
+//                if let ad = nativeAdViews.first(where: {$0.nativeAd == nativeAd}) {
+//                    logEvenClick(id: ad.adUnitID ?? "")
+//                }
+//            }
         }
     }
 }
@@ -192,6 +193,40 @@ extension AdMobManager: GADNativeAdLoaderDelegate {
     
     public func nativeAdDidRecordImpression(_ nativeAd: GADNativeAd) {
         print("ad==> nativeAdDidRecordImpression")
+        nativeAd.paidEventHandler = {[weak self] value in
+            guard let self = self else { return }
+            let adViews = self.listAd.allValues
+            adViews.forEach { ad in
+                var adUnitID: String?
+                if let nativeAdViews = ad as? [UnifiedNativeAdView] {
+                    if let ad = nativeAdViews.first(where: {$0.nativeAd == nativeAd}) {
+                        adUnitID = ad.adUnitID
+                    }
+                } else if let nativeAdViews = ad as? [UnifiedNativeAdView_2] {
+                    if let ad = nativeAdViews.first(where: {$0.nativeAd == nativeAd}) {
+                        adUnitID = ad.adUnitID
+                    }
+                } else if let nativeAdViews = ad as? [SmallNativeAdView] {
+                    if let ad = nativeAdViews.first(where: {$0.nativeAd == nativeAd}) {
+                        adUnitID = ad.adUnitID
+                    }
+                } else if let nativeAdViews = ad as? [MediumNativeAdView] {
+                    if let ad = nativeAdViews.first(where: {$0.nativeAd == nativeAd}) {
+                        adUnitID = ad.adUnitID
+                    }
+                } else if let nativeAdViews = ad as? [FreeSizeNativeAdView] {
+                    if let ad = nativeAdViews.first(where: {$0.nativeAd == nativeAd}) {
+                        adUnitID = ad.adUnitID
+                    }
+                }
+                let responseInfo = nativeAd.responseInfo.loadedAdNetworkResponseInfo
+                self.blockLogNativeLoadSuccess?(adUnitID ?? "",
+                                                value.precision.rawValue,
+                                                Int(truncating: value.value),
+                                                responseInfo?.adSourceID ?? "",
+                                                responseInfo?.adSourceName ?? "")
+            }
+        }
     }
     
 }

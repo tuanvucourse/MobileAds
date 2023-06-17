@@ -94,9 +94,12 @@ open class AdMobManager: NSObject {
     public var blockCompletionHandeler     : BoolBlockAds?
     public var blockNativeFaild            : StringBlockAds?
     public var blockLoadNativeSuccess      : BoolBlockAds?
+    public var blockLogNativeLoadSuccess   : LogNativeLoadSuccess?
     public var blockBannerFaild      : ((String) -> Void)?
-    public var blockLoadBannerSuccess: ((Bool) -> Void)?
+    public var blockLoadBannerSuccess: LogBannerLoadSuccess?
     public var blockBannerClick      : StringBlockAds?
+    public var blockLoadInterstitialAdSuccess: LogInterstitialAdLoadSuccess?
+    public var blockLoadRewardedAdSuccess: LogRewardedAdLoadSuccess?
     
     //    MARK: - Remove ID ads
     public func removeAd(unitId: String) {
@@ -108,8 +111,8 @@ open class AdMobManager: NSObject {
 //        Analytics.logEvent("ad_impression_value", parameters: ["adunitid" : unitId, "value" : "\(value.value.doubleValue)"])
     }
     
-    func logEvenClick(id: String) {
-//        Analytics.logEvent("user_click_ads", parameters: ["adunitid" : id])
+    func logEvenClick(format: String) {
+        Analytics.logEvent("ad_click_custom", parameters: ["ad_format" : format])
     }
     
 }

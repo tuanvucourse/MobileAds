@@ -131,6 +131,25 @@ extension AdMobManager: GADFullScreenContentDelegate {
     public func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         print("Ad did present full screen content.")
         blockCompletionHandeler?(true)
+        if let ad = ad as? GADInterstitialAd {
+            ad.paidEventHandler = {[weak self] value in
+                let responseInfo = ad.responseInfo.loadedAdNetworkResponseInfo
+                self?.blockLoadInterstitialAdSuccess?(ad.adUnitID,
+                                                      value.precision.rawValue,
+                                                      Int(truncating: value.value),
+                                                      responseInfo?.adSourceID ?? "",
+                                                      responseInfo?.adSourceName ?? "")
+            }
+        } else if let ad = ad as? GADRewardedAd {
+            ad.paidEventHandler = {[weak self] value in
+                let responseInfo = ad.responseInfo.loadedAdNetworkResponseInfo
+                self?.blockLoadRewardedAdSuccess?(ad.adUnitID,
+                                                  value.precision.rawValue,
+                                                  Int(truncating: value.value),
+                                                  responseInfo?.adSourceID ?? "",
+                                                  responseInfo?.adSourceName ?? "")
+            }
+        }
     }
     
     /// Tells the delegate that the ad dismissed full screen content.
@@ -145,9 +164,10 @@ extension AdMobManager: GADFullScreenContentDelegate {
     public func adDidRecordClick(_ ad: GADFullScreenPresentingAd) {
         blockFullScreenAdClick?()
         if let ad = ad as? GADInterstitialAd {
-            logEvenClick(id: ad.adUnitID)
+            logEvenClick(format: "ad_interstitial")
         } else if let ad = ad as? GADRewardedAd {
-            logEvenClick(id: ad.adUnitID)
+            logEvenClick(format: "ad_rewarded")
         }
     }
 }
+//ad_interstitial, ad_native, ad_banner, ad_open_ads, ad_rewarded, ad_open_ads_resume
