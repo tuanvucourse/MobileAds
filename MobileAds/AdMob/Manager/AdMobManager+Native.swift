@@ -113,35 +113,7 @@ extension AdMobManager {
 extension AdMobManager: GADNativeAdDelegate {
     public func nativeAdDidRecordClick(_ nativeAd: GADNativeAd) {
         print("ad==> nativeAdDidRecordClick ")
-        logEventNative(nativeAd: nativeAd)
-    }
-    
-    func logEventNative(nativeAd: GADNativeAd) {
-        let adViews = listAd.allValues
-        adViews.forEach { ad in
-            logEvenClick(format: "ad_native")
-//            if let nativeAdViews = ad as? [UnifiedNativeAdView] {
-//                if let ad = nativeAdViews.first(where: {$0.nativeAd == nativeAd}) {
-//                    logEvenClick(format: "ad_native")
-//                }
-//            } else if let nativeAdViews = ad as? [UnifiedNativeAdView_2] {
-//                if let ad = nativeAdViews.first(where: {$0.nativeAd == nativeAd}) {
-//                    logEvenClick(id: ad.adUnitID ?? "")
-//                }
-//            } else if let nativeAdViews = ad as? [SmallNativeAdView] {
-//                if let ad = nativeAdViews.first(where: {$0.nativeAd == nativeAd}) {
-//                    logEvenClick(id: ad.adUnitID ?? "")
-//                }
-//            } else if let nativeAdViews = ad as? [MediumNativeAdView] {
-//                if let ad = nativeAdViews.first(where: {$0.nativeAd == nativeAd}) {
-//                    logEvenClick(id: ad.adUnitID ?? "")
-//                }
-//            } else if let nativeAdViews = ad as? [FreeSizeNativeAdView] {
-//                if let ad = nativeAdViews.first(where: {$0.nativeAd == nativeAd}) {
-//                    logEvenClick(id: ad.adUnitID ?? "")
-//                }
-//            }
-        }
+        logEvenClick(format: "ad_native")
     }
 }
 

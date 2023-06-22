@@ -104,7 +104,6 @@ extension AdMobManager: GADBannerViewDelegate {
     
     public func bannerViewDidRecordImpression(_ bannerView: GADBannerView) {
         print("ad==> adViewDidRecordImpression bannerView\(bannerView.adUnitID ?? "")")
-        bannerView.delegate = nil
         bannerView.hideSkeleton()
         bannerView.superview?.hideSkeleton()
     }

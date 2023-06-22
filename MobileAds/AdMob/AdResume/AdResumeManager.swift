@@ -152,14 +152,23 @@ open class AdResumeManager: NSObject {
         GADAppOpenAd.load(withAdUnitID: adId.rawValue,
                           request: GADRequest(), orientation: .portrait) { ad, error in
             self.isLoadingAd = false
-            if error != nil {
+            guard let _ad = ad, error == nil else {
                 loadAppOpenFail?()
                 return
             }
-            self.appOpenAd = ad
+
+            self.appOpenAd = _ad
             self.appOpenAd?.fullScreenContentDelegate = self
             self.loadTime = Date()
             self.isShowingAd = true
+            _ad.paidEventHandler = { [weak self] value in
+                let responseInfo = _ad.responseInfo.loadedAdNetworkResponseInfo
+                self?.blockLoadAdsOpenSuccess?(adId.rawValue,
+                                               value.precision.rawValue,
+                                               Int(truncating: value.value),
+                                               responseInfo?.adSourceID ?? "",
+                                               responseInfo?.adSourceName ?? "")
+            }
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 loadingVC.view.removeFromSuperview()
