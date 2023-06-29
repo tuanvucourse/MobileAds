@@ -16,11 +16,7 @@ class AdsLoadingView: UIView {
         lb.textColor = UIColor(hex: 0x4A4A4A)
         return lb
     }()
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        setupUI()
-    }
-
+    
     init() {
         super.init(frame: .zero)
         setupUI()

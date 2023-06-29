@@ -230,9 +230,21 @@
                         </mask>
                     </variation>
                 </stackView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="efX-rU-Uis" customClass="AdsLoadingView" customModule="MobileAds" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="efX-rU-Uis">
                     <rect key="frame" x="0.0" y="0.0" width="405" height="325"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ads loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHe-AA-JFp">
+                            <rect key="frame" x="164" y="155.5" width="77" height="14.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
                     <color key="backgroundColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="cHe-AA-JFp" firstAttribute="centerX" secondItem="efX-rU-Uis" secondAttribute="centerX" id="UF5-aN-DIo"/>
+                        <constraint firstItem="cHe-AA-JFp" firstAttribute="centerY" secondItem="efX-rU-Uis" secondAttribute="centerY" id="y6J-BZ-SOk"/>
+                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -263,6 +275,7 @@
                 <outlet property="headlineView" destination="beR-eV-DX1" id="d1E-ed-yel"/>
                 <outlet property="lblAds" destination="lp1-oz-XOs" id="Ard-PL-mAW"/>
                 <outlet property="lblRateCount" destination="xnd-bl-1p1" id="su8-kN-qtc"/>
+                <outlet property="loadingLabel" destination="cHe-AA-JFp" id="vEa-qj-a9t"/>
                 <outlet property="loadingView" destination="efX-rU-Uis" id="DF3-TC-Vkn"/>
                 <outlet property="mediaView" destination="fNp-yu-K4i" id="624-ZP-L04"/>
                 <outlet property="priceView" destination="Ysb-of-cat" id="L6Q-hd-uaJ"/>

@@ -224,9 +224,21 @@
                                 </mask>
                             </variation>
                         </stackView>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KbF-7S-Cdv" customClass="AdsLoadingView" customModule="MobileAds" customModuleProvider="target">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KbF-7S-Cdv">
                             <rect key="frame" x="0.0" y="0.0" width="326" height="63"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ads loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6w-gH-OiA">
+                                    <rect key="frame" x="124.5" y="24.5" width="77" height="14.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
                             <color key="backgroundColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="s6w-gH-OiA" firstAttribute="centerX" secondItem="KbF-7S-Cdv" secondAttribute="centerX" id="I2I-Nb-Ctd"/>
+                                <constraint firstItem="s6w-gH-OiA" firstAttribute="centerY" secondItem="KbF-7S-Cdv" secondAttribute="centerY" id="lDh-gD-BEy"/>
+                            </constraints>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -261,6 +273,7 @@
                 <outlet property="headlineView" destination="UZl-M2-hcX" id="OnL-RA-9JO"/>
                 <outlet property="iconView" destination="YhR-TB-Aaz" id="FnP-FA-Rmg"/>
                 <outlet property="lblAds" destination="mKq-th-SYp" id="I8w-W4-cgW"/>
+                <outlet property="loadingLabel" destination="s6w-gH-OiA" id="Up9-P1-Nh4"/>
                 <outlet property="loadingView" destination="KbF-7S-Cdv" id="Eiv-ta-a7W"/>
                 <outlet property="stackAppStore" destination="g8U-5G-CYi" id="o1e-pD-Ppv"/>
                 <outlet property="starContainerView" destination="BWa-dz-lyu" id="InZ-oO-6pw"/>
