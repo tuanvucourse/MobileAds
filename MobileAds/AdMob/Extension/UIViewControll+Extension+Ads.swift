@@ -43,7 +43,7 @@ extension UIViewController {
                 att.append(NSAttributedString(string: subTextLoading, attributes: [.font: UIFont.systemFont(ofSize: 16), .foregroundColor: UIColor(hex: 0x4A4A4A)]))
             }
             overLayView.addSubview(label)
-            label.text = textLoading
+            label.attributedText = att
             label.snp.makeConstraints { make in
                 make.centerY.equalToSuperview().offset(-40)
                 make.centerX.equalToSuperview()
