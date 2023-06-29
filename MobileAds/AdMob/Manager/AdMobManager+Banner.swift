@@ -68,12 +68,15 @@ extension AdMobManager: GADBannerViewDelegate {
         adBannerView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        if view.isSkeletonable == false {
-            adBannerView.isSkeletonable = true
-            let gradient = SkeletonGradient(baseColor: self.skeletonGradient)
-            adBannerView.showAnimatedGradientSkeleton(usingGradient: gradient, animation: SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight, duration: 0.7))
+
+        if view.subviews.filter({ $0 is AdsLoadingView }).isEmpty {
+            let loadingView = AdsLoadingView()
+            view.addSubview(loadingView)
+            loadingView.snp.makeConstraints { make in
+                make.edges.equalToSuperview()
+            }
         }
-        
+
         adBannerView.adSize =  GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(screenWidthAds)
         let request = GADRequest()
         adBannerView.load(request)
@@ -84,6 +87,8 @@ extension AdMobManager: GADBannerViewDelegate {
         print("ad==> bannerView did load \(bannerView.adUnitID ?? "")")
         bannerView.hideSkeleton()
         bannerView.superview?.hideSkeleton()
+        bannerView.superview?.subviews
+            .forEach({ if $0 is AdsLoadingView { $0.removeFromSuperview() } })
     }
     
     public func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
@@ -106,6 +111,8 @@ extension AdMobManager: GADBannerViewDelegate {
         print("ad==> adViewDidRecordImpression bannerView\(bannerView.adUnitID ?? "")")
         bannerView.hideSkeleton()
         bannerView.superview?.hideSkeleton()
+        bannerView.superview?.subviews
+            .forEach({ if $0 is AdsLoadingView { $0.removeFromSuperview() } })
     }
     
     public func bannerViewDidRecordClick(_ bannerView: GADBannerView) {
