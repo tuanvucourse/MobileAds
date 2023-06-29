@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -230,17 +230,37 @@
                         </mask>
                     </variation>
                 </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="efX-rU-Uis">
+                    <rect key="frame" x="0.0" y="0.0" width="405" height="325"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ads loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHe-AA-JFp">
+                            <rect key="frame" x="164" y="155.5" width="77" height="14.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="cHe-AA-JFp" firstAttribute="centerX" secondItem="efX-rU-Uis" secondAttribute="centerX" id="UF5-aN-DIo"/>
+                        <constraint firstItem="cHe-AA-JFp" firstAttribute="centerY" secondItem="efX-rU-Uis" secondAttribute="centerY" id="y6J-BZ-SOk"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="efX-rU-Uis" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1Tu-p5-U5k"/>
                 <constraint firstItem="cO4-cn-EyO" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="86C-vl-TQ6"/>
+                <constraint firstAttribute="bottom" secondItem="efX-rU-Uis" secondAttribute="bottom" id="JN5-c8-DeE"/>
                 <constraint firstItem="k7u-4q-ueh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="4" id="Ktg-di-iDi"/>
+                <constraint firstItem="efX-rU-Uis" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Oww-PQ-hSr"/>
                 <constraint firstItem="k7u-4q-ueh" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="W0P-QD-tqW"/>
                 <constraint firstAttribute="bottom" secondItem="65N-Xa-kTz" secondAttribute="bottom" constant="8" id="fL9-Ir-Stg"/>
                 <constraint firstItem="65N-Xa-kTz" firstAttribute="top" secondItem="k7u-4q-ueh" secondAttribute="bottom" id="kjU-Pf-Cb2"/>
                 <constraint firstAttribute="trailing" secondItem="cO4-cn-EyO" secondAttribute="trailing" id="n1F-dE-0ot"/>
                 <constraint firstItem="k7u-4q-ueh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="4" id="oZ3-VV-fDI"/>
                 <constraint firstItem="65N-Xa-kTz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="qjS-aB-OGC"/>
+                <constraint firstAttribute="trailing" secondItem="efX-rU-Uis" secondAttribute="trailing" id="rUg-mi-iE5"/>
                 <constraint firstItem="65N-Xa-kTz" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="umT-pJ-XKe"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -255,6 +275,7 @@
                 <outlet property="headlineView" destination="beR-eV-DX1" id="d1E-ed-yel"/>
                 <outlet property="lblAds" destination="lp1-oz-XOs" id="Ard-PL-mAW"/>
                 <outlet property="lblRateCount" destination="xnd-bl-1p1" id="su8-kN-qtc"/>
+                <outlet property="loadingView" destination="efX-rU-Uis" id="DF3-TC-Vkn"/>
                 <outlet property="mediaView" destination="fNp-yu-K4i" id="624-ZP-L04"/>
                 <outlet property="priceView" destination="Ysb-of-cat" id="L6Q-hd-uaJ"/>
                 <outlet property="starRatingView" destination="2Of-AP-0h9" id="zCO-9D-S0V"/>

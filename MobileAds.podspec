@@ -152,9 +152,7 @@ Pod::Spec.new do |spec|
   spec.dependency 'FirebaseAnalytics', '~> 10.3.0'
   spec.dependency 'Firebase/RemoteConfig', '~> 10.3.0'
   spec.dependency "Google-Mobile-Ads-SDK", '~> 9.14.0'
-  spec.dependency "MONActivityIndicatorView", '~> 0.0.3'
   spec.dependency "SnapKit", '~> 5.6.0'
-  spec.dependency "Adjust", '~> 4.29.2'
   spec.dependency "SkeletonView", '~> 1.29.2'
   spec.dependency 'Toast-Swift', '~> 5.0.1'
 

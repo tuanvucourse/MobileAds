@@ -17,6 +17,7 @@ class SmallNativeAdView: GADNativeAdView, NativeAdProtocol {
     @IBOutlet weak var viewLinePrice: UIView!
     @IBOutlet weak var stackAppStore: UIStackView!
     @IBOutlet weak var starContainerView: UIView!
+    @IBOutlet weak var loadingView: UIView!
     
     let (viewBackgroundColor, titleColor, _, contenColor, actionColor, backgroundAction) = AdMobManager.shared.adsNativeColor.colors
     var adUnitID: String?
@@ -43,14 +44,14 @@ class SmallNativeAdView: GADNativeAdView, NativeAdProtocol {
         (self.iconView as? UIImageView)?.image = nativeAd.icon?.image
         self.iconView?.isHidden = nativeAd.icon == nil
         
-//        if nativeAd.starRating != nil, nativeAd.starRating != 0 {
-//            (self.starRatingView as? UIImageView)?.image = self.imageOfStars(from: nativeAd.starRating)
-//            starContainerView.isHidden = false
-//        } else {
-            starContainerView.removeFromSuperview()
-            starRatingView?.removeFromSuperview()
-//        }
-    
+        //        if nativeAd.starRating != nil, nativeAd.starRating != 0 {
+        //            (self.starRatingView as? UIImageView)?.image = self.imageOfStars(from: nativeAd.starRating)
+        //            starContainerView.isHidden = false
+        //        } else {
+        starContainerView.removeFromSuperview()
+        starRatingView?.removeFromSuperview()
+        //        }
+
         if nativeAd.price == nil || nativeAd.price == "" {
             self.viewLinePrice.isHidden = true
         } else {
@@ -63,11 +64,11 @@ class SmallNativeAdView: GADNativeAdView, NativeAdProtocol {
             (self.bodyView as? UILabel)?.text = nativeAd.body
         }
         
-//        if nativeAd.body == nil {
-//            (self.advertiserView as? UILabel)?.text = nativeAd.advertiser
-//        } else {
-//            (self.advertiserView as? UILabel)?.text = nativeAd.body
-//        }
+        //        if nativeAd.body == nil {
+        //            (self.advertiserView as? UILabel)?.text = nativeAd.advertiser
+        //        } else {
+        //            (self.advertiserView as? UILabel)?.text = nativeAd.body
+        //        }
         
         if backgroundAction.count > 1 {
             self.callToActionView?.gradient(startColor: backgroundAction.first!, endColor: backgroundAction.last!, cornerRadius: AdMobManager.shared.adsNativeCornerRadiusButton)
@@ -80,15 +81,16 @@ class SmallNativeAdView: GADNativeAdView, NativeAdProtocol {
         (self.headlineView as? UILabel)?.textColor = titleColor
         lblAds.textColor = AdMobManager.shared.adNativeAdsLabelColor
         lblAds.backgroundColor = AdMobManager.shared.adNativeBackgroundAdsLabelColor
-        self.backgroundColor = .clear//viewBackgroundColor
+        self.backgroundColor = viewBackgroundColor
         layer.borderWidth = AdMobManager.shared.adsNativeBorderWidth
         layer.borderColor = AdMobManager.shared.adsNativeBorderColor.cgColor
         layer.cornerRadius = AdMobManager.shared.adsNativeCornerRadius
         cstWidthBtn.constant = AdMobManager.shared.adsNativeSmallWidthButton
         clipsToBounds = true
-        
         self.nativeAd = nativeAd
-        
     }
 
+    func hideLoadingView() {
+        loadingView.isHidden = true
+    }
 }

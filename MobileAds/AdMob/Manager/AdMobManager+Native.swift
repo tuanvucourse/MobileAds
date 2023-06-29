@@ -75,9 +75,6 @@ extension AdMobManager {
                 make.edges.equalToSuperview()
             }
             adNativeView.layoutIfNeeded()
-            adNativeView.isSkeletonable = true
-            let gradient = SkeletonGradient(baseColor: self.skeletonGradient)
-            adNativeView.showAnimatedGradientSkeleton(usingGradient: gradient, animation: SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight, duration: 0.7))
             nativeViews.append(adNativeView)
         }
         
@@ -148,19 +145,21 @@ extension AdMobManager: GADNativeAdLoaderDelegate {
         nativeAd.mediaContent.videoController.delegate = self
         if let nativeAdView = nativeAdView as? UnifiedNativeAdView {
             nativeAdView.adUnitID = adLoader.adUnitID
-            nativeAdView.hideSkeleton()
+//            nativeAdView.hideSkeleton()
+            nativeAdView.hideLoadingView()
             nativeAdView.bindingData(nativeAd: nativeAd)
         } else if let nativeAdView = nativeAdView as? UnifiedNativeAdView_2 {
             nativeAdView.adUnitID = adLoader.adUnitID
-            nativeAdView.hideSkeleton()
+//            nativeAdView.hideSkeleton()
             nativeAdView.bindingData(nativeAd: nativeAd)
         } else if let nativeAdView = nativeAdView as? SmallNativeAdView {
             nativeAdView.adUnitID = adLoader.adUnitID
-            nativeAdView.hideSkeleton()
+//            nativeAdView.hideSkeleton()
+            nativeAdView.hideLoadingView()
             nativeAdView.bindingData(nativeAd: nativeAd)
         } else if let nativeAdView = nativeAdView as? MediumNativeAdView {
             nativeAdView.adUnitID = adLoader.adUnitID
-            nativeAdView.hideSkeleton()
+//            nativeAdView.hideSkeleton()
             nativeAdView.bindingData(nativeAd: nativeAd)
         } else if let nativeAdView = nativeAdView as? FreeSizeNativeAdView {
             nativeAdView.adUnitID = adLoader.adUnitID
