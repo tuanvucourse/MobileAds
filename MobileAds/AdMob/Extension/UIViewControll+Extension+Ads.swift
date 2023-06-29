@@ -36,6 +36,7 @@ extension UIViewController {
         if let textLoading = textLoading {
             let label = UILabel()
             label.textAlignment = .center
+            label.numberOfLines = 0
             var att = NSMutableAttributedString(string: textLoading, attributes: [.font: UIFont.boldSystemFont(ofSize: 20), .foregroundColor: UIColor.black])
             if let subTextLoading = subTextLoading {
                 att.append(NSAttributedString(string: "\n"))
