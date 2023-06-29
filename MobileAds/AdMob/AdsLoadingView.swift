@@ -11,13 +11,22 @@ import UIKit
 class AdsLoadingView: UIView {
     private let loadingLabel: UILabel = {
         let lb = UILabel()
-        lb.text = "Ads loading..."
+        lb.text = AdMobManager.shared.loadingAdsString
         lb.font = .systemFont(ofSize: 12)
         lb.textColor = UIColor(hex: 0x4A4A4A)
         return lb
     }()
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        setupUI()
+    }
+
     init() {
         super.init(frame: .zero)
+        setupUI()
+    }
+
+    func setupUI() {
         self.backgroundColor = UIColor(hex: 0xC6C6C6)
         self.addSubview(loadingLabel)
         loadingLabel.snp.makeConstraints { make in

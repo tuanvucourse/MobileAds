@@ -27,6 +27,7 @@ open class AdResumeManager: NSObject {
     weak var appOpenAdManagerDelegate: AdResumeManagerDelegate?
     var loadTime: Date?
     public var adResumeLoadingString = "Welcome back"
+    public var subTextLoading = "(This action may be contain ads)"
     
     private var showVC: UIViewController?
     public var blockadDidDismissFullScreenContent: VoidBlockAds?

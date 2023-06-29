@@ -15,7 +15,7 @@ class UnifiedNativeAdView: GADNativeAdView, NativeAdProtocol {
     @IBOutlet weak var lblAds: UILabel!
     @IBOutlet weak var bannerImageView: UIImageView!
     @IBOutlet weak var lblRateCount: UILabel!
-    @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var loadingView: AdsLoadingView!
     
     let (viewBackgroundColor, titleColor, vertiserColor, contenColor, actionColor, backgroundAction) = AdMobManager.shared.adsNativeColor.colors
     var adUnitID: String?

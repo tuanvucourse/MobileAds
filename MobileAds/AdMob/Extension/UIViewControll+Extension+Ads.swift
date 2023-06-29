@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 
 extension UIViewController {
-    func showLoadingDotAds(backgroundColor: UIColor = .clear, textLoading: String? = nil) {
+    func showLoadingDotAds(backgroundColor: UIColor = .clear, textLoading: String? = nil, subTextLoading: String? = nil) {
         let keyWindow = self.keyWindowAds ?? self.view
         
         if self.view.subviews.first(where: {$0.tag == -111}) != nil {
@@ -35,7 +35,12 @@ extension UIViewController {
         
         if let textLoading = textLoading {
             let label = UILabel()
-            label.textColor = .lightGray
+            label.textAlignment = .center
+            var att = NSMutableAttributedString(string: textLoading, attributes: [.font: UIFont.boldSystemFont(ofSize: 20), .foregroundColor: UIColor.black])
+            if let subTextLoading = subTextLoading {
+                att.append(NSAttributedString(string: "\n"))
+                att.append(NSAttributedString(string: subTextLoading, attributes: [.font: UIFont.systemFont(ofSize: 16), .foregroundColor: UIColor(hex: 0x4A4A4A)]))
+            }
             overLayView.addSubview(label)
             label.text = textLoading
             label.snp.makeConstraints { make in

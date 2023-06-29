@@ -78,6 +78,7 @@ open class AdMobManager: NSObject {
     public var nativeButtonCornerRadius: CGFloat = 16
     public var rewardErrorString: String         = "An error occurred"
     public var adFullScreenLoadingString: String = "Ad is loading"
+    public var loadingAdsString: String = "Ads loading..."
     public var skeletonGradient = UIColor.clouds
     
     var isSplash = false

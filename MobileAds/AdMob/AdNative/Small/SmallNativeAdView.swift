@@ -17,7 +17,7 @@ class SmallNativeAdView: GADNativeAdView, NativeAdProtocol {
     @IBOutlet weak var viewLinePrice: UIView!
     @IBOutlet weak var stackAppStore: UIStackView!
     @IBOutlet weak var starContainerView: UIView!
-    @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var loadingView: AdsLoadingView!
     
     let (viewBackgroundColor, titleColor, _, contenColor, actionColor, backgroundAction) = AdMobManager.shared.adsNativeColor.colors
     var adUnitID: String?
