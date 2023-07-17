@@ -29,6 +29,7 @@ extension AdMobManager: GADBannerViewDelegate {
         adBannerView.paidEventHandler = {[weak self] value in
             let responseInfo = adBannerView.responseInfo?.loadedAdNetworkResponseInfo
             self?.blockLoadBannerSuccess?(unitId.rawValue,
+                                          value,
                                           value.precision.rawValue,
                                           Int(truncating: value.value),
                                           responseInfo?.adSourceID ?? "",
