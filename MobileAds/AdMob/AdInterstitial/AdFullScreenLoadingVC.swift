@@ -32,15 +32,8 @@ class AdFullScreenLoadingVC: UIViewController {
         if needLoadAd {
             loadAd()
         } else {
-            if let type = adType {
-                switch type {
-                case .reward(_):
-                    showLoadingDotAds(backgroundColor: UIColor(hex: 0xC6C6C6),
-                                      textLoading: textLoading, subTextLoading: AdResumeManager.shared.subTextLoading)
-                default: break
-                }
-            }
-
+            showLoadingDotAds(backgroundColor: UIColor(hex: 0xC6C6C6),
+                              textLoading: textLoading, subTextLoading: AdResumeManager.shared.subTextLoading)
         }
     }
     
@@ -57,12 +50,8 @@ class AdFullScreenLoadingVC: UIViewController {
         
         if adType.isExisted {
             self.stopCheckTimmer()
-            switch adType {
-            case .reward(_):
-                showLoadingDotAds(backgroundColor: UIColor(hex: 0xC6C6C6),
-                                  textLoading: textLoading, subTextLoading: AdResumeManager.shared.subTextLoading)
-            default: break
-            }
+            showLoadingDotAds(backgroundColor: UIColor(hex: 0xC6C6C6),
+                              textLoading: textLoading, subTextLoading: AdResumeManager.shared.subTextLoading)
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1000)) {
                 adType.presentAd()
             }
@@ -103,12 +92,8 @@ class AdFullScreenLoadingVC: UIViewController {
             }
 
         } else {
-            switch adType {
-            case .reward(_):
-                showLoadingDotAds(backgroundColor: UIColor(hex: 0xC6C6C6),
-                                  textLoading: textLoading, subTextLoading: AdResumeManager.shared.subTextLoading)
-            default: break
-            }
+            showLoadingDotAds(backgroundColor: UIColor(hex: 0xC6C6C6),
+                              textLoading: textLoading, subTextLoading: AdResumeManager.shared.subTextLoading)
             AdMobManager.shared.blockLoadFullScreenAdSuccess = { [weak self] unitId in
                 guard let _self = self, _self.adUnitId?.rawValue == unitId else {
                     return
