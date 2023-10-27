@@ -45,6 +45,7 @@ extension AdMobManager: GADFullScreenContentDelegate {
             ad.paidEventHandler = {[weak self] value in
                 let responseInfo = ad.responseInfo.loadedAdNetworkResponseInfo
                 self?.blockLoadInterstitialAdSuccess?(ad.adUnitID,
+                                                      value,
                                                       value.precision.rawValue,
                                                       Int(truncating: value.value),
                                                       responseInfo?.adSourceID ?? "",

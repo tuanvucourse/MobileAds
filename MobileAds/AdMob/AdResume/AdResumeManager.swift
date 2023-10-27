@@ -108,6 +108,7 @@ open class AdResumeManager: NSObject {
             ad.paidEventHandler = { [weak self] value in
                 let responseInfo = ad.responseInfo.loadedAdNetworkResponseInfo
                 self?.blockLoadAdsOpenSuccess?(self?.resumeAdId?.rawValue ?? "",
+                                               value,
                                                value.precision.rawValue,
                                                Int(truncating: value.value),
                                                responseInfo?.adSourceID ?? "",
@@ -165,6 +166,7 @@ open class AdResumeManager: NSObject {
             _ad.paidEventHandler = { [weak self] value in
                 let responseInfo = _ad.responseInfo.loadedAdNetworkResponseInfo
                 self?.blockLoadAdsOpenSuccess?(adId.rawValue,
+                                               value,
                                                value.precision.rawValue,
                                                Int(truncating: value.value),
                                                responseInfo?.adSourceID ?? "",

@@ -135,6 +135,7 @@ extension AdMobManager: GADNativeAdLoaderDelegate {
         nativeAd.paidEventHandler = {[weak self] value in
             let responseInfo = nativeAd.responseInfo.loadedAdNetworkResponseInfo
             self?.blockLogNativeLoadSuccess?(adLoader.adUnitID,
+                                             value,
                                              value.precision.rawValue,
                                              Int(truncating: value.value),
                                              responseInfo?.adSourceID ?? "",

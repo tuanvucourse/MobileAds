@@ -47,6 +47,7 @@ extension AdMobManager {
             ad.paidEventHandler = {[weak self] value in
                 let responseInfo = ad.responseInfo.loadedAdNetworkResponseInfo
                 self?.blockLoadRewardedAdSuccess?(ad.adUnitID,
+                                                  value,
                                                   value.precision.rawValue,
                                                   Int(truncating: value.value),
                                                   responseInfo?.adSourceID ?? "",
